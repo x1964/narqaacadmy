@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Narqa Academy</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/logo2.jpeg" type="image/x-icon">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#0F2E2F;--primary-dark:#082122;--primary-light:#2A6B6D;
+            --accent:#E7B42C;--accent-dark:#C99E1E;--accent-glow:rgba(231,180,44,0.15);
+            --white:#FFFFFF;--gray-200:#E5E7EB;--gray-700:#374151;
+            --transition:all 0.3s ease-out;
+        }
+        body{font-family:'Inter',sans-serif;background:var(--primary-dark);color:#fff;overflow-x:hidden;min-height:100vh}
+
+        #particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+        /* ===== NAVBAR ===== */
+        .navbar{position:fixed;top:0;left:0;width:100%;background:rgba(8,33,34,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(231,180,44,0.06);z-index:1000;padding:0.9rem 0;transition:var(--transition)}
+        .navbar.scrolled{padding:0.5rem 0;background:rgba(8,33,34,0.97);box-shadow:0 4px 24px rgba(0,0,0,0.3)}
+        .navbar .container{display:flex;justify-content:space-between;align-items:center;max-width:1280px;margin:0 auto;padding:0 2rem}
+        .logo{display:flex;align-items:center;gap:0.7rem;text-decoration:none;font-weight:900;font-size:1.5rem;letter-spacing:0.04em;color:#fff}
+        .logo-img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2.5px solid var(--accent);box-shadow:0 0 18px rgba(231,180,44,0.2);transition:var(--transition)}
+        .logo:hover .logo-img{transform:rotate(8deg) scale(1.05)}
+        .back-home{text-decoration:none;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:0.5rem;font-weight:600;font-size:0.9rem;transition:var(--transition)}
+        .back-home:hover{color:var(--accent)}
+
+        /* ===== CONTAINER ===== */
+        .container{max-width:1280px;margin:0 auto;padding:0 2rem}
+
+        /* ===== PROFILE WRAPPER ===== */
+        .profile-container{padding:110px 0 60px;position:relative;z-index:1}
+
+        /* ===== HERO BANNER ===== */
+        .profile-hero{
+            position:relative;border-radius:2rem;overflow:hidden;margin-bottom:2rem;
+            background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 50%,#0a2425 100%);
+            border:1px solid rgba(255,255,255,0.05);
+        }
+        .profile-hero::before{
+            content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+            background:radial-gradient(ellipse at 30% 50%,rgba(231,180,44,0.06),transparent 70%);
+            pointer-events:none;
+        }
+        .hero-bg-pattern{
+            position:absolute;top:0;left:0;width:100%;height:100%;
+            background-image:radial-gradient(rgba(231,180,44,0.04) 1px,transparent 1px);
+            background-size:24px 24px;pointer-events:none;
+        }
+        .profile-hero-inner{
+            position:relative;z-index:1;padding:3rem;display:flex;
+            align-items:center;gap:2.5rem;flex-wrap:wrap;
+        }
+
+        /* ===== AVATAR ===== */
+        .avatar-wrapper{position:relative;flex-shrink:0}
+        .avatar-ring{
+            width:150px;height:150px;border-radius:50%;padding:4px;
+            background:conic-gradient(var(--accent),var(--primary-light),var(--accent));
+            animation:ringRotate 4s linear infinite;
+        }
+        @keyframes ringRotate{to{background:conic-gradient(var(--primary-light),var(--accent),var(--primary-light))}}
+        .avatar-inner{
+            width:100%;height:100%;border-radius:50%;overflow:hidden;
+            border:3px solid var(--primary-dark);background:var(--primary);
+        }
+        .avatar-inner img{width:100%;height:100%;object-fit:cover;transition:0.5s}
+        .avatar-wrapper:hover .avatar-inner img{transform:scale(1.1)}
+        .avatar-edit{
+            position:absolute;bottom:6px;right:6px;width:40px;height:40px;
+            background:var(--accent);color:var(--primary-dark);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;cursor:pointer;
+            border:3px solid var(--primary-dark);font-size:0.85rem;
+            transition:var(--transition);box-shadow:0 4px 12px rgba(231,180,44,0.3);
+        }
+        .avatar-edit:hover{transform:scale(1.15)}
+
+        /* ===== HERO INFO ===== */
+        .hero-info{flex:1;min-width:280px}
+        .hero-name{font-size:2.2rem;font-weight:900;line-height:1.15;margin-bottom:0.3rem}
+        .hero-name span{background:linear-gradient(135deg,var(--accent),#f0d060);-webkit-background-clip:text;background-clip:text;color:transparent}
+        .hero-subtitle{color:rgba(255,255,255,0.45);font-size:0.95rem;margin-bottom:1rem}
+        .hero-badge{
+            display:inline-flex;align-items:center;gap:0.4rem;
+            background:rgba(231,180,44,0.1);border:1px solid rgba(231,180,44,0.15);
+            color:var(--accent);padding:0.35rem 1rem;border-radius:2rem;
+            font-weight:700;font-size:0.8rem;letter-spacing:0.03em;
+        }
+        .hero-badge i{font-size:0.7rem}
+        .hero-stats{display:flex;gap:2rem;margin-top:1.5rem;flex-wrap:wrap}
+        .hero-stat{text-align:left}
+        .hero-stat-num{font-size:1.8rem;font-weight:900;color:var(--accent);line-height:1}
+        .hero-stat-label{font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:0.2rem;font-weight:500;text-transform:uppercase;letter-spacing:0.05em}
+
+        /* ===== HERO ACTIONS ===== */
+        .hero-actions{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:1.5rem}
+        .btn{
+            display:inline-flex;align-items:center;justify-content:center;gap:0.45rem;
+            padding:0.65rem 1.3rem;border-radius:2rem;font-weight:600;
+            transition:var(--transition);border:none;cursor:pointer;
+            font-family:inherit;font-size:0.88rem;text-decoration:none;
+        }
+        .btn-gold{background:linear-gradient(135deg,var(--accent),#f0c840);color:var(--primary-dark);box-shadow:0 4px 16px rgba(231,180,44,0.25)}
+        .btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(231,180,44,0.4)}
+        .btn-ghost{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.1)}
+        .btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff;transform:translateY(-2px)}
+        .btn-danger{background:rgba(239,68,68,0.12);color:#f87171;border:1px solid rgba(239,68,68,0.15)}
+        .btn-danger:hover{background:rgba(239,68,68,0.2);transform:translateY(-2px)}
+
+        /* ===== GLASS CARD ===== */
+        .glass-card{
+            background:rgba(255,255,255,0.03);backdrop-filter:blur(16px);
+            border:1px solid rgba(255,255,255,0.06);border-radius:1.5rem;
+            padding:2rem;transition:var(--transition);position:relative;overflow:hidden;
+        }
+        .glass-card::before{
+            content:'';position:absolute;top:0;left:0;width:100%;height:2px;
+            background:linear-gradient(90deg,transparent,rgba(231,180,44,0.3),transparent);
+        }
+        .glass-card:hover{border-color:rgba(231,180,44,0.12);transform:translateY(-4px);box-shadow:0 20px 40px -15px rgba(0,0,0,0.3)}
+
+        /* ===== SECTION HEADING ===== */
+        .section-heading{
+            display:flex;justify-content:space-between;align-items:center;
+            margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.05);
+        }
+        .section-heading h3{font-size:1.15rem;font-weight:800;display:flex;align-items:center;gap:0.5rem}
+        .section-heading h3 i{color:var(--accent);font-size:1rem}
+        .edit-btn{
+            background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;
+            font-size:0.85rem;display:flex;align-items:center;gap:0.4rem;
+            transition:var(--transition);font-family:inherit;font-weight:600;
+        }
+        .edit-btn:hover{color:var(--accent)}
+
+        /* ===== GRID ===== */
+        .info-grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-bottom:1.5rem}
+        .info-grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:1.5rem}
+
+        /* ===== INFO ITEM ===== */
+        .info-item{
+            display:flex;align-items:center;gap:0.9rem;padding:0.9rem 1rem;
+            border-radius:1rem;background:rgba(255,255,255,0.02);
+            border:1px solid rgba(255,255,255,0.03);transition:var(--transition);
+        }
+        .info-item:hover{background:rgba(255,255,255,0.04);border-color:rgba(231,180,44,0.08)}
+        .info-icon{
+            width:40px;height:40px;border-radius:12px;flex-shrink:0;
+            background:linear-gradient(135deg,var(--primary),var(--primary-light));
+            display:flex;align-items:center;justify-content:center;
+            color:var(--accent);font-size:0.9rem;
+        }
+        .info-label{display:block;font-size:0.7rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.06em;font-weight:600;margin-bottom:0.1rem}
+        .info-value{font-weight:600;font-size:0.92rem;color:rgba(255,255,255,0.85)}
+
+        /* ===== STAT MINI CARDS ===== */
+        .stat-mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1.5rem}
+        .stat-mini{
+            text-align:center;padding:1.2rem 0.8rem;border-radius:1.2rem;
+            background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);
+            transition:var(--transition);
+        }
+        .stat-mini:hover{border-color:rgba(231,180,44,0.12);transform:translateY(-3px)}
+        .stat-mini i{font-size:1.4rem;color:var(--accent);margin-bottom:0.5rem;display:block}
+        .stat-mini-num{font-size:1.6rem;font-weight:900;color:#fff;line-height:1}
+        .stat-mini-label{font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em;font-weight:500}
+
+        /* ===== PROGRESS ===== */
+        .progress-item{margin-bottom:1.5rem}
+        .progress-item:last-child{margin-bottom:0}
+        .progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem}
+        .progress-name{font-weight:600;font-size:0.9rem;color:rgba(255,255,255,0.7)}
+        .progress-pct{font-weight:800;font-size:0.9rem;color:var(--accent)}
+        .progress-track{height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;position:relative}
+        .progress-fill{height:100%;border-radius:4px;position:relative;transition:width 1.2s ease;overflow:hidden}
+        .progress-fill.gold{background:linear-gradient(90deg,var(--accent),#f0d060)}
+        .progress-fill.green{background:linear-gradient(90deg,var(--primary-light),#3dd68c)}
+        .progress-fill.blue{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+        .progress-fill::after{
+            content:'';position:absolute;inset:0;
+            background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);
+            animation:shimmer 2s infinite;
+        }
+        @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+        /* ===== SESSION CARD ===== */
+        .session-card{
+            display:flex;justify-content:space-between;align-items:center;gap:1rem;
+            padding:1.2rem 1.5rem;border-radius:1.2rem;
+            background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);
+            transition:var(--transition);flex-wrap:wrap;margin-bottom:0.8rem;
+            border-left:3px solid var(--accent);
+        }
+        .session-card:hover{background:rgba(255,255,255,0.04);border-color:rgba(231,180,44,0.1);transform:translateX(4px)}
+        .session-title{font-weight:700;font-size:0.95rem;margin-bottom:0.4rem}
+        .session-meta{display:flex;flex-wrap:wrap;gap:1rem;font-size:0.8rem;color:rgba(255,255,255,0.4)}
+        .session-meta span{display:flex;align-items:center;gap:0.3rem}
+        .session-meta i{color:var(--accent);font-size:0.7rem}
+        .session-status{
+            padding:0.35rem 1rem;border-radius:2rem;font-size:0.78rem;font-weight:700;
+            white-space:nowrap;
+        }
+        .status-upcoming{background:rgba(231,180,44,0.1);color:var(--accent);border:1px solid rgba(231,180,44,0.15)}
+        .status-completed{background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.15)}
+        .status-cancelled{background:rgba(239,68,68,0.1);color:#f87171;border:1px solid rgba(239,68,68,0.15)}
+
+        /* ===== ACTIVITY ===== */
+        .activity-item{
+            display:flex;align-items:center;gap:1rem;padding:0.9rem 1rem;
+            border-radius:1rem;transition:var(--transition);margin-bottom:0.3rem;
+        }
+        .activity-item:hover{background:rgba(255,255,255,0.03)}
+        .activity-dot{
+            width:36px;height:36px;border-radius:10px;flex-shrink:0;
+            background:rgba(231,180,44,0.08);display:flex;align-items:center;justify-content:center;
+            color:var(--accent);font-size:0.85rem;
+        }
+        .activity-text{font-weight:600;font-size:0.9rem;color:rgba(255,255,255,0.75)}
+        .activity-time{font-size:0.78rem;color:rgba(255,255,255,0.3);margin-top:0.15rem}
+
+        /* ===== EMPTY STATE ===== */
+        .empty-state{text-align:center;padding:2.5rem 1rem;color:rgba(255,255,255,0.3)}
+        .empty-state i{font-size:2.5rem;margin-bottom:0.8rem;display:block;color:rgba(231,180,44,0.2)}
+        .empty-state p{font-size:0.9rem}
+        .empty-state a{color:var(--accent);text-decoration:none;font-weight:600}
+
+        /* ===== MODAL ===== */
+        .modal-overlay{
+            position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);
+            display:none;align-items:center;justify-content:center;z-index:2000;
+        }
+        .modal-overlay.active{display:flex}
+        .modal{
+            background:linear-gradient(160deg,#0f2e2f,#082122);
+            border:1px solid rgba(255,255,255,0.08);border-radius:2rem;
+            width:90%;max-width:560px;max-height:90vh;overflow-y:auto;
+            animation:modalIn 0.35s ease;position:relative;
+        }
+        .modal::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:2px;
+            background:linear-gradient(90deg,transparent,var(--accent),transparent);border-radius:2rem 2rem 0 0;
+        }
+        @keyframes modalIn{from{opacity:0;transform:scale(0.95) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+        .modal-header{
+            padding:1.5rem 2rem;border-bottom:1px solid rgba(255,255,255,0.05);
+            display:flex;justify-content:space-between;align-items:center;
+        }
+        .modal-header h3{font-size:1.2rem;font-weight:800;display:flex;align-items:center;gap:0.5rem}
+        .modal-header h3 i{color:var(--accent)}
+        .modal-close{
+            background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+            color:rgba(255,255,255,0.5);width:36px;height:36px;border-radius:50%;
+            cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;
+            transition:var(--transition);
+        }
+        .modal-close:hover{background:rgba(239,68,68,0.15);color:#f87171;border-color:rgba(239,68,68,0.2)}
+        .modal-body{padding:2rem}
+        .modal-footer{padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:flex-end;gap:0.8rem}
+
+        /* ===== MODAL FORM ===== */
+        .m-form-group{margin-bottom:1.2rem}
+        .m-form-group label{display:block;margin-bottom:0.35rem;color:rgba(255,255,255,0.5);font-weight:600;font-size:0.82rem}
+        .m-form-group input,.m-form-group select,.m-form-group textarea{
+            width:100%;padding:0.75rem 1rem;border:1.5px solid rgba(255,255,255,0.07);
+            border-radius:0.85rem;font-family:inherit;font-size:0.9rem;
+            transition:var(--transition);background:rgba(255,255,255,0.04);color:#fff;
+        }
+        .m-form-group input::placeholder,.m-form-group textarea::placeholder{color:rgba(255,255,255,0.2)}
+        .m-form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='rgba(255,255,255,0.4)' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 1rem center;padding-left:2.5rem;cursor:pointer}
+        .m-form-group select option{background:var(--primary-dark);color:#fff}
+        .m-form-group input:focus,.m-form-group select:focus,.m-form-group textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow);background:rgba(255,255,255,0.06)}
+        .m-form-group textarea{resize:vertical;min-height:70px}
+        .m-form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .m-form-group select[multiple]{height:100px;padding:0.4rem}
+        .m-form-group select[multiple] option{padding:0.4rem 0.6rem;margin:0.15rem 0;border-radius:0.4rem;font-size:0.85rem;color:rgba(255,255,255,0.6)}
+        .m-form-group select[multiple] option:checked{background:var(--accent);color:var(--primary-dark);font-weight:600}
+        .level-radio-group{display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;margin-top:0.5rem}
+        .level-radio{position:relative}
+        .level-radio input{display:none}
+        .level-radio label{
+            display:flex;flex-direction:column;align-items:center;gap:0.3rem;
+            padding:0.9rem 0.6rem;border-radius:0.9rem;text-align:center;cursor:pointer;
+            border:1.5px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);
+            color:rgba(255,255,255,0.5);font-size:0.82rem;font-weight:600;transition:var(--transition);
+        }
+        .level-radio input:checked+label{border-color:var(--accent);background:rgba(231,180,44,0.08);color:var(--accent)}
+        .level-radio label:hover{border-color:rgba(255,255,255,0.12)}
+        .level-radio label i{font-size:1.2rem}
+
+        /* ===== TOAST ===== */
+        .toast{
+            position:fixed;top:5rem;left:50%;transform:translateX(-50%) translateY(-30px);
+            padding:0.85rem 1.8rem;border-radius:1rem;font-weight:600;font-size:0.9rem;
+            z-index:9999;opacity:0;transition:all 0.4s ease;
+            box-shadow:0 10px 30px rgba(0,0,0,0.3);display:flex;align-items:center;gap:0.6rem;
+            backdrop-filter:blur(12px);white-space:nowrap;
+        }
+        .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+        .toast.error{background:rgba(239,68,68,0.9);color:#fff;border:1px solid rgba(239,68,68,0.4)}
+        .toast.error i{color:#fecaca}
+        .toast.success{background:rgba(16,185,129,0.9);color:#fff;border:1px solid rgba(16,185,129,0.4)}
+        .toast.success i{color:#a7f3d0}
+
+        /* ===== SCROLL TOP ===== */
+        .scroll-top{
+            position:fixed;bottom:2rem;right:2rem;width:46px;height:46px;
+            background:var(--accent);color:var(--primary-dark);border:none;border-radius:50%;
+            cursor:pointer;font-size:1rem;opacity:0;visibility:hidden;
+            transition:var(--transition);z-index:99;display:flex;align-items:center;justify-content:center;
+            box-shadow:0 4px 16px rgba(231,180,44,0.3);
+        }
+        .scroll-top.visible{opacity:1;visibility:visible}
+        .scroll-top:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(231,180,44,0.45)}
+
+        /* ===== REVEAL ===== */
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:768px){
+            .navbar .container{padding:0 1.2rem}
+            .container{padding:0 1.2rem}
+            .profile-container{padding:100px 0 40px}
+            .profile-hero-inner{flex-direction:column;text-align:center;padding:2rem 1.5rem}
+            .hero-stats{justify-content:center}
+            .hero-actions{justify-content:center}
+            .info-grid-2,.info-grid-3{grid-template-columns:1fr}
+            .stat-mini-grid{grid-template-columns:repeat(2,1fr)}
+            .session-card{flex-direction:column;align-items:flex-start}
+            .m-form-row{grid-template-columns:1fr}
+            .level-radio-group{grid-template-columns:1fr 1fr}
+            .modal-footer{flex-direction:column}
+            .modal-footer .btn{width:100%}
+            .hero-name{font-size:1.7rem}
+            .avatar-ring{width:120px;height:120px}
+        }
+        @media(max-width:480px){
+            .hero-actions{flex-direction:column;width:100%}
+            .hero-actions .btn{width:100%}
+            .stat-mini-grid{grid-template-columns:1fr 1fr}
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="container">
+        <a href="index.html" class="logo">
+            <img src="img/logo2.jpeg" alt="Narqa Academy" class="logo-img">
+            <span>NARQA</span>
+        </a>
+        <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+</nav>
+
+<!-- Profile -->
+<section class="profile-container">
+    <div class="container">
+
+        <!-- Hero Banner -->
+        <div class="profile-hero reveal">
+            <div class="hero-bg-pattern"></div>
+            <div class="profile-hero-inner">
+                <div class="avatar-wrapper">
+                    <div class="avatar-ring">
+                        <div class="avatar-inner"><img id="profileAvatar" alt="Profile"></div>
+                    </div>
+                    <div class="avatar-edit" id="changeAvatarBtn"><i class="fas fa-camera"></i></div>
+                </div>
+                <div class="hero-info">
+                    <h1 class="hero-name"><span id="profileName">Student</span></h1>
+                    <p class="hero-subtitle" id="profileTitle">Narqa Academy Student</p>
+                    <div class="hero-badge" id="profileLevel"><i class="fas fa-seedling"></i> Beginner</div>
+                    <div class="hero-stats">
+                        <div class="hero-stat"><div class="hero-stat-num" id="statSessions">0</div><div class="hero-stat-label">Sessions</div></div>
+                        <div class="hero-stat"><div class="hero-stat-num" id="statHours">0</div><div class="hero-stat-label">Hours</div></div>
+                        <div class="hero-stat"><div class="hero-stat-num" id="statParts">0</div><div class="hero-stat-label">Parts</div></div>
+                        <div class="hero-stat"><div class="hero-stat-num" id="statCertificates">0</div><div class="hero-stat-label">Certificates</div></div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn btn-gold" id="editProfileBtn"><i class="fas fa-pen"></i> Edit Profile</button>
+                        <button class="btn btn-ghost" id="changePasswordBtn"><i class="fas fa-key"></i> Change Password</button>
+                        <button class="btn btn-danger" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="info-grid-2 reveal">
+            <!-- Personal Info -->
+            <div class="glass-card">
+                <div class="section-heading">
+                    <h3><i class="fas fa-user-circle"></i> Personal Info</h3>
+                    <button class="edit-btn" data-section="personal"><i class="fas fa-pen"></i> Edit</button>
+                </div>
+                <div class="info-item"><div class="info-icon"><i class="fas fa-user"></i></div><div><span class="info-label">Full Name</span><span class="info-value" id="infoFullName">—</span></div></div>
+                <div class="info-item"><div class="info-icon"><i class="fas fa-envelope"></i></div><div><span class="info-label">Email</span><span class="info-value" id="infoEmail">—</span></div></div>
+                <div class="info-item"><div class="info-icon"><i class="fas fa-phone"></i></div><div><span class="info-label">Phone</span><span class="info-value" id="infoPhone">—</span></div></div>
+                <div class="info-item"><div class="info-icon"><i class="fas fa-cake-candles"></i></div><div><span class="info-label">Date of Birth</span><span class="info-value" id="infoBirthDate">—</span></div></div>
+                <div class="info-item"><div class="info-icon"><i class="fas fa-venus-mars"></i></div><div><span class="info-label">Gender</span><span class="info-value" id="infoGender">—</span></div></div>
+                <div class="info-item"><div class="info-icon"><i class="fas fa-map-marker-alt"></i></div><div><span class="info-label">Location</span><span class="info-value" id="infoAddress">—</span></div></div>
+            </div>
+
+            <!-- Learning Info -->
+            <div class="glass-card">
+                <div class="section-heading">
+                    <h3><i class="fas fa-graduation-cap"></i> Learning Info</h3>
+                    <button class="edit-btn" data-section="learning"><i class="fas fa-pen"></i> Edit</button>
+                </div>
+                <div class="info-item"><div class="info-icon"><i class="fas fa-chart-line"></i></div><div><span class="info-label">Current Level</span><span class="info-value" id="infoLearningLevel">—</span></div></div>
+                <div class="info-item"><div class="info-icon"><i class="fas fa-chalkboard-user"></i></div><div><span class="info-label">Current Teacher</span><span class="info-value" id="infoTeacher">—</span></div></div>
+                <div class="info-item"><div class="info-icon"><i class="fas fa-calendar-check"></i></div><div><span class="info-label">Join Date</span><span class="info-value" id="infoJoinDate">—</span></div></div>
+                <div class="info-item"><div class="info-icon"><i class="fas fa-bullseye"></i></div><div><span class="info-label">Learning Goals</span><span class="info-value" id="infoLearningGoals">—</span></div></div>
+                <div class="info-item"><div class="info-icon"><i class="fas fa-clock"></i></div><div><span class="info-label">Availability</span><span class="info-value" id="infoAvailability">—</span></div></div>
+                <div class="info-item"><div class="info-icon"><i class="fas fa-star"></i></div><div><span class="info-label">Preferred Teacher</span><span class="info-value" id="infoPreferredTeacher">—</span></div></div>
+            </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="glass-card reveal" style="margin-bottom:1.5rem">
+            <div class="section-heading">
+                <h3><i class="fas fa-chart-bar"></i> Memorization Progress</h3>
+                <button class="edit-btn" data-section="progress"><i class="fas fa-sync-alt"></i> Update</button>
+            </div>
+            <div class="progress-item">
+                <div class="progress-top"><span class="progress-name">Juz' 1 — Al-Fatiha to Al-Baqarah</span><span class="progress-pct" id="pPct1">0%</span></div>
+                <div class="progress-track"><div class="progress-fill gold" id="pFill1" style="width:0%"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-top"><span class="progress-name">Juz' 2 — Al-Baqarah</span><span class="progress-pct" id="pPct2">0%</span></div>
+                <div class="progress-track"><div class="progress-fill green" id="pFill2" style="width:0%"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-top"><span class="progress-name">Juz' 3 — Al-Baqarah to Al-Imran</span><span class="progress-pct" id="pPct3">0%</span></div>
+                <div class="progress-track"><div class="progress-fill blue" id="pFill3" style="width:0%"></div></div>
+            </div>
+        </div>
+
+        <!-- Sessions -->
+        <div class="glass-card reveal" style="margin-bottom:1.5rem">
+            <div class="section-heading">
+                <h3><i class="fas fa-calendar-check"></i> Upcoming Sessions</h3>
+                <a href="index.html#schedule" class="btn btn-gold" style="padding:0.5rem 1rem;font-size:0.82rem"><i class="fas fa-plus"></i> Book New</a>
+            </div>
+            <div id="upcomingSessions"></div>
+        </div>
+
+        <!-- Activity -->
+        <div class="glass-card reveal">
+            <div class="section-heading">
+                <h3><i class="fas fa-clock-rotate-left"></i> Recent Activity</h3>
+            </div>
+            <div id="recentActivity"></div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Scroll Top -->
+<button class="scroll-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Toast -->
+<div class="toast" id="toast"><i></i><span id="toastMsg"></span></div>
+
+<!-- Edit Profile Modal -->
+<div class="modal-overlay" id="editProfileModal">
+    <div class="modal">
+        <div class="modal-header"><h3><i class="fas fa-pen"></i> Edit Profile</h3><button class="modal-close" data-close><i class="fas fa-times"></i></button></div>
+        <div class="modal-body">
+            <div class="m-form-row">
+                <div class="m-form-group"><label>First Name *</label><input type="text" id="editFirstName"></div>
+                <div class="m-form-group"><label>Last Name *</label><input type="text" id="editLastName"></div>
+            </div>
+            <div class="m-form-group"><label>Phone *</label><input type="tel" id="editPhone"></div>
+            <div class="m-form-row">
+                <div class="m-form-group"><label>Date of Birth</label><input type="date" id="editBirthDate"></div>
+                <div class="m-form-group"><label>Gender</label><select id="editGender"><option value="">Select</option><option value="male">Male</option><option value="female">Female</option></select></div>
+            </div>
+            <div class="m-form-row">
+                <div class="m-form-group"><label>Country</label><select id="editCountry"><option value="">Select</option><option value="Egypt">Egypt</option><option value="Saudi Arabia">Saudi Arabia</option><option value="UAE">UAE</option><option value="Kuwait">Kuwait</option><option value="Jordan">Jordan</option></select></div>
+                <div class="m-form-group"><label>City</label><input type="text" id="editCity"></div>
+            </div>
+        </div>
+        <div class="modal-footer"><button class="btn btn-ghost modal-close" data-close>Cancel</button><button class="btn btn-gold" id="saveProfileBtn">Save Changes</button></div>
+    </div>
+</div>
+
+<!-- Edit Learning Modal -->
+<div class="modal-overlay" id="editLearningModal">
+    <div class="modal">
+        <div class="modal-header"><h3><i class="fas fa-graduation-cap"></i> Edit Learning Info</h3><button class="modal-close" data-close><i class="fas fa-times"></i></button></div>
+        <div class="modal-body">
+            <div class="m-form-group"><label>Current Level *</label>
+                <div class="level-radio-group">
+                    <div class="level-radio"><input type="radio" name="editLevel" value="beginner" id="elBeginner"><label for="elBeginner"><i class="fas fa-seedling"></i>Beginner</label></div>
+                    <div class="level-radio"><input type="radio" name="editLevel" value="intermediate" id="elInter"><label for="elInter"><i class="fas fa-book-open"></i>Intermediate</label></div>
+                    <div class="level-radio"><input type="radio" name="editLevel" value="advanced" id="elAdv"><label for="elAdv"><i class="fas fa-graduation-cap"></i>Advanced</label></div>
+                    <div class="level-radio"><input type="radio" name="editLevel" value="hafiz" id="elHafiz"><label for="elHafiz"><i class="fas fa-star"></i>Hafiz</label></div>
+                </div>
+            </div>
+            <div class="m-form-group"><label>Learning Goals</label><select id="editLearningGoals" multiple><option value="memorization">Memorize the entire Quran</option><option value="review">Review memorized portions</option><option value="tajweed">Learn Tajweed rules</option><option value="qiraat">Learn the 10 Qira'at</option><option value="certification">Get Ijaza</option></select></div>
+            <div class="m-form-group"><label>Preferred Teacher</label><input type="text" id="editPreferredTeacher"></div>
+            <div class="m-form-group"><label>Availability</label><select id="editAvailability" multiple><option value="morning">Morning</option><option value="afternoon">Afternoon</option><option value="evening">Evening</option><option value="night">Night</option><option value="weekend">Weekends</option></select></div>
+            <div class="m-form-group"><label>Previous Experience</label><textarea id="editPreviousExperience" rows="3"></textarea></div>
+        </div>
+        <div class="modal-footer"><button class="btn btn-ghost modal-close" data-close>Cancel</button><button class="btn btn-gold" id="saveLearningBtn">Save Changes</button></div>
+    </div>
+</div>
+
+<!-- Change Password Modal -->
+<div class="modal-overlay" id="changePasswordModal">
+    <div class="modal">
+        <div class="modal-header"><h3><i class="fas fa-key"></i> Change Password</h3><button class="modal-close" data-close><i class="fas fa-times"></i></button></div>
+        <div class="modal-body">
+            <div class="m-form-group"><label>Current Password *</label><input type="password" id="currentPassword"></div>
+            <div class="m-form-group"><label>New Password *</label><input type="password" id="newPassword"></div>
+            <div class="m-form-group"><label>Confirm New Password *</label><input type="password" id="confirmNewPassword"></div>
+        </div>
+        <div class="modal-footer"><button class="btn btn-ghost modal-close" data-close>Cancel</button><button class="btn btn-gold" id="savePasswordBtn">Update Password</button></div>
+    </div>
+</div>
+
+<script>
+(function(){
+
+    /* ===== PARTICLES ===== */
+    const canvas=document.getElementById('particles');
+    const ctx=canvas.getContext('2d');
+    let pts=[];
+    function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+    resize();window.addEventListener('resize',resize);
+    class P{constructor(){this.r()}r(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.s=Math.random()*2+0.4;this.sy=-Math.random()*0.35-0.08;this.sx=(Math.random()-0.5)*0.2;this.o=Math.random()*0.3+0.06}u(){this.y+=this.sy;this.x+=this.sx;if(this.y<-10){this.r();this.y=canvas.height+10}}d(){ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,Math.PI*2);ctx.fillStyle=`rgba(231,180,44,${this.o})`;ctx.fill()}}
+    for(let i=0;i<60;i++)pts.push(new P);
+    (function a(){ctx.clearRect(0,0,canvas.width,canvas.height);pts.forEach(p=>{p.u();p.d()});requestAnimationFrame(a)})();
+
+    /* ===== TOAST ===== */
+    let tt;
+    function toast(m,t){clearTimeout(tt);const el=document.getElementById('toast');document.getElementById('toastMsg').textContent=m;el.className='toast '+t;el.querySelector('i').className=t==='success'?'fas fa-check-circle':'fas fa-exclamation-circle';requestAnimationFrame(()=>el.classList.add('show'));tt=setTimeout(()=>el.classList.remove('show'),4000)}
+
+    /* ===== SCROLL ===== */
+    const sb=document.getElementById('scrollTopBtn');
+    const nb=document.querySelector('.navbar');
+    window.addEventListener('scroll',()=>{sb.classList.toggle('visible',scrollY>300);nb.classList.toggle('scrolled',scrollY>50)});
+    sb.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+
+    /* ===== REVEAL ===== */
+    const ro=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*100);ro.unobserve(e.target)}}),{threshold:0.08});
+    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+    /* ===== DATA ===== */
+    const goalMap={memorization:'Memorize the entire Quran',review:'Review memorized portions',tajweed:'Learn Tajweed rules',qiraat:'Learn the 10 Qira\'at',tajweed_certification:'Get Tajweed Ijaza',hifz_certification:'Get Hifz Ijaza',improve_recitation:'Improve recitation',understand_meanings:'Understand meanings',certification:'Get Ijaza'};
+    const availMap={morning:'Morning',afternoon:'Afternoon',evening:'Evening',night:'Night',weekend:'Weekends',flexible:'Flexible'};
+    const levelMap={beginner:'Beginner',intermediate:'Intermediate',advanced:'Advanced',hafiz:'Hafiz'};
+    const levelIcon={beginner:'fa-seedling',intermediate:'fa-book-open',advanced:'fa-graduation-cap',hafiz:'fa-star'};
+
+    let D;
+    function load(){
+        const raw=localStorage.getItem('narqa-user-profile');
+        if(raw){D=JSON.parse(raw)}
+        else{D=defaultData()}
+        if(!localStorage.getItem('narqa-is-logged-in')){window.location.href='login.html';return}
+        render();
+    }
+    function defaultData(){
+        return{firstName:'Student',lastName:'User',email:'student@narqa.com',phone:'+20 100 000 0000',birthDate:'2000-01-01',gender:'male',country:'Egypt',city:'Alexandria',username:'student',level:'beginner',previousExperience:'',learningGoals:['memorization','tajweed'],preferredTeacher:'Sheikh Abdurrahman',availability:['evening','weekend'],joinDate:new Date().toLocaleDateString('en-US'),teacher:'Sheikh Abdurrahman',stats:{totalSessions:12,learningHours:12,memorizedParts:1.5,certificates:0,progress:43},upcomingSessions:[],recentActivity:[{date:new Date().toLocaleDateString('en-US'),activity:'Account created',icon:'fas fa-user-plus'}]}
+    }
+    function save(){localStorage.setItem('narqa-user-profile',JSON.stringify(D))}
+
+    function render(){
+        /* Avatar */
+        const av=localStorage.getItem('narqa-user-avatar');
+        document.getElementById('profileAvatar').src=av||'img/person.jpeg';
+
+        /* Name */
+        const name=D.firstName+' '+D.lastName;
+        document.getElementById('profileName').textContent=name;
+        document.getElementById('infoFullName').textContent=name;
+        document.title='Profile — '+name;
+
+        /* Title */
+        const p=D.stats?.progress||0;
+        let stage='Beginner';
+        if(p>=75)stage='Advanced';else if(p>=50)stage='Intermediate';else if(p>=25)stage='Progressing';
+        document.getElementById('profileTitle').textContent='Overall Progress: '+p+'% — '+stage;
+
+        /* Badge */
+        const lv=D.level||'beginner';
+        const badge=document.getElementById('profileLevel');
+        badge.innerHTML='<i class="fas '+levelIcon[lv]+'"></i> '+levelMap[lv];
+
+        /* Stats */
+        const s=D.stats||{};
+        document.getElementById('statSessions').textContent=s.totalSessions||0;
+        document.getElementById('statHours').textContent=s.learningHours||0;
+        document.getElementById('statParts').textContent=s.memorizedParts||0;
+        document.getElementById('statCertificates').textContent=s.certificates||0;
+
+        /* Personal */
+        document.getElementById('infoEmail').textContent=D.email||'—';
+        document.getElementById('infoPhone').textContent=D.phone||'—';
+        if(D.birthDate){try{document.getElementById('infoBirthDate').textContent=new Date(D.birthDate).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}catch(e){document.getElementById('infoBirthDate').textContent=D.birthDate}}
+        document.getElementById('infoGender').textContent=D.gender==='male'?'Male':D.gender==='female'?'Female':'—';
+        document.getElementById('infoAddress').textContent=D.city?(D.country+', '+D.city):(D.country||'—');
+
+        /* Learning */
+        document.getElementById('infoLearningLevel').textContent=levelMap[lv]||'Beginner';
+        document.getElementById('infoTeacher').textContent=D.teacher||'Sheikh Abdurrahman';
+        document.getElementById('infoJoinDate').textContent=D.joinDate||new Date().toLocaleDateString('en-US');
+        document.getElementById('infoLearningGoals').textContent=(D.learningGoals||[]).map(g=>goalMap[g]||g).join(', ')||'—';
+        document.getElementById('infoAvailability').textContent=(D.availability||[]).map(a=>availMap[a]||a).join(', ')||'—';
+        document.getElementById('infoPreferredTeacher').textContent=D.preferredTeacher||'—';
+
+        /* Progress */
+        const p1=Math.min(p,75),p2=Math.max(0,Math.min(p-50,50)),p3=Math.max(0,p-100);
+        setTimeout(()=>{setBar('pPct1','pFill1',p1);setBar('pPct2','pFill2',p2);setBar('pPct3','pFill3',p3)},300);
+
+        /* Sessions */
+        renderSessions();
+
+        /* Activity */
+        renderActivity();
+    }
+
+    function setBar(pctId,fillId,val){
+        document.getElementById(pctId).textContent=Math.round(val)+'%';
+        document.getElementById(fillId).style.width=val+'%';
+    }
+
+    function renderSessions(){
+        const c=document.getElementById('upcomingSessions');
+        const sessions=[
+            {title:'Memorization — Juz 1',teacher:'Sheikh Abdurrahman',date:'Saturday, Mar 15',time:'10:00 - 11:00',status:'upcoming'},
+            {title:'Revision — Juz 1',teacher:'Sheikh Abdurrahman',date:'Sunday, Mar 16',time:'14:00 - 15:00',status:'upcoming'},
+            {title:'Tajweed Session',teacher:'Sheikh Abdurrahman',date:'Monday, Mar 17',time:'18:00 - 19:00',status:'upcoming'}
+        ];
+        if(!sessions.length){c.innerHTML='<div class="empty-state"><i class="fas fa-calendar-xmark"></i><p>No upcoming sessions. <a href="index.html#schedule">Book one now</a></p></div>';return}
+        c.innerHTML=sessions.map(s=>`
+            <div class="session-card">
+                <div style="flex:1;min-width:220px">
+                    <div class="session-title">${s.title}</div>
+                    <div class="session-meta">
+                        <span><i class="fas fa-user"></i>${s.teacher}</span>
+                        <span><i class="fas fa-calendar"></i>${s.date}</span>
+                        <span><i class="fas fa-clock"></i>${s.time}</span>
+                    </div>
+                </div>
+                <div class="session-status status-${s.status}">${s.status==='upcoming'?'Upcoming':s.status==='completed'?'Completed':'Cancelled'}</div>
+            </div>`).join('');
+    }
+
+    function renderActivity(){
+        const c=document.getElementById('recentActivity');
+        const acts=D.recentActivity||[];
+        if(!acts.length){c.innerHTML='<div class="empty-state"><i class="fas fa-clock-rotate-left"></i><p>No recent activity</p></div>';return}
+        c.innerHTML=acts.map(a=>`
+            <div class="activity-item">
+                <div class="activity-dot"><i class="${a.icon||'fas fa-circle'}"></i></div>
+                <div><div class="activity-text">${a.activity}</div><div class="activity-time">${a.date}</div></div>
+            </div>`).join('');
+    }
+
+    /* ===== MODALS ===== */
+    function openModal(id){document.getElementById(id).classList.add('active');document.body.style.overflow='hidden'}
+    function closeModals(){document.querySelectorAll('.modal-overlay').forEach(m=>m.classList.remove('active'));document.body.style.overflow=''}
+    document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',closeModals));
+    document.querySelectorAll('.modal-overlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModals()}));
+
+    /* Edit Profile */
+    document.getElementById('editProfileBtn').addEventListener('click',()=>{
+        document.getElementById('editFirstName').value=D.firstName||'';
+        document.getElementById('editLastName').value=D.lastName||'';
+        document.getElementById('editPhone').value=D.phone||'';
+        document.getElementById('editBirthDate').value=D.birthDate||'';
+        document.getElementById('editGender').value=D.gender||'';
+        document.getElementById('editCountry').value=D.country||'';
+        document.getElementById('editCity').value=D.city||'';
+        openModal('editProfileModal');
+    });
+    document.querySelectorAll('.edit-btn[data-section]').forEach(b=>b.addEventListener('click',()=>{
+        const s=b.dataset.section;
+        if(s==='personal')document.getElementById('editProfileBtn').click();
+        if(s==='learning'){
+            const lv=D.level||'beginner';
+            const r=document.querySelector(`input[name="editLevel"][value="${lv}"]`);
+            if(r)r.checked=true;
+            const gs=document.getElementById('editLearningGoals');
+            Array.from(gs.options).forEach(o=>o.selected=(D.learningGoals||[]).includes(o.value));
+            document.getElementById('editPreferredTeacher').value=D.preferredTeacher||'';
+            const av=document.getElementById('editAvailability');
+            Array.from(av.options).forEach(o=>o.selected=(D.availability||[]).includes(o.value));
+            document.getElementById('editPreviousExperience').value=D.previousExperience||'';
+            openModal('editLearningModal');
+        }
+        if(s==='progress')updateProgress();
+    }));
+
+    document.getElementById('saveProfileBtn').addEventListener('click',()=>{
+        const fn=document.getElementById('editFirstName').value.trim();
+        const ln=document.getElementById('editLastName').value.trim();
+        const ph=document.getElementById('editPhone').value.trim();
+        if(!fn||!ln||!ph){toast('Please fill in all required fields','error');return}
+        D.firstName=fn;D.lastName=ln;D.phone=ph;
+        D.birthDate=document.getElementById('editBirthDate').value;
+        D.gender=document.getElementById('editGender').value;
+        D.country=document.getElementById('editCountry').value;
+        D.city=document.getElementById('editCity').value;
+        save();render();closeModals();toast('Profile updated successfully','success');
+    });
+
+    document.getElementById('saveLearningBtn').addEventListener('click',()=>{
+        const lv=document.querySelector('input[name="editLevel"]:checked');
+        if(!lv){toast('Please select your level','error');return}
+        D.level=lv.value;
+        D.learningGoals=Array.from(document.getElementById('editLearningGoals').selectedOptions).map(o=>o.value);
+        D.preferredTeacher=document.getElementById('editPreferredTeacher').value.trim();
+        D.availability=Array.from(document.getElementById('editAvailability').selectedOptions).map(o=>o.value);
+        D.previousExperience=document.getElementById('editPreviousExperience').value.trim();
+        save();render();closeModals();toast('Learning info updated successfully','success');
+    });
+
+    /* Password */
+    document.getElementById('changePasswordBtn').addEventListener('click',()=>openModal('changePasswordModal'));
+    document.getElementById('savePasswordBtn').addEventListener('click',()=>{
+        const c=document.getElementById('currentPassword').value;
+        const n=document.getElementById('newPassword').value;
+        const cn=document.getElementById('confirmNewPassword').value;
+        if(!c||!n||!cn){toast('Please fill in all fields','error');return}
+        if(n.length<8){toast('Password must be at least 8 characters','error');return}
+        if(n!==cn){toast('Passwords do not match','error');return}
+        document.getElementById('currentPassword').value='';
+        document.getElementById('newPassword').value='';
+        document.getElementById('confirmNewPassword').value='';
+        closeModals();toast('Password updated successfully','success');
+    });
+
+    /* Avatar */
+    document.getElementById('changeAvatarBtn').addEventListener('click',()=>{
+        const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
+        inp.onchange=e=>{const f=e.target.files[0];if(!f)return;
+            if(!f.type.startsWith('image/')){toast('Please select an image file','error');return}
+            if(f.size>5*1024*1024){toast('Image too large (max 5MB)','error');return}
+            const r=new FileReader();r.onload=ev=>{localStorage.setItem('narqa-user-avatar',ev.target.result);document.getElementById('profileAvatar').src=ev.target.result;toast('Photo updated successfully','success')};r.readAsDataURL(f)};
+        inp.click();
+    });
+
+    /* Progress update */
+    function updateProgress(){
+        const cur=D.stats.progress||0;
+        const nxt=Math.min(100,cur+Math.floor(Math.random()*8)+3);
+        D.stats.progress=nxt;D.stats.totalSessions=(D.stats.totalSessions||0)+1;
+        D.stats.learningHours=(D.stats.learningHours||0)+1;
+        D.stats.memorizedParts=((D.stats.memorizedParts||0)+0.15);
+        D.recentActivity.unshift({date:new Date().toLocaleDateString('en-US'),activity:'Completed a new session',icon:'fas fa-check-circle'});
+        save();render();toast('Progress updated! Keep going!','success');
+    }
+
+    /* Logout */
+    document.getElementById('logoutBtn').addEventListener('click',()=>{
+        localStorage.removeItem('narqa-is-logged-in');
+        window.location.href='login.html';
+    });
+
+    /* ===== INIT ===== */
+    load();
+})();
+</script>
+</body>
+</html>

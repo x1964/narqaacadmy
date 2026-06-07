@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://narqa-acadmy.lovestoblog.com/sitemap.xml

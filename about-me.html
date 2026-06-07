@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Narqa Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/logo2.jpeg" type="image/x-icon">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#0F2E2F;--primary-dark:#082122;--primary-light:#2A6B6D;
+            --accent:#E7B42C;--accent-dark:#C99E1E;--accent-glow:rgba(231,180,44,0.15);
+            --white:#FFFFFF;--gray-700:#374151;
+            --transition:all 0.3s ease-out;
+        }
+        body{font-family:'Inter',sans-serif;background:var(--primary-dark);color:#fff;overflow-x:hidden;min-height:100vh}
+        #particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+        /* ===== NAVBAR ===== */
+        .navbar{position:fixed;top:0;left:0;width:100%;background:rgba(8,33,34,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(231,180,44,0.06);z-index:1000;padding:0.9rem 0;transition:var(--transition)}
+        .navbar.scrolled{padding:0.5rem 0;background:rgba(8,33,34,0.97);box-shadow:0 4px 24px rgba(0,0,0,0.3)}
+        .navbar .container{display:flex;justify-content:space-between;align-items:center;max-width:1320px;margin:0 auto;padding:0 2rem}
+        .logo{display:flex;align-items:center;gap:0.7rem;text-decoration:none;font-weight:900;font-size:1.5rem;letter-spacing:0.04em;color:#fff}
+        .logo-img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2.5px solid var(--accent);box-shadow:0 0 18px rgba(231,180,44,0.2);transition:var(--transition)}
+        .logo:hover .logo-img{transform:rotate(8deg) scale(1.05)}
+        .back-home{text-decoration:none;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:0.5rem;font-weight:600;font-size:0.9rem;transition:var(--transition)}
+        .back-home:hover{color:var(--accent)}
+        .container{max-width:1320px;margin:0 auto;padding:0 2rem}
+
+        /* ===== HERO ===== */
+        .hero{padding:160px 0 100px;text-align:center;position:relative;z-index:1;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 50% 30%,rgba(231,180,44,0.06),transparent 70%);pointer-events:none}
+        .hero-dots{position:absolute;top:0;left:0;width:100%;height:100%;background-image:radial-gradient(rgba(231,180,44,0.03) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+        .hero-content{position:relative;z-index:1;max-width:850px;margin:0 auto}
+        .hero-badge{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(231,180,44,0.1);border:1px solid rgba(231,180,44,0.15);color:var(--accent);padding:0.4rem 1.2rem;border-radius:2rem;font-weight:700;font-size:0.82rem;letter-spacing:0.03em;margin-bottom:1.5rem}
+        .hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;line-height:1.1;margin-bottom:1.5rem}
+        .hero h1 .gold{background:linear-gradient(135deg,var(--accent),#f0d060);-webkit-background-clip:text;background-clip:text;color:transparent}
+        .hero>p{font-size:1.1rem;color:rgba(255,255,255,0.4);line-height:1.8;margin-bottom:3rem;max-width:650px;margin-left:auto;margin-right:auto}
+        .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1rem}
+        .stat-box{text-align:center;padding:1.5rem 1rem;border-radius:1.2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);transition:var(--transition)}
+        .stat-box:hover{border-color:rgba(231,180,44,0.15);transform:translateY(-4px)}
+        .stat-num{font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--accent),#f0d060);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+        .stat-lbl{font-size:0.78rem;color:rgba(255,255,255,0.35);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.06em;font-weight:600}
+
+        /* ===== SECTION HEADING ===== */
+        .section-header{text-align:center;margin-bottom:3.5rem}
+        .section-subtitle{display:inline-block;font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);margin-bottom:0.6rem}
+        .section-title{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;line-height:1.2}
+        .section-desc{margin-top:0.8rem;color:rgba(255,255,255,0.4);max-width:560px;margin-left:auto;margin-right:auto;font-size:1rem;line-height:1.6}
+
+        /* ===== GLASS CARD ===== */
+        .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.06);border-radius:1.5rem;transition:var(--transition);position:relative;overflow:hidden}
+        .glass::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,rgba(231,180,44,0.25),transparent)}
+
+        /* ===== VALUES ===== */
+        .values-section{padding:80px 0;position:relative;z-index:1}
+        .values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem}
+        .value-card{padding:2.5rem 2rem;text-align:center;transition:var(--transition)}
+        .value-card:hover{transform:translateY(-8px);border-color:rgba(231,180,44,0.12);box-shadow:0 20px 40px -12px rgba(0,0,0,0.3)}
+        .value-icon{width:72px;height:72px;margin:0 auto 1.2rem;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;transition:var(--transition);box-shadow:0 8px 24px rgba(15,46,47,0.3)}
+        .value-card:hover .value-icon{transform:scale(1.1) rotate(8deg)}
+        .value-card h3{font-size:1.15rem;font-weight:800;margin-bottom:0.6rem}
+        .value-card p{color:rgba(255,255,255,0.45);font-size:0.9rem;line-height:1.7}
+
+        /* ===== VISION / MISSION ===== */
+        .vm-section{padding:80px 0;position:relative;z-index:1}
+        .vm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.5rem;margin-top:2rem}
+        .vm-card{padding:2.5rem;border-left:3px solid transparent;transition:var(--transition)}
+        .vm-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px -12px rgba(0,0,0,0.3)}
+        .vm-card.vision{border-left-color:var(--primary-light)}
+        .vm-card.mission{border-left-color:var(--accent)}
+        .vm-card h2{font-size:1.4rem;font-weight:800;margin-bottom:1rem;display:flex;align-items:center;gap:0.7rem}
+        .vm-card h2 i{font-size:1.2rem}
+        .vm-card.vision h2 i{color:var(--primary-light)}
+        .vm-card.mission h2 i{color:var(--accent)}
+        .vm-card>p{color:rgba(255,255,255,0.5);font-size:0.95rem;line-height:1.7;margin-bottom:1.2rem}
+        .vm-card ul{list-style:none}
+        .vm-card li{display:flex;align-items:flex-start;gap:0.6rem;margin-bottom:0.6rem;font-size:0.9rem;color:rgba(255,255,255,0.5)}
+        .vm-card li i{color:var(--accent);font-size:0.7rem;margin-top:0.4rem;flex-shrink:0}
+
+        /* ===== TEAM ===== */
+        .team-section{padding:80px 0;position:relative;z-index:1}
+        .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+        .team-card{overflow:hidden;transition:var(--transition)}
+        .team-card:hover{transform:translateY(-8px);box-shadow:0 24px 48px -12px rgba(0,0,0,0.4)}
+        .team-img{height:280px;overflow:hidden;position:relative}
+        .team-img img{width:100%;height:100%;object-fit:cover;transition:0.6s;filter:grayscale(20%)}
+        .team-card:hover .team-img img{transform:scale(1.08);filter:grayscale(0%)}
+        .team-img::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:50%;background:linear-gradient(to top,rgba(8,33,34,0.6),transparent)}
+        .team-overlay{position:absolute;inset:0;background:rgba(15,46,47,0.85);display:flex;align-items:center;justify-content:center;gap:1rem;opacity:0;transition:var(--transition)}
+        .team-card:hover .team-overlay{opacity:1}
+        .team-overlay a{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;transition:var(--transition);font-size:0.95rem}
+        .team-overlay a:hover{background:var(--accent);color:var(--primary-dark);transform:scale(1.1)}
+        .team-body{padding:1.5rem}
+        .team-body h3{font-size:1.15rem;font-weight:800;margin-bottom:0.2rem}
+        .team-body .role{color:var(--accent);font-size:0.82rem;font-weight:700;margin-bottom:0.8rem}
+        .team-body p{color:rgba(255,255,255,0.45);font-size:0.88rem;line-height:1.6;margin-bottom:1rem}
+        .tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+        .tag{background:rgba(231,180,44,0.08);color:var(--accent);border:1px solid rgba(231,180,44,0.1);padding:0.25rem 0.7rem;border-radius:2rem;font-size:0.75rem;font-weight:600}
+
+        /* ===== CERTIFICATES ===== */
+        .cert-section{padding:80px 0;position:relative;z-index:1}
+        .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:2rem}
+        .cert-card{padding:2.5rem 2rem;text-align:center;transition:var(--transition)}
+        .cert-card:hover{transform:translateY(-8px) rotateY(5deg);box-shadow:0 20px 40px -12px rgba(0,0,0,0.35)}
+        .cert-card i{font-size:2.8rem;color:var(--accent);margin-bottom:1.2rem;display:block;transition:var(--transition)}
+        .cert-card:hover i{transform:scale(1.2) rotate(10deg)}
+        .cert-card h3{font-size:1.05rem;font-weight:800;margin-bottom:0.6rem}
+        .cert-card p{color:rgba(255,255,255,0.4);font-size:0.88rem;line-height:1.6}
+
+        /* ===== TESTIMONIALS ===== */
+        .test-section{padding:80px 0;position:relative;z-index:1}
+        .test-slider{max-width:700px;margin:2rem auto 0;position:relative}
+        .test-card{padding:2.5rem;position:relative}
+        .test-card::before{content:'\201C';position:absolute;top:0.5rem;left:1rem;font-size:5rem;color:rgba(231,180,44,0.08);font-family:serif;line-height:1;pointer-events:none}
+        .test-text{color:rgba(255,255,255,0.65);font-size:1rem;line-height:1.8;font-style:italic;margin-bottom:1.5rem;border-left:2px solid rgba(231,180,44,0.2);padding-left:1.2rem}
+        .test-author{display:flex;align-items:center;gap:1rem}
+        .test-avatar{width:56px;height:56px;border-radius:50%;border:2px solid rgba(231,180,44,0.3);overflow:hidden;flex-shrink:0}
+        .test-avatar img{width:100%;height:100%;object-fit:cover}
+        .test-author h4{font-size:0.95rem;font-weight:700}
+        .test-author span{font-size:0.82rem;color:rgba(255,255,255,0.35)}
+        .test-controls{display:flex;justify-content:center;gap:0.8rem;margin-top:2rem}
+        .test-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:0.85rem;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+        .test-btn:hover{background:rgba(231,180,44,0.12);color:var(--accent);border-color:rgba(231,180,44,0.2)}
+        .test-dots{display:flex;justify-content:center;gap:0.5rem;margin-top:1.5rem}
+        .test-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:var(--transition)}
+        .test-dot.active{background:var(--accent);transform:scale(1.3)}
+
+        /* ===== TIMELINE ===== */
+        .timeline-section{padding:80px 0;position:relative;z-index:1}
+        .timeline{max-width:700px;margin:2rem auto 0;position:relative}
+        .timeline::before{content:'';position:absolute;top:0;left:24px;width:2px;height:100%;background:linear-gradient(to bottom,var(--accent),rgba(231,180,44,0.1));border-radius:1px}
+        .tl-item{position:relative;padding-left:60px;margin-bottom:2.5rem}
+        .tl-item:last-child{margin-bottom:0}
+        .tl-dot{position:absolute;left:16px;top:0;width:18px;height:18px;border-radius:50%;background:var(--accent);border:3px solid var(--primary-dark);box-shadow:0 0 12px rgba(231,180,44,0.3)}
+        .tl-year{font-size:0.75rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem}
+        .tl-item h3{font-size:1.1rem;font-weight:800;margin-bottom:0.3rem}
+        .tl-item p{color:rgba(255,255,255,0.45);font-size:0.9rem;line-height:1.6}
+
+        /* ===== CTA ===== */
+        .cta-section{padding:80px 0;position:relative;z-index:1;text-align:center}
+        .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(231,180,44,0.04),transparent 70%);pointer-events:none}
+        .cta-section h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:1rem}
+        .cta-section h2 .gold{background:linear-gradient(135deg,var(--accent),#f0d060);-webkit-background-clip:text;background-clip:text;color:transparent}
+        .cta-section>p{color:rgba(255,255,255,0.4);font-size:1rem;margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto}
+        .cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.8rem 1.8rem;border-radius:2rem;font-weight:600;transition:var(--transition);border:none;cursor:pointer;font-family:inherit;font-size:0.92rem;text-decoration:none}
+        .btn-gold{background:linear-gradient(135deg,var(--accent),#f0c840);color:var(--primary-dark);box-shadow:0 4px 18px rgba(231,180,44,0.25)}
+        .btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(231,180,44,0.4)}
+        .btn-wa{background:#25D366;color:#fff;box-shadow:0 4px 18px rgba(37,211,102,0.25)}
+        .btn-wa:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,211,102,0.4)}
+        .btn-ghost{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.1)}
+        .btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff;transform:translateY(-2px)}
+
+        /* ===== FOOTER ===== */
+        .site-footer{background:var(--primary-dark);border-top:1px solid rgba(255,255,255,0.04);padding:60px 0 30px;position:relative;z-index:1}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:2.5rem;margin-bottom:3rem}
+        .footer-logo{display:flex;align-items:center;gap:0.7rem;margin-bottom:1rem;font-weight:900;font-size:1.4rem}
+        .footer-logo img{width:42px;height:42px;border-radius:50%;border:2px solid var(--accent)}
+        .footer-desc{color:rgba(255,255,255,0.35);font-size:0.88rem;line-height:1.7;margin-bottom:1.2rem}
+        .footer-socials{display:flex;gap:0.6rem}
+        .footer-socials a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);text-decoration:none;transition:var(--transition);font-size:0.85rem}
+        .footer-socials a:hover{background:rgba(231,180,44,0.12);color:var(--accent);border-color:rgba(231,180,44,0.2);transform:translateY(-2px)}
+        .footer-col h4{font-size:0.9rem;font-weight:800;margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.6)}
+        .footer-col ul{list-style:none}
+        .footer-col li{margin-bottom:0.5rem}
+        .footer-col a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:0.88rem;transition:var(--transition)}
+        .footer-col a:hover{color:var(--accent);padding-left:6px}
+        .nl-form{display:flex;gap:0.5rem;margin-top:0.8rem}
+        .nl-form input{flex:1;padding:0.6rem 1rem;border:1px solid rgba(255,255,255,0.08);border-radius:2rem;background:rgba(255,255,255,0.03);color:#fff;font-family:inherit;font-size:0.85rem;outline:none;transition:var(--transition)}
+        .nl-form input:focus{border-color:var(--accent)}
+        .nl-form input::placeholder{color:rgba(255,255,255,0.2)}
+        .nl-form button{padding:0.6rem 1.2rem;border-radius:2rem;background:var(--accent);color:var(--primary-dark);border:none;font-weight:700;font-size:0.85rem;cursor:pointer;transition:var(--transition)}
+        .nl-form button:hover{background:#f0c840}
+        .footer-copy{color:rgba(255,255,255,0.2);font-size:0.8rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.04);text-align:center}
+        .designer-card{background:rgba(255,255,255,0.04);border:1px solid rgba(231,180,44,0.1);border-radius:1.2rem;padding:1.2rem;text-align:center;margin:2rem 0 0}
+        .designer-card h4{font-size:0.8rem;color:rgba(255,255,255,0.5);font-weight:500;margin-bottom:0.3rem}
+        .designer-card .dev-name{font-weight:800;font-size:1rem;color:#fff;margin-bottom:0.5rem}
+        .designer-card .wa-link{display:inline-flex;align-items:center;gap:0.5rem;color:var(--accent);text-decoration:none;font-weight:600;font-size:0.9rem;transition:var(--transition)}
+        .designer-card .wa-link:hover{color:#25D366}
+        .designer-card small{color:rgba(255,255,255,0.25);font-size:0.78rem}
+
+        /* ===== SCROLL TOP ===== */
+        .scroll-top{position:fixed;bottom:2rem;right:2rem;width:46px;height:46px;background:var(--accent);color:var(--primary-dark);border:none;border-radius:50%;cursor:pointer;font-size:1rem;opacity:0;visibility:hidden;transition:var(--transition);z-index:99;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(231,180,44,0.3)}
+        .scroll-top.visible{opacity:1;visibility:visible}
+        .scroll-top:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(231,180,44,0.45)}
+
+        /* ===== REVEAL ===== */
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}}
+        @media(max-width:768px){
+            .container{padding:0 1.2rem}
+            .hero{padding:130px 0 60px}
+            .hero-stats{grid-template-columns:repeat(2,1fr)}
+            .vm-grid,.team-grid,.cert-grid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}
+            .footer-grid{grid-template-columns:1fr;text-align:center}
+            .nl-form{justify-content:center}
+        }
+        @media(max-width:480px){
+            .hero-stats{grid-template-columns:1fr 1fr;gap:0.8rem}
+            .cta-btns{flex-direction:column;align-items:center}
+            .cta-btns .btn{width:100%;max-width:300px}
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="container">
+        <a href="index.html" class="logo">
+            <img src="img/logo2.jpeg" alt="Narqa Academy" class="logo-img">
+            <span>NARQA</span>
+        </a>
+        <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-dots"></div>
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-mosque"></i> About Narqa Academy</div>
+            <h1>Your Journey Toward <span class="gold">Quran Mastery</span></h1>
+            <p>Since our founding in 2021, we have been steadily advancing toward our vision of teaching the Holy Quran online with the highest quality standards, empowering Muslims everywhere to connect with Allah's book.</p>
+            <div class="hero-stats">
+                <div class="stat-box"><div class="stat-num" data-count="5000">0</div><div class="stat-lbl">Students</div></div>
+                <div class="stat-box"><div class="stat-num" data-count="25">0</div><div class="stat-lbl">Instructors</div></div>
+                <div class="stat-box"><div class="stat-num" data-count="40">0</div><div class="stat-lbl">Countries</div></div>
+                <div class="stat-box"><div class="stat-num" data-count="50000">0</div><div class="stat-lbl">Hours Taught</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Values -->
+<section class="values-section">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Our Principles</span>
+            <h2 class="section-title">Values We Stand By</h2>
+            <p class="section-desc">We believe that teaching the Quran is not just about transferring knowledge — it's about building generations that carry Islam's message</p>
+        </div>
+        <div class="values-grid">
+            <div class="glass value-card reveal">
+                <div class="value-icon"><i class="fas fa-quran"></i></div>
+                <h3>Excellence & Quality</h3>
+                <p>We pursue the highest standards in Quranic education, focusing on perfecting recitation and memorization according to proper Tajweed rules.</p>
+            </div>
+            <div class="glass value-card reveal">
+                <div class="value-icon"><i class="fas fa-heart"></i></div>
+                <h3>Care & Attention</h3>
+                <p>We provide comprehensive student care with individual follow-up and personalized guidance for each student based on their level and needs.</p>
+            </div>
+            <div class="glass value-card reveal">
+                <div class="value-icon"><i class="fas fa-user-graduate"></i></div>
+                <h3>Continuous Growth</h3>
+                <p>We constantly develop our curricula and teaching methods to keep up with global best practices in online and Quranic education.</p>
+            </div>
+            <div class="glass value-card reveal">
+                <div class="value-icon"><i class="fas fa-hands-helping"></i></div>
+                <h3>Community Partnership</h3>
+                <p>We contribute to building a cohesive Quranic community by strengthening connections between students, teachers, and parents.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Vision & Mission -->
+<section class="vm-section">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Our Direction</span>
+            <h2 class="section-title">Vision & Mission</h2>
+            <p class="section-desc">Moving toward our grand goals with a clear vision and a noble mission rooted in our faith in the Quran's importance</p>
+        </div>
+        <div class="vm-grid">
+            <div class="glass vm-card vision reveal">
+                <h2><i class="fas fa-eye"></i> Our Vision</h2>
+                <p>To become the world's leading reference in online Quran education, and to contribute to graduating one million Hafiz and Hafiza by 2030.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Universal access to digital Quranic education</li>
+                    <li><i class="fas fa-check"></i> Interactive electronic curricula development</li>
+                    <li><i class="fas fa-check"></i> A globally connected Quranic community</li>
+                    <li><i class="fas fa-check"></i> Leadership in Quran education research</li>
+                </ul>
+            </div>
+            <div class="glass vm-card mission reveal">
+                <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
+                <p>To facilitate learning and teaching the Quran with high quality through advanced electronic platforms, focusing on building the spiritual bond between student and Allah's book.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Distinguished Quranic education with modern methods</li>
+                    <li><i class="fas fa-check"></i> Enabling Muslims to memorize and master Tajweed anywhere</li>
+                    <li><i class="fas fa-check"></i> Qualifying outstanding Quran teachers</li>
+                    <li><i class="fas fa-check"></i> Spreading knowledge linked to the Holy Quran</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team -->
+<section class="team-section">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Our People</span>
+            <h2 class="section-title">Founding Team</h2>
+            <p class="section-desc">Elite Hafiz and qualified teachers who combine scientific mastery, teaching experience, and moral excellence</p>
+        </div>
+        <div class="team-grid">
+            <div class="glass team-card reveal">
+                <div class="team-img">
+                    <img src="img/person.jpeg" alt="Sheikh Abdurrahman Rady">
+                    <div class="team-overlay">
+                        <a href="https://wa.me/01202988181"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-body">
+                    <h3>Sheikh Abdurrahman Rady</h3>
+                    <p class="role">Academic Director & Founder</p>
+                    <p>Hafiz of the Quran with connected Ijaza, graduate of the Islamic University's Quran College, 15+ years in teaching Quran and Tajweed.</p>
+                    <div class="tags"><span class="tag">Connected Ijaza</span><span class="tag">PhD in Qira'at</span><span class="tag">Certified Trainer</span></div>
+                </div>
+            </div>
+            <div class="glass team-card reveal">
+                <div class="team-img">
+                    <img src="img/logo2.jpeg" alt="More Instructors">
+                    <div class="team-overlay">
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="team-body">
+                    <h3>New Instructors Joining</h3>
+                    <p class="role">Teachers & Specialists</p>
+                    <p>We're continuously expanding our team with certified Al-Azhar graduates and experienced Quran teachers from around the world.</p>
+                    <div class="tags"><span class="tag">Al-Azhar Certified</span><span class="tag">Tajweed Experts</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certificates -->
+<section class="cert-section">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Trust & Quality</span>
+            <h2 class="section-title">Certifications & Accreditations</h2>
+            <p class="section-desc">We pursue the highest academic standards and accreditations to ensure the quality of education our students receive</p>
+        </div>
+        <div class="cert-grid">
+            <div class="glass cert-card reveal"><i class="fas fa-award"></i><h3>Al-Azhar Certified</h3><p>Academic accreditation from Al-Azhar's Islamic Research Academy for our educational programs.</p></div>
+            <div class="glass cert-card reveal"><i class="fas fa-shield-alt"></i><h3>International Standards</h3><p>Compliance with international quality standards in online and Quranic education.</p></div>
+            <div class="glass cert-card reveal"><i class="fas fa-certificate"></i><h3>Certified Diplomas</h3><p>Awarding certified diplomas to students upon completing each memorization phase.</p></div>
+            <div class="glass cert-card reveal"><i class="fas fa-star"></i><h3>5-Star Rating</h3><p>Excellent ratings from students and parents for our educational services and support.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="test-section">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Testimonials</span>
+            <h2 class="section-title">What Our Students Say</h2>
+            <p class="section-desc">The honor of Allah and the satisfaction of our students is the greatest certificate we earn</p>
+        </div>
+        <div class="test-slider reveal">
+            <div class="glass test-card" id="test0">
+                <p class="test-text">"By Allah's grace then through Narqa Academy, I was able to memorize the entire Quran in just two years. The outstanding curriculum and precise follow-up from the sheikh contributed greatly to achieving this dream."</p>
+                <div class="test-author"><div class="test-avatar"><img src="img/person.jpeg" alt="Student"></div><div><h4>Mohamed Ali</h4><span>Student — Completed Full Hifz</span></div></div>
+            </div>
+            <div class="glass test-card" id="test1" style="display:none">
+                <p class="test-text">"I was looking for a place to teach my daughters Quran with proper Tajweed. After trying several centers, I found in Narqa exactly what I was looking for. The teachers are specialized, patient, and my girls look forward to every lesson."</p>
+                <div class="test-author"><div class="test-avatar"><img src="img/logo2.jpeg" alt="Parent"></div><div><h4>Um Yusuf</h4><span>Mother of two students</span></div></div>
+            </div>
+            <div class="glass test-card" id="test2" style="display:none">
+                <p class="test-text">"As a beginner in proper recitation, I felt a significant improvement after only 3 months. The gradual curriculum and modern techniques made learning easy despite my busy work schedule."</p>
+                <div class="test-author"><div class="test-avatar"><img src="img/person.jpeg" alt="Student"></div><div><h4>Khaled Al-Saad</h4><span>Professional — Improved Recitation</span></div></div>
+            </div>
+        </div>
+        <div class="test-controls"><button class="test-btn" id="testPrev"><i class="fas fa-chevron-left"></i></button><button class="test-btn" id="testNext"><i class="fas fa-chevron-right"></i></button></div>
+        <div class="test-dots"><span class="test-dot active" data-i="0"></span><span class="test-dot" data-i="1"></span><span class="test-dot" data-i="2"></span></div>
+    </div>
+</section>
+
+<!-- Timeline -->
+<section class="timeline-section">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Our Journey</span>
+            <h2 class="section-title">Narqa Academy Timeline</h2>
+            <p class="section-desc">A story of giving and growth since our launch, steadily marching toward our grand goals</p>
+        </div>
+        <div class="timeline">
+            <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">2021</div><h3>The First Launch</h3><p>Founded Narqa Academy with 5 teachers and 50 students, starting lessons via Zoom.</p></div>
+            <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">2022</div><h3>Expansion & Development</h3><p>Developed our proprietary learning platform, expanded the team to 15 instructors, and grew to 500 students.</p></div>
+            <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">2023</div><h3>Academic Accreditation</h3><p>Earned Al-Azhar accreditation, launched specialized Tajweed and Qira'at programs, reached 2,000 students from 30 countries.</p></div>
+            <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">2024</div><h3>Excellence & Leadership</h3><p>Graduated our first class of complete Quran Hafiz, launched the mobile app, and surpassed 5,000 students worldwide.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section reveal">
+    <div class="container">
+        <h2>Start Your <span class="gold">Quran Journey</span> With Us Today</h2>
+        <p>Begin your journey with the Holy Quran now, and we'll be with you step by step until you achieve your goal</p>
+        <div class="cta-btns">
+            <a href="https://wa.me/01202988181" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Contact via WhatsApp</a>
+            <a href="tel:+201060785754" class="btn btn-gold"><i class="fas fa-phone-alt"></i> Call Us Now</a>
+            <a href="mailto:Narqaacademy@gmail.com" class="btn btn-ghost"><i class="fas fa-envelope"></i> Send Email</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo"><img src="img/logo2.jpeg" alt="Narqa"><span>NARQA</span></div>
+                <p class="footer-desc">An integrated platform for Quran memorization online with the best certified instructors and teachers.</p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/share/16egxWPfUa/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/01202988181"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/narqaacademy"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#teachers">Teachers</a></li>
+                    <li><a href="index.html#schedule">Schedule</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="learning-path.html">Quran Memorization</a></li>
+                    <li><a href="learning-path.html">Review Sessions</a></li>
+                    <li><a href="learning-path.html">Tajweed Mastery</a></li>
+                    <li><a href="learning-path.html">10 Qira'at</a></li>
+                    <li><a href="learning-path.html">Tafseer Courses</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p style="color:rgba(255,255,255,0.35);font-size:0.85rem;margin-bottom:0.6rem">Subscribe for updates and special offers.</p>
+                <div class="nl-form"><input type="email" placeholder="Your email"><button><i class="fas fa-paper-plane"></i></button></div>
+            </div>
+        </div>
+        <div class="designer-card">
+            <h4>Designed & Developed by</h4>
+            <p class="dev-name">Eng. Kareem Ibrahem</p>
+            <a href="https://wa.me/+201207771639" target="_blank" class="wa-link"><i class="fab fa-whatsapp"></i> +20 120 777 1639</a>
+            <small>Premium web & app solutions</small>
+        </div>
+        <div class="footer-copy">&copy; 2026 Narqa Academy. All rights reserved.</div>
+    </div>
+</footer>
+
+<!-- Scroll Top -->
+<button class="scroll-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+(function(){
+
+    /* ===== PARTICLES ===== */
+    const canvas=document.getElementById('particles');
+    const ctx=canvas.getContext('2d');
+    let pts=[];
+    function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+    resize();window.addEventListener('resize',resize);
+    class P{constructor(){this.r()}r(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.s=Math.random()*2+0.4;this.sy=-Math.random()*0.35-0.08;this.sx=(Math.random()-0.5)*0.2;this.o=Math.random()*0.3+0.06}u(){this.y+=this.sy;this.x+=this.sx;if(this.y<-10){this.r();this.y=canvas.height+10}}d(){ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,Math.PI*2);ctx.fillStyle=`rgba(231,180,44,${this.o})`;ctx.fill()}}
+    for(let i=0;i<60;i++)pts.push(new P);
+    (function a(){ctx.clearRect(0,0,canvas.width,canvas.height);pts.forEach(p=>{p.u();p.d()});requestAnimationFrame(a)})();
+
+    /* ===== SCROLL ===== */
+    const sb=document.getElementById('scrollTopBtn');
+    const nb=document.querySelector('.navbar');
+    window.addEventListener('scroll',()=>{sb.classList.toggle('visible',scrollY>300);nb.classList.toggle('scrolled',scrollY>50)});
+    sb.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+
+    /* ===== REVEAL ===== */
+    const ro=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);ro.unobserve(e.target)}}),{threshold:0.06});
+    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+    /* ===== COUNTERS ===== */
+    let counted=false;
+    const counterObs=new IntersectionObserver(es=>{if(es[0].isIntersecting&&!counted){counted=true;document.querySelectorAll('.stat-num').forEach(el=>{const target=parseInt(el.dataset.count);let cur=0;const step=Math.ceil(target/60);const iv=setInterval(()=>{cur+=step;if(cur>=target){el.innerText=target.toLocaleString()+'+';clearInterval(iv)}else{el.innerText=Math.floor(cur).toLocaleString()}},25)});counterObs.disconnect()}},{threshold:0.3});
+    counterObs.observe(document.querySelector('.hero-stats'));
+
+    /* ===== TESTIMONIALS ===== */
+    const tests=[document.getElementById('test0'),document.getElementById('test1'),document.getElementById('test2')];
+    const dots=document.querySelectorAll('.test-dot');
+    let curTest=0;
+    let autoTest;
+    function showTest(i){
+        tests.forEach((t,idx)=>{t.style.display=idx===i?'block':'none';if(idx===i){t.style.animation='fadeIn 0.5s ease'}});
+        dots.forEach((d,idx)=>d.classList.toggle('active',idx===i));
+        curTest=i;
+    }
+    document.getElementById('testPrev').addEventListener('click',()=>{showTest(curTest<=0?tests.length-1:curTest-1);resetAuto()});
+    document.getElementById('testNext').addEventListener('click',()=>{showTest(curTest>=tests.length-1?0:curTest+1);resetAuto()});
+    dots.forEach(d=>d.addEventListener('click',()=>{showTest(parseInt(d.dataset.i));resetAuto()}));
+    function resetAuto(){clearInterval(autoTest);autoTest=setInterval(()=>showTest(curTest>=tests.length-1?0:curTest+1),5000)}
+    autoTest=setInterval(()=>showTest(curTest>=tests.length-1?0:curTest+1),5000);
+    const st=document.createElement('style');st.textContent='@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}';document.head.appendChild(st);
+
+})();
+</script>
+</body>
+</html>

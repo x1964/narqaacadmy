@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Create Account - Narqa Academy</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/logo2.jpeg" type="image/x-icon">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#0F2E2F;--primary-dark:#082122;--primary-light:#2A6B6D;
+            --accent:#E7B42C;--accent-dark:#C99E1E;--accent-glow:rgba(231,180,44,0.15);
+            --white:#FFFFFF;--gray-700:#374151;
+            --transition:all 0.3s ease-out;
+        }
+        body{font-family:'Inter',sans-serif;background:var(--primary-dark);color:#fff;overflow-x:hidden;min-height:100vh}
+        #particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+        .navbar{position:fixed;top:0;left:0;width:100%;background:rgba(8,33,34,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(231,180,44,0.06);z-index:1000;padding:0.9rem 0;transition:var(--transition)}
+        .navbar.scrolled{padding:0.5rem 0;background:rgba(8,33,34,0.97);box-shadow:0 4px 24px rgba(0,0,0,0.3)}
+        .navbar .container{display:flex;justify-content:space-between;align-items:center;max-width:960px;margin:0 auto;padding:0 2rem}
+        .logo{display:flex;align-items:center;gap:0.7rem;text-decoration:none;font-weight:900;font-size:1.5rem;letter-spacing:0.04em;color:#fff}
+        .logo-img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2.5px solid var(--accent);box-shadow:0 0 18px rgba(231,180,44,0.2);transition:var(--transition)}
+        .logo:hover .logo-img{transform:rotate(8deg) scale(1.05)}
+        .back-home{text-decoration:none;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:0.5rem;font-weight:600;font-size:0.9rem;transition:var(--transition)}
+        .back-home:hover{color:var(--accent)}
+        .container{max-width:960px;margin:0 auto;padding:0 2rem}
+
+        .register-container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 20px 50px;position:relative;z-index:1}
+        .register-card{background:rgba(255,255,255,0.03);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.06);border-radius:2rem;width:100%;max-width:920px;position:relative;z-index:2;animation:cardIn 0.7s ease;overflow:hidden;display:flex;min-height:640px}
+        .register-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--accent),transparent);border-radius:2rem 2rem 0 0;z-index:3}
+        @keyframes cardIn{from{opacity:0;transform:translateY(40px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+        .register-image{flex:0 0 340px;background:linear-gradient(160deg,var(--primary),var(--primary-dark) 60%,#0a2425 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:3rem 2rem;color:#fff;position:relative;overflow:hidden}
+        .register-image::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZTdiNDJjIiBzdHJva2Utd2lkdGg9IjEuNSIgLz48cGF0aCBkPSJNMTAgMjAgbDYgNiAxNC0xNCIgc3Ryb2tlPSIjZTdiNDJjIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGU9IjIiLz48L3N2Zz4=') repeat;background-size:28px;opacity:0.08}
+        .register-image-content{position:relative;z-index:1;text-align:center;max-width:300px}
+        .register-image h2{font-size:1.8rem;font-weight:900;line-height:1.3;margin-bottom:1rem;background:linear-gradient(135deg,#fff,rgba(255,255,255,0.7));-webkit-background-clip:text;background-clip:text;color:transparent}
+        .register-image>p{font-size:0.95rem;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:2rem}
+        .register-features{list-style:none;text-align:left}
+        .register-features li{display:flex;align-items:center;gap:0.8rem;margin-bottom:0.9rem;color:rgba(255,255,255,0.6);font-size:0.88rem}
+        .register-features i{color:var(--accent);font-size:0.75rem;width:30px;height:30px;background:rgba(231,180,44,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+        .register-form-container{flex:1;padding:2.5rem;overflow-y:auto;max-height:85vh;position:relative}
+        .register-form-container::-webkit-scrollbar{width:4px}
+        .register-form-container::-webkit-scrollbar-track{background:transparent}
+        .register-form-container::-webkit-scrollbar-thumb{background:rgba(231,180,44,0.15);border-radius:4px}
+
+        .register-header{text-align:center;margin-bottom:2rem}
+        .register-header h1{color:#fff;font-size:1.6rem;font-weight:900;margin-bottom:0.3rem}
+        .register-header p{color:rgba(255,255,255,0.4);font-size:0.9rem}
+
+        .register-progress{display:flex;justify-content:space-between;margin-bottom:2.5rem;position:relative}
+        .register-progress::before{content:'';position:absolute;top:15px;left:40px;right:40px;height:2px;background:rgba(255,255,255,0.06);z-index:0}
+        .progress-bar-fill{position:absolute;top:15px;left:40px;height:2px;background:var(--accent);z-index:0;transition:width 0.5s ease;border-radius:2px;width:0}
+        .progress-step{display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
+        .step-number{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;margin-bottom:0.4rem;transition:var(--transition);border:2px solid transparent}
+        .progress-step.active .step-number{background:var(--accent);color:var(--primary-dark);transform:scale(1.15);border-color:rgba(231,180,44,0.3);box-shadow:0 0 16px rgba(231,180,44,0.25)}
+        .progress-step.completed .step-number{background:var(--primary-light);color:#fff}
+        .step-label{font-size:0.72rem;color:rgba(255,255,255,0.3);text-align:center;font-weight:500}
+        .progress-step.active .step-label{color:var(--accent);font-weight:600}
+
+        .step-content{display:none;animation:fadeIn 0.4s ease}
+        .step-content.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+        .avatar-upload{text-align:center;margin-bottom:2rem}
+        .avatar-preview{width:120px;height:120px;border-radius:50%;margin:0 auto 0.8rem;border:2.5px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;cursor:pointer;transition:var(--transition)}
+        .avatar-preview:hover{border-color:var(--accent);transform:scale(1.05)}
+        .avatar-preview img{width:100%;height:100%;object-fit:cover}
+        .avatar-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:2.5rem}
+        .avatar-upload input[type="file"]{display:none}
+        .avatar-label{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6);padding:0.45rem 1.1rem;border-radius:2rem;cursor:pointer;transition:var(--transition);font-weight:600;font-size:0.82rem;border:1px solid rgba(255,255,255,0.06)}
+        .avatar-label:hover{background:rgba(231,180,44,0.12);color:var(--accent);border-color:rgba(231,180,44,0.2)}
+
+        .form-group{margin-bottom:1.1rem;transition:transform 0.2s ease}
+        .form-group:focus-within{transform:scale(1.01)}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .form-group label{display:block;margin-bottom:0.3rem;color:rgba(255,255,255,0.5);font-weight:600;font-size:0.82rem}
+        .form-group input,.form-group select,.form-group textarea{width:100%;padding:0.8rem 1rem;border:1.5px solid rgba(255,255,255,0.07);border-radius:0.9rem;font-family:inherit;font-size:0.9rem;transition:var(--transition);background:rgba(255,255,255,0.04);color:#fff}
+        .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.2)}
+        .form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='rgba(255,255,255,0.4)' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
+        .form-group select option{background:var(--primary-dark);color:#fff}
+        .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);background:rgba(255,255,255,0.06);box-shadow:0 0 0 3px var(--accent-glow)}
+        .form-group input.field-error{border-color:rgba(239,68,68,0.5)!important}
+        .form-group input.field-ok{border-color:rgba(16,185,129,0.4)!important}
+        .form-group textarea{resize:vertical;min-height:80px}
+        .form-check{display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem;cursor:pointer}
+        .form-check input[type="checkbox"]{width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
+        .form-check label{margin:0;cursor:pointer;font-size:0.88rem;color:rgba(255,255,255,0.55)}
+        .form-check a{color:var(--accent);text-decoration:none;font-weight:600}
+        .form-check a:hover{text-decoration:underline}
+
+        .pw-strength{margin-top:0.4rem;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
+        .pw-meter{height:100%;width:0;transition:var(--transition);border-radius:2px}
+        .pw-meter.weak{width:33%;background:#ef4444}
+        .pw-meter.medium{width:66%;background:#f59e0b}
+        .pw-meter.strong{width:100%;background:#10b981}
+        .pw-hints{margin-top:0.5rem}
+        .pw-hints ul{list-style:none;padding:0}
+        .pw-hints li{margin-bottom:0.25rem;display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:rgba(255,255,255,0.3);transition:var(--transition)}
+        .pw-hints li.valid{color:#10b981}
+        .pw-hints li i{font-size:0.7rem;width:14px;text-align:center;flex-shrink:0}
+
+        .level-options{display:grid;grid-template-columns:repeat(2,1fr);gap:0.7rem;margin-top:0.8rem}
+        .level-option input[type="radio"]{display:none}
+        .level-option label{display:flex;flex-direction:column;align-items:center;gap:0.3rem;padding:1.1rem 0.7rem;background:rgba(255,255,255,0.02);border:1.5px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);font-size:0.85rem;font-weight:600;transition:var(--transition);border-radius:0.9rem;cursor:pointer}
+        .level-option input:checked+label{background:rgba(231,180,44,0.08);border-color:var(--accent);color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 20px rgba(231,180,44,0.1)}
+        .level-option label:hover{border-color:rgba(255,255,255,0.12)}
+        .level-icon{font-size:1.5rem}
+
+        .form-group select[multiple]{height:105px;padding:0.4rem}
+        .form-group select[multiple] option{padding:0.4rem 0.6rem;margin:0.12rem 0;border-radius:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.5)}
+        .form-group select[multiple] option:checked{background:var(--accent);color:var(--primary-dark);font-weight:600}
+
+        .form-navigation{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.05)}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.7rem 1.5rem;border-radius:2rem;font-weight:600;transition:var(--transition);border:none;cursor:pointer;font-family:inherit;font-size:0.92rem;text-decoration:none}
+        .btn-gold{background:linear-gradient(135deg,var(--accent),#f0c840);color:var(--primary-dark);box-shadow:0 4px 18px rgba(231,180,44,0.25)}
+        .btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(231,180,44,0.4)}
+        .btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)}
+        .btn-ghost:hover{background:rgba(255,255,255,0.06);color:#fff;border-color:rgba(255,255,255,0.2);transform:translateY(-2px)}
+        .btn:disabled{opacity:0.5;cursor:not-allowed;transform:none!important}
+        .btn-lg{padding:0.9rem 2rem;font-size:1rem}
+
+        .register-success{text-align:center;padding:2.5rem 1.5rem}
+        .success-icon{width:90px;height:90px;background:linear-gradient(135deg,var(--accent),#f0c840);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2.5rem;color:var(--primary-dark);animation:bounce 0.8s ease;box-shadow:0 8px 30px rgba(231,180,44,0.3)}
+        @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-16px)}60%{transform:translateY(-8px)}}
+        .register-success h2{color:#fff;font-size:1.8rem;font-weight:900;margin-bottom:0.8rem}
+        .register-success p{color:rgba(255,255,255,0.45);margin-bottom:2rem;line-height:1.7;max-width:420px;margin:0 auto}
+        .success-actions{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap}
+
+        .toast{position:fixed;top:5rem;left:50%;transform:translateX(-50%) translateY(-30px);padding:0.85rem 1.8rem;border-radius:1rem;font-weight:600;font-size:0.9rem;z-index:9999;opacity:0;transition:all 0.4s ease;box-shadow:0 10px 30px rgba(0,0,0,0.3);display:flex;align-items:center;gap:0.6rem;backdrop-filter:blur(12px);white-space:nowrap}
+        .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+        .toast.error{background:rgba(239,68,68,0.92);color:#fff;border:1px solid rgba(239,68,68,0.4)}
+        .toast.error i{color:#fecaca}
+        .toast.success{background:rgba(16,185,129,0.92);color:#fff;border:1px solid rgba(16,185,129,0.4)}
+        .toast.success i{color:#a7f3d0}
+
+        .scroll-top{position:fixed;bottom:2rem;right:2rem;width:46px;height:46px;background:var(--accent);color:var(--primary-dark);border:none;border-radius:50%;cursor:pointer;font-size:1rem;opacity:0;visibility:hidden;transition:var(--transition);z-index:99;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(231,180,44,0.3)}
+        .scroll-top.visible{opacity:1;visibility:visible}
+        .scroll-top:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(231,180,44,0.45)}
+
+        @media(max-width:992px){.register-card{flex-direction:column;max-width:560px}.register-image{flex:none;padding:2rem 1.5rem}.register-image h2{font-size:1.5rem}.register-form-container{max-height:none;overflow-y:visible}.form-row{grid-template-columns:1fr}.level-options{grid-template-columns:1fr 1fr}}
+        @media(max-width:480px){.register-form-container{padding:2rem 1.5rem}.register-header h1{font-size:1.4rem}.form-navigation{flex-direction:column;gap:0.8rem}.form-navigation .btn{width:100%}.success-actions{flex-direction:column}.success-actions .btn{width:100%}.register-image{padding:1.5rem}.avatar-preview{width:100px;height:100px}}
+    </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="img/logo2.jpeg" alt="Narqa Academy" class="logo-img"
+        onerror="this.style.display='none'; this.parentElement.querySelector('.logo-fallback').style.display='flex';">
+      <div class="logo-fallback"
+        style="display:none; width:42px; height:42px; background:var(--accent); border-radius:50%; align-items:center; justify-content:center; font-weight:900; font-size:1.5rem; color:var(--primary-dark);">
+        N</div>
+      <span>NARQA</span>
+    </a>
+    <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  </div>
+</nav>
+
+<section class="register-container">
+    <div class="register-card">
+        <div class="register-image">
+            <div class="register-image-content">
+                <h2>Join Our Quran Journey</h2>
+                <p>Register now and begin memorizing the Holy Quran with certified elite instructors</p>
+                <ul class="register-features">
+                    <li><i class="fas fa-check"></i> Al-Azhar certified instructors</li>
+                    <li><i class="fas fa-check"></i> Live 1-on-1 online sessions</li>
+                    <li><i class="fas fa-check"></i> Personal progress tracking</li>
+                    <li><i class="fas fa-check"></i> Official Ijaza certificates</li>
+                    <li><i class="fas fa-check"></i> Flexible scheduling</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="register-form-container">
+            <div class="register-progress">
+                <div class="progress-bar-fill" id="progressFill"></div>
+                <div class="progress-step active" data-step="1"><div class="step-number">1</div><span class="step-label">Personal Info</span></div>
+                <div class="progress-step" data-step="2"><div class="step-number">2</div><span class="step-label">Account</span></div>
+                <div class="progress-step" data-step="3"><div class="step-number">3</div><span class="step-label">Learning</span></div>
+                <div class="progress-step" data-step="4"><div class="step-number">4</div><span class="step-label">Done</span></div>
+            </div>
+
+            <div class="register-header">
+                <h1>Create New Account</h1>
+                <p>Fill in the details below to get started</p>
+            </div>
+
+            <!-- Step 1 -->
+            <div id="step1" class="step-content active">
+                <div class="avatar-upload">
+                    <div class="avatar-preview" id="avatarPreview">
+                        <div class="avatar-placeholder"><i class="fas fa-user"></i></div>
+                        <img id="avatarImage" style="display:none" alt="Avatar">
+                    </div>
+                    <input type="file" id="avatarInput" accept="image/*">
+                    <label for="avatarInput" class="avatar-label"><i class="fas fa-camera"></i> Choose Photo</label>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="firstName">First Name *</label><input type="text" id="firstName" placeholder="First name" autocomplete="given-name"></div>
+                    <div class="form-group"><label for="lastName">Last Name *</label><input type="text" id="lastName" placeholder="Last name" autocomplete="family-name"></div>
+                </div>
+                <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" placeholder="you@example.com" autocomplete="email"></div>
+                <div class="form-group"><label for="phone">Phone Number *</label><input type="tel" id="phone" placeholder="+20 xxx xxx xxxx" autocomplete="tel"></div>
+                <div class="form-row">
+                    <div class="form-group"><label for="birthDate">Date of Birth *</label><input type="date" id="birthDate"></div>
+                    <div class="form-group"><label for="gender">Gender</label><select id="gender"><option value="">Select</option><option value="male">Male</option><option value="female">Female</option></select></div>
+                </div>
+                <div class="form-group"><label for="country">Country *</label><select id="country"><option value="">Select country</option><option value="Egypt">Egypt</option><option value="Saudi Arabia">Saudi Arabia</option><option value="UAE">UAE</option><option value="Kuwait">Kuwait</option><option value="Jordan">Jordan</option><option value="Oman">Oman</option><option value="Qatar">Qatar</option><option value="Lebanon">Lebanon</option><option value="Syria">Syria</option><option value="Iraq">Iraq</option><option value="Yemen">Yemen</option><option value="Sudan">Sudan</option><option value="Morocco">Morocco</option><option value="Algeria">Algeria</option><option value="Tunisia">Tunisia</option><option value="Libya">Libya</option></select></div>
+                <div class="form-group"><label for="city">City</label><input type="text" id="city" placeholder="City name"></div>
+                <div class="form-navigation"><div></div><button type="button" class="btn btn-gold" id="nextToStep2">Next <i class="fas fa-arrow-right"></i></button></div>
+            </div>
+
+            <!-- Step 2 -->
+            <div id="step2" class="step-content">
+                <div class="form-group"><label for="username">Username *</label><input type="text" id="username" placeholder="Choose a username" autocomplete="username"></div>
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" placeholder="Create a strong password" autocomplete="new-password">
+                    <div class="pw-strength"><div class="pw-meter" id="strengthMeter"></div></div>
+                    <div class="pw-hints">
+                        <ul>
+                            <li id="lengthHint"><i class="far fa-circle"></i> At least 8 characters</li>
+                            <li id="uppercaseHint"><i class="far fa-circle"></i> One uppercase letter</li>
+                            <li id="lowercaseHint"><i class="far fa-circle"></i> One lowercase letter</li>
+                            <li id="numberHint"><i class="far fa-circle"></i> One number</li>
+                            <li id="specialHint"><i class="far fa-circle"></i> One special character</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group"><label for="confirmPassword">Confirm Password *</label><input type="password" id="confirmPassword" placeholder="Re-enter password" autocomplete="off"></div>
+                <div class="form-check"><input type="checkbox" id="showPassword"><label for="showPassword">Show password</label></div>
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-ghost" id="backToStep1"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-gold" id="nextToStep3">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div id="step3" class="step-content">
+                <div class="form-group">
+                    <label>Current Quran Level *</label>
+                    <div class="level-options">
+                        <div class="level-option"><input type="radio" id="lvBeginner" name="level" value="beginner"><label for="lvBeginner"><span class="level-icon"><i class="fas fa-seedling"></i></span>Beginner</label></div>
+                        <div class="level-option"><input type="radio" id="lvInter" name="level" value="intermediate"><label for="lvInter"><span class="level-icon"><i class="fas fa-book-open"></i></span>Intermediate</label></div>
+                        <div class="level-option"><input type="radio" id="lvAdv" name="level" value="advanced"><label for="lvAdv"><span class="level-icon"><i class="fas fa-graduation-cap"></i></span>Advanced</label></div>
+                        <div class="level-option"><input type="radio" id="lvHafiz" name="level" value="hafiz"><label for="lvHafiz"><span class="level-icon"><i class="fas fa-star"></i></span>Hafiz</label></div>
+                    </div>
+                </div>
+                <div class="form-group"><label for="previousExperience">Previous memorization experience</label><textarea id="previousExperience" rows="3" placeholder="Describe any previous Quran memorization experience..."></textarea></div>
+                <div class="form-group">
+                    <label for="learningGoals">Learning Goals * (hold Ctrl/Cmd)</label>
+                    <select id="learningGoals" multiple><option value="memorization">Memorize the entire Quran</option><option value="review">Review memorized portions</option><option value="tajweed">Learn Tajweed rules</option><option value="qiraat">Learn the 10 Qira'at</option><option value="tajweed_certification">Get Tajweed Ijaza</option><option value="hifz_certification">Get Hifz Ijaza</option><option value="improve_recitation">Improve recitation</option><option value="understand_meanings">Understand meanings</option></select>
+                </div>
+                <div class="form-group"><label for="preferredTeacher">Preferred teacher</label><input type="text" id="preferredTeacher" placeholder="Teacher name if you have a preference"></div>
+                <div class="form-group">
+                    <label for="availability">Available Time Slots * (hold Ctrl/Cmd)</label>
+                    <select id="availability" multiple><option value="morning">Morning (8 AM - 12 PM)</option><option value="afternoon">Afternoon (12 - 4 PM)</option><option value="evening">Evening (4 - 8 PM)</option><option value="night">Night (8 - 12 AM)</option><option value="weekend">Weekends</option><option value="flexible">Flexible</option></select>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">I agree to the <a href="#" style="color:var(--accent)">Terms & Conditions</a> and <a href="#" style="color:var(--accent)">Privacy Policy</a> *</label>
+                </div>
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-ghost" id="backToStep2"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-gold" id="submitRegistration">Create Account <i class="fas fa-user-plus"></i></button>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div id="step4" class="step-content">
+                <div class="register-success">
+                    <div class="success-icon"><i class="fas fa-check"></i></div>
+                    <h2>Congratulations!</h2>
+                    <p>Your account has been created successfully. You can now sign in and begin your Quran journey. A confirmation email has been sent to your address.</p>
+                    <div class="success-actions">
+                        <a href="profile.html" class="btn btn-gold"><i class="fas fa-user"></i> Go to Profile</a>
+                        <a href="#" class="btn btn-ghost"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                        <a href="#" class="btn btn-ghost"><i class="fas fa-home"></i> Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<button class="scroll-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+<div class="toast" id="toast"><i></i><span id="toastMsg"></span></div>
+
+<script>
+(function(){
+    // ===== PARTICLES =====
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resizeCanvas(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+    class Particle { constructor() { this.reset(); } reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 0.3; this.speedY = -Math.random() * 0.3 - 0.05; this.speedX = (Math.random() - 0.5) * 0.15; this.opacity = Math.random() * 0.3 + 0.05; } update() { this.y += this.speedY; this.x += this.speedX; if (this.y < -10) { this.reset(); this.y = canvas.height + 10; } } draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = `rgba(231,180,44,${this.opacity})`; ctx.fill(); } }
+    for(let i=0;i<60;i++) particles.push(new Particle());
+    function animateParticles() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animateParticles); }
+    animateParticles();
+
+    // ===== TOAST =====
+    let toastTimeout;
+    function showToast(msg, type) {
+        clearTimeout(toastTimeout);
+        const toast = document.getElementById('toast');
+        document.getElementById('toastMsg').innerText = msg;
+        toast.className = 'toast ' + type;
+        toast.querySelector('i').className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+        requestAnimationFrame(() => toast.classList.add('show'));
+        toastTimeout = setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ===== SCROLL =====
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        scrollBtn.classList.toggle('visible', window.scrollY > 300);
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ===== GLOBALS =====
+    let currentStep = 1;
+    let userData = { personalInfo: {}, accountInfo: {}, learningInfo: {}, avatar: null };
+
+    // Helper: get value
+    function getVal(id) { return document.getElementById(id).value; }
+
+    // Step navigation
+    function goToStep(step) {
+        if (step > currentStep && !validateCurrentStep()) return;
+        if (step > currentStep) saveCurrentStepData();
+        document.getElementById(`step${currentStep}`).classList.remove('active');
+        document.querySelector(`.progress-step[data-step="${currentStep}"]`).classList.remove('active');
+        currentStep = step;
+        document.getElementById(`step${step}`).classList.add('active');
+        document.querySelector(`.progress-step[data-step="${step}"]`).classList.add('active');
+        updateProgressBar();
+        document.querySelector('.register-form-container').scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateProgressBar() {
+        const steps = document.querySelectorAll('.progress-step');
+        const fill = document.getElementById('progressFill');
+        if (currentStep >= 2 && steps[0] && steps[currentStep-1]) {
+            const firstSpan = steps[0].querySelector('.step-number');
+            const activeSpan = steps[currentStep-1].querySelector('.step-number');
+            const left = firstSpan.offsetLeft + firstSpan.offsetWidth/2;
+            const right = activeSpan.offsetLeft + activeSpan.offsetWidth/2;
+            fill.style.width = Math.max(0, right - left) + 'px';
+        } else fill.style.width = '0px';
+        steps.forEach((s, idx) => {
+            const stepNum = parseInt(s.dataset.step);
+            s.classList.toggle('completed', stepNum < currentStep);
+            s.classList.toggle('active', stepNum === currentStep);
+        });
+    }
+
+    function saveCurrentStepData() {
+        if (currentStep === 1) {
+            userData.personalInfo = {
+                firstName: getVal('firstName'), lastName: getVal('lastName'), email: getVal('email'), phone: getVal('phone'),
+                birthDate: getVal('birthDate'), gender: getVal('gender'), country: getVal('country'), city: getVal('city')
+            };
+        } else if (currentStep === 2) {
+            userData.accountInfo = { username: getVal('username'), password: document.getElementById('password').value };
+        } else if (currentStep === 3) {
+            const levelRad = document.querySelector('input[name="level"]:checked');
+            const goals = Array.from(document.getElementById('learningGoals').selectedOptions).map(o => o.value);
+            const slots = Array.from(document.getElementById('availability').selectedOptions).map(o => o.value);
+            userData.learningInfo = {
+                level: levelRad ? levelRad.value : '',
+                previousExperience: getVal('previousExperience'),
+                learningGoals: goals,
+                preferredTeacher: getVal('preferredTeacher'),
+                availability: slots,
+                agreedToTerms: document.getElementById('terms').checked
+            };
+        }
+    }
+
+    function validateCurrentStep() {
+        if (currentStep === 1) return validateStep1();
+        if (currentStep === 2) return validateStep2();
+        if (currentStep === 3) return validateStep3();
+        return true;
+    }
+
+    function validateStep1() {
+        let ok = true;
+        const fields = [
+            { el: document.getElementById('firstName'), msg: 'First name required' },
+            { el: document.getElementById('lastName'), msg: 'Last name required' },
+            { el: document.getElementById('email'), msg: 'Valid email required', validator: () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(getVal('email')) },
+            { el: document.getElementById('phone'), msg: 'Valid phone required', validator: () => getVal('phone').trim().length >= 6 },
+            { el: document.getElementById('birthDate'), msg: 'Date of birth required' },
+            { el: document.getElementById('country'), msg: 'Country required' }
+        ];
+        fields.forEach(f => {
+            const val = f.el.value.trim();
+            let isValid = f.validator ? f.validator() : val !== '';
+            if (!isValid) { f.el.classList.add('field-error'); f.el.classList.remove('field-ok'); showToast(f.msg, 'error'); ok = false; }
+            else { f.el.classList.remove('field-error'); if(val) f.el.classList.add('field-ok'); }
+        });
+        if (ok) saveCurrentStepData();
+        return ok;
+    }
+
+    function validateStep2() {
+        const username = document.getElementById('username');
+        const pw = document.getElementById('password');
+        const cp = document.getElementById('confirmPassword');
+        if (username.value.trim().length < 4) { showToast('Username must be at least 4 characters', 'error'); username.classList.add('field-error'); return false; }
+        else username.classList.remove('field-error');
+        const pwd = pw.value;
+        const hasMin = pwd.length >= 8, hasUpper = /[A-Z]/.test(pwd), hasLower = /[a-z]/.test(pwd), hasNum = /[0-9]/.test(pwd), hasSpec = /[^A-Za-z0-9]/.test(pwd);
+        if (!(hasMin && hasUpper && hasLower && hasNum && hasSpec)) { showToast('Password does not meet all requirements', 'error'); pw.classList.add('field-error'); return false; }
+        pw.classList.remove('field-error');
+        if (pwd !== cp.value) { showToast('Passwords do not match', 'error'); cp.classList.add('field-error'); return false; }
+        cp.classList.remove('field-error');
+        saveCurrentStepData();
+        return true;
+    }
+
+    function validateStep3() {
+        if (!document.querySelector('input[name="level"]:checked')) { showToast('Please select your current level', 'error'); return false; }
+        if (document.getElementById('learningGoals').selectedOptions.length === 0) { showToast('Please select at least one learning goal', 'error'); return false; }
+        if (document.getElementById('availability').selectedOptions.length === 0) { showToast('Please select at least one time slot', 'error'); return false; }
+        if (!document.getElementById('terms').checked) { showToast('You must agree to the Terms & Conditions', 'error'); return false; }
+        saveCurrentStepData();
+        return true;
+    }
+
+    // Avatar handling
+    const avatarInput = document.getElementById('avatarInput');
+    const avatarPlaceholder = document.querySelector('.avatar-placeholder');
+    const avatarImg = document.getElementById('avatarImage');
+    avatarInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        if (!file.type.startsWith('image/')) { showToast('Please select an image file', 'error'); return; }
+        if (file.size > 5 * 1024 * 1024) { showToast('Image too large (max 5MB)', 'error'); return; }
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            avatarPlaceholder.style.display = 'none';
+            avatarImg.src = ev.target.result;
+            avatarImg.style.display = 'block';
+            userData.avatar = ev.target.result;
+            showToast('Photo uploaded successfully', 'success');
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // Password toggle + strength
+    const showPassToggle = document.getElementById('showPassword');
+    showPassToggle.addEventListener('change', function() {
+        const type = this.checked ? 'text' : 'password';
+        document.getElementById('password').type = type;
+        document.getElementById('confirmPassword').type = type;
+    });
+
+    const pwField = document.getElementById('password');
+    const hintElements = {
+        length: document.getElementById('lengthHint'), upper: document.getElementById('uppercaseHint'),
+        lower: document.getElementById('lowercaseHint'), num: document.getElementById('numberHint'), spec: document.getElementById('specialHint')
+    };
+    pwField.addEventListener('input', function() {
+        const val = this.value;
+        let score = 0;
+        const checks = [
+            [val.length >= 8, hintElements.length, 20], [/[A-Z]/.test(val), hintElements.upper, 20],
+            [/[a-z]/.test(val), hintElements.lower, 20], [/[0-9]/.test(val), hintElements.num, 20],
+            [/[^A-Za-z0-9]/.test(val), hintElements.spec, 20]
+        ];
+        checks.forEach(([cond, hintEl]) => {
+            if (cond) { score += 20; hintEl.classList.add('valid'); hintEl.querySelector('i').className = 'fas fa-check-circle'; }
+            else { hintEl.classList.remove('valid'); hintEl.querySelector('i').className = 'far fa-circle'; }
+        });
+        const meter = document.getElementById('strengthMeter');
+        meter.className = 'pw-meter';
+        if (score < 40) meter.classList.add('weak');
+        else if (score < 80) meter.classList.add('medium');
+        else meter.classList.add('strong');
+    });
+
+    // Submit registration
+    const submitBtn = document.getElementById('submitRegistration');
+    submitBtn.addEventListener('click', function() {
+        if (!validateCurrentStep()) return;
+        saveCurrentStepData();
+        // create profile and store in localStorage
+        const profile = {
+            fullName: `${userData.personalInfo.firstName} ${userData.personalInfo.lastName}`,
+            firstName: userData.personalInfo.firstName,
+            lastName: userData.personalInfo.lastName,
+            email: userData.personalInfo.email,
+            phone: userData.personalInfo.phone,
+            birthDate: userData.personalInfo.birthDate,
+            gender: userData.personalInfo.gender,
+            country: userData.personalInfo.country,
+            city: userData.personalInfo.city,
+            username: userData.accountInfo.username,
+            level: userData.learningInfo.level,
+            previousExperience: userData.learningInfo.previousExperience,
+            learningGoals: userData.learningInfo.learningGoals,
+            preferredTeacher: userData.learningInfo.preferredTeacher,
+            availability: userData.learningInfo.availability,
+            joinDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+            teacher: 'Sheikh Abdurrahman',
+            stats: { totalSessions: 0, learningHours: 0, memorizedParts: 0, certificates: 0, progress: 0 },
+            upcomingSessions: [],
+            recentActivity: [{ date: new Date().toLocaleDateString('en-US'), activity: 'Account created', icon: 'fas fa-user-plus' }]
+        };
+        if (userData.avatar) localStorage.setItem('narqa-user-avatar', userData.avatar);
+        localStorage.setItem('narqa-user-profile', JSON.stringify(profile));
+        localStorage.setItem('narqa-is-logged-in', 'true');
+        showToast('Account created successfully!', 'success');
+        goToStep(4);
+    });
+
+    // Event listeners for navigation
+    document.getElementById('nextToStep2').addEventListener('click', () => goToStep(2));
+    document.getElementById('nextToStep3').addEventListener('click', () => goToStep(3));
+    document.getElementById('backToStep1').addEventListener('click', () => goToStep(1));
+    document.getElementById('backToStep2').addEventListener('click', () => goToStep(2));
+
+    // Live field validation clear on input
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(inp => inp.addEventListener('input', function() { if(this.classList.contains('field-error')) this.classList.remove('field-error'); if(this.value.trim() && this.id !== 'password' && this.id !== 'confirmPassword') this.classList.add('field-ok'); }));
+
+    // final step adjustments: ensure no double submission flicker
+    const styleSpin = document.createElement('style');
+    styleSpin.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
+    document.head.appendChild(styleSpin);
+})();
+</script>
+</body>
+</html>

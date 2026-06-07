@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="img/logo2.jpeg" type="image/x-icon">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Narqa Academy | Learn Quran Online with Certified Al-Azhar Teachers</title>
+
+<meta name="description" content="Join Narqa Academy for online Quran memorization, Tajweed, Arabic language courses, and Ijaza programs with certified Al-Azhar teachers. Flexible schedules for kids and adults worldwide.">
+
+<meta name="keywords" content="Quran online, Quran memorization, Learn Quran online, Tajweed classes, Quran teacher, Al Azhar teachers, Online Islamic courses, Ijaza Quran, Arabic lessons, Quran academy">
+
+<meta name="author" content="Narqa Academy">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0A1F20">
+<!-- Canonical -->
+<link rel="canonical" href="https://narqaacadmy.com/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Narqa Academy | Learn Quran Online">
+<meta property="og:description" content="Online Quran memorization, Tajweed, Arabic language, and Ijaza programs with certified Al-Azhar teachers.">
+<meta property="og:url" content="https://narqaacadmy.com/">
+<meta property="og:site_name" content="Narqa Academy">
+<meta property="og:image" content="https://narqaacadmy.com/img/logo2.jpeg">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Narqa Academy | Learn Quran Online">
+<meta name="twitter:description" content="Learn Quran online with certified Al-Azhar teachers. One-on-one classes and flexible schedules.">
+<meta name="twitter:image" content="https://narqaacadmy.com/img/logo2.jpeg">
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="/img/logo2.jpeg">
+<link rel="apple-touch-icon" href="/img/logo2.jpeg">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0A1F20;
+  --ink-2:#132E30;
+  --ink-3:#1E4547;
+  --gold:#D4A017;
+  --gold-lt:#ECC84A;
+  --gold-glow:rgba(212,160,23,0.18);
+  --cream:#F7F3EE;
+  --cream-2:#EDE8E0;
+  --stone:#C4BAA8;
+  --text:#2C3E2D;
+  --text-2:#5A6B5A;
+  --white:#FFFFFF;
+  --r-lg:2.5rem;
+  --r-md:1.5rem;
+  --r-sm:1rem;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+.container{max-width:1300px;margin:0 auto;padding:0 2.5rem}
+
+/* CURSOR */
+.cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transition:transform 0.1s;mix-blend-mode:multiply}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transition:transform 0.15s,opacity 0.15s}
+
+/* NAV */
+.navbar{position:fixed;top:0;width:100%;z-index:1000;padding:1.2rem 0;transition:all 0.5s var(--ease)}
+.navbar.scrolled{background:rgba(10,31,32,0.96);backdrop-filter:blur(20px);padding:0.7rem 0;border-bottom:1px solid rgba(212,160,23,0.1)}
+.navbar .container{display:flex;justify-content:space-between;align-items:center;gap:2rem}
+.logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none}
+.logo-img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);overflow:hidden;background:var(--ink)}
+.logo-img img{width:100%;height:100%;object-fit:cover}
+.logo-text{font-family:'Playfair Display',serif;font-weight:900;font-size:1.5rem;color:#fff;letter-spacing:0.08em}
+.logo-text span{color:var(--gold-lt)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{text-decoration:none;font-weight:500;color:rgba(255,255,255,0.65);transition:color 0.3s;font-size:0.9rem;letter-spacing:0.02em}
+.nav-links a:hover{color:var(--gold-lt)}
+.nav-cta{display:flex;gap:0.8rem;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.65rem 1.5rem;border-radius:3rem;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.9rem;border:none;cursor:pointer;text-decoration:none;transition:all 0.3s var(--ease)}
+.btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,0.25);color:#fff}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-lt);transform:translateY(-2px)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-lt));color:var(--ink);box-shadow:0 4px 24px rgba(212,160,23,0.35)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(212,160,23,0.5)}
+.btn-dark{background:var(--ink);color:white}
+.btn-dark:hover{background:var(--ink-3);transform:translateY(-2px)}
+.hamburger{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* MOBILE MENU */
+.mobile-nav{position:fixed;inset:0;background:var(--ink);z-index:1100;transform:translateX(100%);transition:transform 0.45s var(--ease);display:flex;flex-direction:column;padding:3rem 2rem}
+.mobile-nav.open{transform:translateX(0)}
+.mobile-nav .close-nav{align-self:flex-end;background:none;border:none;color:var(--gold);font-size:2rem;cursor:pointer;margin-bottom:3rem}
+.mobile-nav a{text-decoration:none;color:rgba(255,255,255,0.8);font-size:1.4rem;font-weight:600;padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.06);transition:color 0.3s,padding 0.3s}
+.mobile-nav a:hover{color:var(--gold-lt);padding-left:0.5rem}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--ink);position:relative;display:flex;align-items:center;overflow:hidden;padding-top:5rem}
+.hero-bg-grid{position:absolute;inset:0;background-image:
+  linear-gradient(rgba(212,160,23,0.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(212,160,23,0.04) 1px,transparent 1px);
+background-size:60px 60px;pointer-events:none}
+.hero-circle-1{position:absolute;top:-20%;right:-10%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(212,160,23,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-circle-2{position:absolute;bottom:-30%;left:-15%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(30,69,71,0.6) 0%,transparent 70%);pointer-events:none}
+.hero-bottom-fade{position:absolute;bottom:0;left:0;width:100%;height:200px;background:linear-gradient(to top,var(--cream),transparent);z-index:2;pointer-events:none}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:3;padding:3rem 0}
+.hero-left{}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.6rem;border:1px solid rgba(212,160,23,0.3);background:rgba(212,160,23,0.06);color:var(--gold-lt);padding:0.45rem 1.2rem;border-radius:3rem;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2rem;backdrop-filter:blur(8px)}
+.hero-eyebrow i{font-size:0.9rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:900;line-height:1.05;color:#fff;margin-bottom:1.8rem;letter-spacing:-0.01em}
+.hero h1 em{font-style:normal;color:var(--gold-lt)}
+.hero-desc{color:rgba(255,255,255,0.55);font-size:1.1rem;line-height:1.75;max-width:480px;margin-bottom:2.5rem;font-weight:400}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem}
+.hero-divider{width:100%;height:1px;background:rgba(255,255,255,0.07);margin-bottom:2.5rem}
+.hero-stats-row{display:flex;gap:3rem;flex-wrap:wrap}
+.hero-stat .num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--gold-lt);line-height:1}
+.hero-stat .lbl{font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:4px;letter-spacing:0.04em}
+
+/* HERO RIGHT */
+.hero-right{display:flex;justify-content:center;position:relative}
+.hero-main-img{width:100%;max-width:480px;aspect-ratio:4/5;border-radius:2.5rem;overflow:hidden;border:1px solid rgba(212,160,23,0.15);box-shadow:0 40px 80px rgba(0,0,0,0.5);position:relative}
+.hero-main-img img{width:100%;height:100%;object-fit:cover}
+.hero-glow-behind{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:140%;height:140%;background:radial-gradient(circle,rgba(212,160,23,0.07) 0%,transparent 65%);pointer-events:none;z-index:-1}
+.badge-float{position:absolute;background:rgba(10,31,32,0.88);backdrop-filter:blur(16px);border:1px solid rgba(212,160,23,0.2);border-radius:1.2rem;padding:0.8rem 1.2rem;color:#fff;font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:0.6rem;animation:levitate 4s ease-in-out infinite}
+.badge-float i{color:var(--gold);font-size:1rem}
+.badge-float.b1{top:12%;right:-30px;animation-delay:0s}
+.badge-float.b2{bottom:18%;left:-30px;animation-delay:1.8s}
+@keyframes levitate{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* MARQUEE STRIP */
+.marquee-wrap{background:var(--gold);padding:0.9rem 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:2.5rem;animation:marquee 22s linear infinite}
+.marquee-item{display:inline-flex;align-items:center;gap:0.6rem;font-weight:700;font-size:0.85rem;color:var(--ink);text-transform:uppercase;letter-spacing:0.08em}
+.marquee-dot{width:6px;height:6px;background:var(--ink);border-radius:50%;opacity:0.4}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION COMMON */
+.section{padding:7rem 0}
+.section-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--gold);margin-bottom:1rem}
+.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--gold);border-radius:2px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:900;color:var(--ink);line-height:1.15;letter-spacing:-0.01em}
+.section-desc{color:var(--text-2);font-size:1rem;line-height:1.7;max-width:540px}
+.section-head{margin-bottom:4rem}
+.section-head.center{text-align:center}
+.section-head.center .section-label{justify-content:center}
+.section-head.center .section-desc{margin:0 auto}
+
+/* FEATURES */
+.features-section{background:var(--cream)}
+.features-bento{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:1.2rem}
+.feat-card{background:var(--white);border-radius:var(--r-lg);padding:2.2rem;border:1px solid rgba(0,0,0,0.05);transition:all 0.4s var(--ease);position:relative;overflow:hidden}
+.feat-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-lt));transform:scaleX(0);transform-origin:left;transition:transform 0.4s var(--ease)}
+.feat-card:hover::after{transform:scaleX(1)}
+.feat-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px -12px rgba(0,0,0,0.1)}
+.feat-card.wide{grid-column:span 2}
+.feat-icon{width:58px;height:58px;background:linear-gradient(135deg,var(--ink),var(--ink-3));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--gold-lt);margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(10,31,32,0.2)}
+.feat-card h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:800;color:var(--ink);margin-bottom:0.6rem}
+.feat-card p{color:var(--text-2);font-size:0.92rem;line-height:1.65}
+.feat-card.featured{background:linear-gradient(135deg,var(--ink),var(--ink-3));color:white}
+.feat-card.featured h3{color:#fff}
+.feat-card.featured p{color:rgba(255,255,255,0.55)}
+.feat-card.featured .feat-icon{background:rgba(212,160,23,0.15);border:1px solid rgba(212,160,23,0.2)}
+
+/* TEACHERS */
+.teachers-section{background:var(--cream-2)}
+.teachers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem}
+.teacher-card{background:var(--white);border-radius:var(--r-lg);overflow:hidden;border:1px solid rgba(0,0,0,0.05);transition:all 0.4s var(--ease);display:flex;flex-direction:column}
+.teacher-card:hover{transform:translateY(-10px);box-shadow:0 32px 60px -18px rgba(0,0,0,0.15)}
+.teacher-img-wrap{height:280px;position:relative;overflow:hidden;background:var(--ink-3);display:flex;align-items:center;justify-content:center}
+.teacher-avatar{font-family:'Playfair Display',serif;font-size:7rem;color:rgba(212,160,23,0.6);line-height:1}
+.teacher-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,32,0.6) 0%,transparent 50%)}
+.verified-pill{position:absolute;top:1.2rem;right:1.2rem;background:rgba(10,31,32,0.85);backdrop-filter:blur(8px);color:#fff;padding:0.3rem 0.9rem;border-radius:3rem;font-size:0.73rem;font-weight:600;display:flex;align-items:center;gap:0.35rem;z-index:2;border:1px solid rgba(212,160,23,0.25)}
+.verified-pill i{color:var(--gold)}
+.teacher-body{padding:1.8rem;flex:1;display:flex;flex-direction:column;gap:1rem}
+.teacher-body h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800;color:var(--ink)}
+.teacher-body p{font-size:0.88rem;color:var(--text-2);line-height:1.5}
+.teacher-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+.tag{background:var(--cream);border:1px solid var(--cream-2);padding:0.25rem 0.8rem;border-radius:3rem;font-size:0.75rem;font-weight:600;color:var(--text-2)}
+.teacher-body .btn{margin-top:auto}
+
+/* SCHEDULE */
+.schedule-section{background:var(--cream)}
+.sched-tabs{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem}
+.tab-btn{background:var(--white);border:1.5px solid var(--cream-2);padding:0.5rem 1.3rem;border-radius:3rem;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-2);cursor:pointer;transition:all 0.25s}
+.tab-btn:hover,.tab-btn.active{background:var(--ink);color:white;border-color:var(--ink)}
+.sched-wrapper{background:var(--white);border-radius:var(--r-lg);overflow:hidden;border:1px solid rgba(0,0,0,0.06);box-shadow:0 20px 50px -15px rgba(0,0,0,0.08)}
+.sched-header{background:var(--ink);display:grid;grid-template-columns:1.2fr 1.5fr 1fr 1fr 1fr;gap:0;padding:0}
+.sched-header span{padding:1.1rem 1.2rem;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.6);display:flex;align-items:center;gap:0.4rem}
+.sched-header span i{color:var(--gold);font-size:0.8rem}
+.sched-row{display:grid;grid-template-columns:1.2fr 1.5fr 1fr 1fr 1fr;border-bottom:1px solid var(--cream-2);transition:background 0.2s;align-items:center}
+.sched-row:last-child{border-bottom:none}
+.sched-row:hover{background:rgba(212,160,23,0.03)}
+.sched-row>*{padding:1rem 1.2rem;font-size:0.88rem}
+.sched-row .time{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.sched-row .teacher{color:var(--text-2);font-weight:500}
+.level-pill{display:inline-block;padding:0.2rem 0.75rem;border-radius:3rem;font-size:0.72rem;font-weight:700}
+.level-pill.beginner{background:rgba(16,185,129,0.1);color:#059669}
+.level-pill.intermediate{background:rgba(59,130,246,0.1);color:#2563EB}
+.level-pill.advanced{background:rgba(212,160,23,0.12);color:var(--gold)}
+.book-btn{background:var(--gold);color:var(--ink);border:none;padding:0.4rem 1.1rem;border-radius:3rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.78rem;transition:all 0.25s;display:inline-flex;align-items:center;gap:0.4rem}
+.book-btn:hover{background:var(--gold-lt);transform:scale(1.05)}
+.no-sess{text-align:center;padding:3rem;color:var(--stone);font-weight:500;font-style:italic}
+
+/* STATS BELT */
+.stats-belt{background:linear-gradient(135deg,var(--ink) 0%,var(--ink-2) 50%,var(--ink-3) 100%);padding:5rem 0;position:relative;overflow:hidden}
+.stats-belt::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(212,160,23,0.05) 1px,transparent 1px);background-size:30px 30px}
+.stats-belt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative;z-index:1}
+.stat-block{text-align:center;padding:2rem;border:1px solid rgba(255,255,255,0.05);border-radius:var(--r-md);transition:border-color 0.3s,background 0.3s}
+.stat-block:hover{border-color:rgba(212,160,23,0.25);background:rgba(212,160,23,0.03)}
+.stat-block i{font-size:2rem;color:var(--gold);margin-bottom:1rem;display:block;filter:drop-shadow(0 0 12px rgba(212,160,23,0.3))}
+.stat-block .big{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:#fff;line-height:1}
+.stat-block .small{font-size:0.82rem;color:rgba(255,255,255,0.45);margin-top:0.5rem;font-weight:500}
+
+/* CONTACT */
+.contact-section{background:var(--cream-2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:3.5rem;align-items:start}
+.contact-left{}
+.contact-info-cards{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.info-card{background:var(--white);border-radius:var(--r-md);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1.2rem;border:1px solid rgba(0,0,0,0.05);transition:all 0.3s var(--ease)}
+.info-card:hover{border-color:var(--gold);transform:translateX(4px)}
+.info-card-icon{width:46px;height:46px;flex-shrink:0;background:linear-gradient(135deg,var(--ink),var(--ink-3));color:var(--gold-lt);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.info-card-text strong{display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--stone);font-weight:700;margin-bottom:2px}
+.info-card-text a,.info-card-text span{color:var(--ink);font-weight:600;font-size:0.92rem;text-decoration:none}
+.info-card-text a:hover{color:var(--gold)}
+.socials{display:flex;gap:0.8rem;margin-top:1.5rem}
+.socials a{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;transition:all 0.3s var(--ease);box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+.socials a:hover{transform:translateY(-4px) scale(1.1);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+.contact-form{background:var(--white);border-radius:var(--r-lg);padding:2.5rem;border:1px solid rgba(0,0,0,0.05);box-shadow:0 20px 50px -15px rgba(0,0,0,0.08)}
+.form-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;color:var(--ink);margin-bottom:1.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1rem}
+.fg label{display:block;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-2);margin-bottom:0.4rem}
+.fg input,.fg textarea{width:100%;padding:0.85rem 1.1rem;border:1.5px solid var(--cream-2);border-radius:var(--r-sm);font-family:'DM Sans',sans-serif;font-size:0.92rem;color:var(--ink);background:var(--cream);transition:all 0.3s;outline:none}
+.fg input:focus,.fg textarea:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px var(--gold-glow)}
+.fg textarea{resize:vertical;min-height:110px}
+
+/* FOOTER */
+.footer{background:var(--ink);color:white;padding:3rem 0 2rem}
+.footer-inner{display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#fff}
+.footer-logo span{color:var(--gold-lt)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{color:rgba(255,255,255,0.4);font-size:0.82rem;text-decoration:none;transition:color 0.3s}
+.footer-links a:hover{color:var(--gold-lt)}
+.footer-copy{color:rgba(255,255,255,0.3);font-size:0.82rem;border-top:1px solid rgba(255,255,255,0.07);width:100%;padding-top:1.5rem;margin-top:0.5rem}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+
+/* SCROLL TOP */
+.scroll-top{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;background:var(--gold);color:var(--ink);border:none;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all 0.35s var(--ease);z-index:500;box-shadow:0 6px 20px rgba(212,160,23,0.4)}
+.scroll-top.visible{opacity:1;visibility:visible}
+.scroll-top:hover{transform:translateY(-4px) scale(1.1)}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(120px);background:var(--ink);color:white;padding:1rem 2rem;border-radius:var(--r-md);font-weight:600;font-size:0.9rem;z-index:9999;opacity:0;transition:all 0.4s var(--ease);box-shadow:0 12px 40px rgba(0,0,0,0.25);display:flex;align-items:center;gap:0.7rem;border:1px solid rgba(212,160,23,0.2)}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast i{color:var(--gold)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .features-bento{grid-template-columns:1fr 1fr}
+  .feat-card.wide{grid-column:span 1}
+  .stats-belt-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero h1{font-size:clamp(2.4rem,7vw,3.5rem)}
+  .hero-desc{margin:0 auto 2.5rem}
+  .hero-actions{justify-content:center}
+  .hero-stats-row{justify-content:center}
+  .hero-right{order:-1}
+  .hero-main-img{max-width:340px}
+  .badge-float{display:none}
+  .contact-grid{grid-template-columns:1fr}
+  .sched-header,.sched-row{grid-template-columns:1fr 1.2fr 0.8fr 0.8fr 0.8fr;font-size:0.8rem}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:block}
+  .container{padding:0 1.5rem}
+  .section{padding:5rem 0}
+  .features-bento{grid-template-columns:1fr}
+  .teachers-grid{grid-template-columns:1fr}
+  .stats-belt-grid{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .sched-header,.sched-row{grid-template-columns:1fr 1.2fr 1fr 0fr 0.8fr}
+  .sched-header span:nth-child(4),.sched-row>*:nth-child(4){display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR (desktop only) -->
+<div class="cursor" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#home" class="logo">
+      <div class="logo-img"><img src="img/logo2.jpeg" alt="Narqa Logo"></div>
+      <span class="logo-text">NAR<span>QA</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#teachers">Teachers</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="register.php">Register</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="login.php" class="btn btn-ghost">Login</a>
+      <a href="register.php" class="btn btn-gold">Sign Up</a>
+    </div>
+    <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-nav" id="closeNav"><i class="fas fa-times"></i></button>
+  <a href="#home">Home</a>
+  <a href="#features">Features</a>
+  <a href="#teachers">Teachers</a>
+  <a href="#schedule">Schedule</a>
+  <a href="#contact">Contact</a>
+  <a href="register.php">Register</a>
+  <a href="login.php">Login</a>
+</div>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-circle-1"></div>
+  <div class="hero-circle-2"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <span class="hero-eyebrow"><i class="fas fa-quran"></i> Premium Online Academy</span>
+        <h1>Learn Quran with<br><em>Elite Certified</em><br>Teachers</h1>
+        <p class="hero-desc">Personalized one-on-one sessions, real-time progress tracking, and flexible scheduling — all in one powerful platform.</p>
+        <div class="hero-actions">
+          <a href="register.html" class="btn btn-gold"><i class="fas fa-rocket"></i> Start Free Trial</a>
+          <a href="about-me.html" class="btn btn-ghost"><i class="fas fa-play-circle"></i> Explore Features</a>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stats-row">
+          <div class="hero-stat"><div class="num" data-count="500">0</div><div class="lbl">Students</div></div>
+          <div class="hero-stat"><div class="num" data-count="15">0</div><div class="lbl">Teachers</div></div>
+          <div class="hero-stat"><div class="num" data-count="500">0</div><div class="lbl">Live Sessions</div></div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-glow-behind"></div>
+        <div class="hero-main-img">
+          <img src="img/logo.jpeg" alt="Narqa Academy">
+        </div>
+        <div class="badge-float b1"><i class="fas fa-star"></i> 4.9 Rating</div>
+        <div class="badge-float b2"><i class="fas fa-certificate"></i> Ijaza Certified</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bottom-fade"></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item"><i class="fas fa-book-quran"></i> Quran Memorization</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item"><i class="fas fa-award"></i> Ijaza Certificates</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item"><i class="fas fa-user-graduate"></i> Al-Azhar Graduates</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item"><i class="fas fa-video"></i> Live 1-on-1 Sessions</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item"><i class="fas fa-globe"></i> Online Worldwide</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item"><i class="fas fa-calendar-alt"></i> Flexible Scheduling</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item"><i class="fas fa-book-quran"></i> Quran Memorization</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item"><i class="fas fa-award"></i> Ijaza Certificates</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item"><i class="fas fa-user-graduate"></i> Al-Azhar Graduates</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item"><i class="fas fa-video"></i> Live 1-on-1 Sessions</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item"><i class="fas fa-globe"></i> Online Worldwide</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item"><i class="fas fa-calendar-alt"></i> Flexible Scheduling</span>
+    <span class="marquee-dot"></span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features" class="section features-section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title">Premium Features</h2>
+      <p class="section-desc" style="margin-top:0.8rem">Everything you need for an exceptional Quran learning journey</p>
+    </div>
+    <div class="features-bento">
+      <div class="feat-card featured reveal">
+        <div class="feat-icon"><i class="fas fa-video"></i></div>
+        <h3>Live 1-on-1 Sessions</h3>
+        <p>Direct, real-time interaction with your teacher via Zoom or Skype for focused personal learning.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Progress Tracking</h3>
+        <p>Monitor memorization and revision with intelligent analytics dashboards.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h3>Flexible Scheduling</h3>
+        <p>Book slots that fit seamlessly into your daily routine, any time zone.</p>
+      </div>
+      <div class="feat-card wide reveal">
+        <div class="feat-icon"><i class="fas fa-award"></i></div>
+        <h3>Ijaza Certification</h3>
+        <p>Earn internationally recognized Ijaza certificates upon completion of your Quran program, awarded by qualified Al-Azhar certified teachers.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-book-quran"></i></div>
+        <h3>Multiple Qira'at</h3>
+        <p>Learn all 10 Qira'at with specialized, certified instructors.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-user-graduate"></i></div>
+        <h3>Al-Azhar Graduates</h3>
+        <p>All teachers hold official certifications and bring deep scholarly knowledge.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<section id="teachers" class="section teachers-section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="section-label">Expert Instructors</div>
+      <h2 class="section-title">Our Trusted Teachers</h2>
+      <p class="section-desc" style="margin-top:0.8rem">Learn from the finest Ijaza holders and Al-Azhar scholars</p>
+    </div>
+    <div class="teachers-grid">
+      <div class="teacher-card reveal">
+        <div class="teacher-img-wrap">
+          <div class="teacher-avatar">ش</div>
+          <div class="verified-pill"><i class="fas fa-check-circle"></i> Verified</div>
+        </div>
+        <div class="teacher-body">
+          <h3>Sheikh Abdurrahman Rady</h3>
+          <p>Ijaza in Hafs 'an Asim with a chain of narration to the Prophet ﷺ. Over 15 years of teaching experience online and in-person.</p>
+          <div class="teacher-tags">
+            <span class="tag">Hafs 'an Asim</span>
+            <span class="tag">15+ Years</span>
+            <span class="tag">Tajweed</span>
+          </div>
+          <button class="btn btn-dark" onclick="bookTeacher()" style="width:100%;margin-top:1rem"><i class="fab fa-whatsapp"></i> Book Session</button>
+        </div>
+      </div>
+      <div class="teacher-card reveal">
+        <div class="teacher-img-wrap" style="background:var(--ink-3)">
+          <div class="teacher-avatar">أ</div>
+          <div class="verified-pill"><i class="fas fa-check-circle"></i> Verified</div>
+        </div>
+        <div class="teacher-body">
+          <h3>Sheikh Ahmed El-Naggar</h3>
+          <p>Ijaza holder in all 10 Qira'at. A dedicated scholar with over 12 years helping students around the world achieve memorization goals.</p>
+          <div class="teacher-tags">
+            <span class="tag">10 Qira'at</span>
+            <span class="tag">12+ Years</span>
+            <span class="tag">Memorization</span>
+          </div>
+          <button class="btn btn-dark" onclick="bookTeacher()" style="width:100%;margin-top:1rem"><i class="fab fa-whatsapp"></i> Book Session</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule" class="section schedule-section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="section-label">Plan Your Week</div>
+      <h2 class="section-title">Weekly Class Schedule</h2>
+      <p class="section-desc" style="margin-top:0.8rem">Pick your preferred day and time — we make it work for you</p>
+    </div>
+    <div class="sched-tabs reveal">
+      <button class="tab-btn active" data-day="saturday">Saturday</button>
+      <button class="tab-btn" data-day="sunday">Sunday</button>
+      <button class="tab-btn" data-day="monday">Monday</button>
+      <button class="tab-btn" data-day="tuesday">Tuesday</button>
+      <button class="tab-btn" data-day="wednesday">Wednesday</button>
+      <button class="tab-btn" data-day="thursday">Thursday</button>
+      <button class="tab-btn" data-day="friday">Friday</button>
+    </div>
+    <div class="sched-wrapper reveal" style="overflow-x:auto">
+      <div class="sched-header">
+        <span><i class="fas fa-clock"></i> Time</span>
+        <span><i class="fas fa-chalkboard-user"></i> Teacher</span>
+        <span><i class="fas fa-signal"></i> Level</span>
+        <span><i class="fas fa-book-open"></i> Type</span>
+        <span><i class="fas fa-calendar-check"></i> Action</span>
+      </div>
+      <div id="scheduleBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BELT -->
+<div class="stats-belt">
+  <div class="container">
+    <div class="stats-belt-grid">
+      <div class="stat-block reveal">
+        <i class="fas fa-users"></i>
+        <div class="big" id="statStudents">0</div>
+        <div class="small">Active Students</div>
+      </div>
+      <div class="stat-block reveal">
+        <i class="fas fa-chalkboard-user"></i>
+        <div class="big" id="statTeachers">0</div>
+        <div class="small">Certified Teachers</div>
+      </div>
+      <div class="stat-block reveal">
+        <i class="fas fa-clock"></i>
+        <div class="big" id="statHours">0</div>
+        <div class="small">Teaching Hours</div>
+      </div>
+      <div class="stat-block reveal">
+        <i class="fas fa-certificate"></i>
+        <div class="big" id="statCert">0</div>
+        <div class="small">Certificates Awarded</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">Reach Out</div>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-desc" style="margin-top:0.8rem">We're here to answer every question and help you begin your journey.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <div class="contact-info-cards">
+          <div class="info-card">
+            <div class="info-card-icon"><i class="fas fa-envelope"></i></div>
+            <div class="info-card-text">
+              <strong>Email</strong>
+              <a href="mailto:Narqaacademy@gmail.com">Narqaacademy@gmail.com</a>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="info-card-text">
+              <strong>Phone</strong>
+              <a href="tel:+201551178287">+20 1551178287</a>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="info-card-text">
+              <strong>Location</strong>
+              <span>Alexandria, Egypt</span>
+            </div>
+          </div>
+        </div>
+        <div class="socials">
+          <a href="https://www.facebook.com/share/16egxWPfUa/" style="background:var(--ink-3)" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://wa.me/01202988181" style="background:#25D366" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/narqaacademy" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/abdelrahman-mohammed-rady-a9bb22222/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BLsGTx8nmT1OFnJaePdjnBg%3D%3D" style="background:#0077B5" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://youtube.com/@narqaacademy?si=wC1MKTSm7LglR9OL" style="background:#FF0000" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <form class="contact-form reveal" id="contactForm">
+        <div class="form-title">Send Us a Message</div>
+        <div class="form-row">
+          <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name" required></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="you@example.com" required></div>
+        </div>
+        <div class="fg"><label>Subject</label><input type="text" placeholder="What's this about?"></div>
+        <div class="fg"><label>Message</label><textarea placeholder="Write your message here..."></textarea></div>
+        <button type="submit" class="btn btn-gold" style="width:100%;padding:0.9rem"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">NAR<span>QA</span> Academy</div>
+      <div class="footer-links">
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Narqa Academy · All rights reserved · Designed & Developed by <a href="https://wa.me/+201207771639" target="_blank" style="text-decoration: none;"><strong style="color:rgba(255,255,255,0.6)">Eng. Kareem Ibrahem</strong></a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TOP -->
+<button class="scroll-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
+
+<script>
+(function(){
+  // CURSOR
+  const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
+  if(window.matchMedia('(pointer:fine)').matches){
+    document.addEventListener('mousemove',e=>{
+      dot.style.left=e.clientX-5+'px';dot.style.top=e.clientY-5+'px';
+      ring.style.left=e.clientX-18+'px';ring.style.top=e.clientY-18+'px';
+    });
+    document.querySelectorAll('a,button').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{dot.style.transform='scale(2)';ring.style.transform='scale(1.4)';ring.style.opacity='0.5'});
+      el.addEventListener('mouseleave',()=>{dot.style.transform='scale(1)';ring.style.transform='scale(1)';ring.style.opacity='1'});
+    });
+  }else{dot.style.display='none';ring.style.display='none'}
+
+  // TOAST
+  function showToast(msg){
+    const t=document.getElementById('toast');
+    document.getElementById('toastMsg').textContent=msg;
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),3500);
+  }
+  window.showToast=showToast;
+  window.bookTeacher=()=>{showToast('Redirecting to WhatsApp...');setTimeout(()=>window.open('https://wa.me/01202988181?text=Hello%20Narqa%20I%20want%20to%20book%20a%20session','_blank'),800)};
+
+  // HERO COUNTER
+  document.querySelectorAll('.hero-stat .num').forEach(el=>{
+    const target=parseInt(el.dataset.count);let c=0;
+    const step=Math.ceil(target/50),iv=setInterval(()=>{c+=step;if(c>=target){el.textContent=target+'+';clearInterval(iv)}else el.textContent=c+'+';},30);
+  });
+
+  // SCHEDULE
+  const DB={
+    saturday:[{time:'09:00–10:00',teacher:'Sh. Abdurrahman',level:'Beginner',type:'Memorization'},{time:'14:00–15:00',teacher:'Sh. Abdurrahman',level:'Intermediate',type:'Revision'},{time:'18:00–19:00',teacher:'Sh. Abdurrahman',level:'Advanced',type:'Tajweed'}],
+    sunday:[{time:'10:00–11:00',teacher:'Sh. Abdurrahman',level:'Beginner',type:'Memorization'},{time:'16:00–17:00',teacher:'Sh. Abdurrahman',level:'Intermediate',type:'Revision'}],
+    monday:[{time:'11:00–12:00',teacher:'Sh. Abdurrahman',level:'Beginner',type:'Memorization'}],
+    tuesday:[],
+    wednesday:[{time:'13:00–14:00',teacher:'Sh. Abdurrahman',level:'Intermediate',type:'Revision'}],
+    thursday:[{time:'15:00–16:00',teacher:'Sh. Abdurrahman',level:'Advanced',type:'Tajweed'}],
+    friday:[]
+  };
+  function lvl(l){return l==='Beginner'?'beginner':l==='Intermediate'?'intermediate':'advanced'}
+  function renderSched(day){
+    const body=document.getElementById('scheduleBody'),sessions=DB[day]||[];
+    if(!sessions.length){body.innerHTML=`<div class="no-sess">No sessions available for this day.</div>`;return}
+    body.innerHTML=sessions.map(s=>`
+      <div class="sched-row">
+        <div class="time">${s.time}</div>
+        <div class="teacher">${s.teacher}</div>
+        <div><span class="level-pill ${lvl(s.level)}">${s.level}</span></div>
+        <div style="color:var(--text-2);font-weight:500">${s.type}</div>
+        <div><button class="book-btn" onclick="bookTeacher()"><i class="fas fa-calendar-plus"></i> Book</button></div>
+      </div>
+    `).join('');
+  }
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    b.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderSched(b.dataset.day)});
+  });
+  renderSched('saturday');
+
+  // STATS COUNTER
+  const counters=[{id:'statStudents',target:580},{id:'statTeachers',target:22},{id:'statHours',target:1240},{id:'statCert',target:210}];
+  let done=false;
+  const obs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&!done){done=true;counters.forEach(c=>{const el=document.getElementById(c.id);if(!el)return;let s=0;const step=Math.ceil(c.target/60),iv=setInterval(()=>{s+=step;if(s>=c.target){el.innerText=c.target+'+';clearInterval(iv)}else el.innerText=s+'+';},25);})}},{threshold:0.3});
+  const belt=document.querySelector('.stats-belt');if(belt)obs.observe(belt);
+
+  // REVEAL
+  const revObs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);revObs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+  // MOBILE NAV
+  const hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('mobileNav'),closeNav=document.getElementById('closeNav');
+  hamburger?.addEventListener('click',()=>mobileNav.classList.add('open'));
+  closeNav?.addEventListener('click',()=>mobileNav.classList.remove('open'));
+  document.querySelectorAll('.mobile-nav a').forEach(a=>a.addEventListener('click',()=>mobileNav.classList.remove('open')));
+
+  // SCROLL
+  const scrollBtn=document.getElementById('scrollTopBtn'),navbar=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>{
+    scrollBtn?.classList.toggle('visible',window.scrollY>400);
+    navbar?.classList.toggle('scrolled',window.scrollY>60);
+  });
+  scrollBtn?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  // FORM
+  document.getElementById('contactForm')?.addEventListener('submit',e=>{e.preventDefault();showToast('Message sent! We\'ll get back to you soon.');e.target.reset()});
+
+  // SMOOTH SCROLL
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',function(e){
+      const h=this.getAttribute('href');
+      if(h==='#'||h==='#home'){window.scrollTo({top:0,behavior:'smooth'});return}
+      const el=document.querySelector(h);
+      if(el){e.preventDefault();const top=el.getBoundingClientRect().top+window.scrollY-80;window.scrollTo({top,behavior:'smooth'})}
+    });
+  });
+})();
+</script>
+</body>
+</html>
