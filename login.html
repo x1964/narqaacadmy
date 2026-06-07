@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Narqa Academy</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="img/logo2.jpeg" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    :root {
+      --primary: #0F2E2F;
+      --primary-dark: #082122;
+      --primary-light: #2A6B6D;
+      --accent: #E7B42C;
+      --accent-dark: #C99E1E;
+      --accent-glow: rgba(231, 180, 44, 0.15);
+      --white: #FFFFFF;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --border-radius: 1rem;
+      --transition: all 0.3s ease-out;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--primary-dark);
+      color: var(--gray-900);
+      overflow-x: hidden;
+      min-height: 100vh
+    }
+
+    /* ===== PARTICLES ===== */
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0
+    }
+
+    /* ===== BACK BUTTON ===== */
+    .back-home {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      z-index: 100;
+    }
+
+    .back-home a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.3rem;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 2rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .back-home a:hover {
+      background: rgba(231, 180, 44, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ===== LOGIN CONTAINER ===== */
+    .login-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px 50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== LOGIN CARD ===== */
+    .login-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 2rem;
+      width: 100%;
+      max-width: 460px;
+      padding: 3rem;
+      position: relative;
+      z-index: 2;
+      animation: cardIn 0.7s ease;
+      overflow: hidden;
+    }
+
+    .login-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      border-radius: 2rem 2rem 0 0;
+    }
+
+    .login-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 50% 0%, rgba(231, 180, 44, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1)
+      }
+    }
+
+    /* ===== LOGIN HEADER ===== */
+    .login-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .login-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .login-logo img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2.5px solid var(--accent);
+      box-shadow: 0 0 24px rgba(231, 180, 44, 0.25);
+      transition: var(--transition);
+    }
+
+    .login-logo:hover img {
+      transform: rotate(8deg) scale(1.05)
+    }
+
+    .login-logo span {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+
+    .login-header h1 {
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-size: 1.7rem;
+      font-weight: 800;
+    }
+
+    .login-header p {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.95rem;
+    }
+
+    /* ===== FORM ===== */
+    .login-form {
+      position: relative;
+      z-index: 1
+    }
+
+    .form-group {
+      margin-bottom: 1.3rem;
+      position: relative;
+    }
+
+    .login-form label {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 0.9rem 3rem 0.9rem 1rem;
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+    }
+
+    .login-form input::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .login-form input:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .login-form input:valid:not(:placeholder-shown) {
+      border-color: rgba(42, 107, 109, 0.5);
+    }
+
+    .login-form input:invalid:not(:placeholder-shown) {
+      border-color: rgba(239, 68, 68, 0.5);
+    }
+
+    /* ===== FORM ICONS ===== */
+    .form-icon {
+      position: absolute;
+      right: 1rem;
+      top: calc(50% + 12px);
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.25);
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .login-form input:focus~.form-icon {
+      color: var(--accent);
+    }
+
+    .password-toggle {
+      position: absolute;
+      left: 1rem;
+      top: calc(50% + 12px);
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .password-toggle:hover {
+      color: var(--accent)
+    }
+
+    /* ===== REMEMBER / FORGOT ===== */
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.8rem;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.9rem;
+    }
+
+    .remember-me input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .forgot-password {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .forgot-password:hover {
+      text-decoration: underline;
+      text-shadow: 0 0 12px rgba(231, 180, 44, 0.3)
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .btn-primary-gold {
+      background: linear-gradient(135deg, var(--accent), #f0c840);
+      color: var(--primary-dark);
+      box-shadow: 0 6px 24px rgba(231, 180, 44, 0.3);
+    }
+
+    .btn-primary-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(231, 180, 44, 0.45);
+    }
+
+    .btn-primary-gold:active {
+      transform: translateY(-1px)
+    }
+
+    .login-btn {
+      width: 100%;
+      font-size: 1.05rem;
+      padding: 1rem;
+    }
+
+    /* ===== DIVIDER ===== */
+    .login-divider {
+      text-align: center;
+      margin: 2rem 0;
+      position: relative;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .login-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 44%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .login-divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 44%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* ===== SOCIAL ===== */
+    .social-login {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 2rem
+    }
+
+    .social-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem;
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-btn.google:hover {
+      border-color: #DB4437;
+      color: #DB4437;
+      background: rgba(219, 67, 55, 0.06)
+    }
+
+    .social-btn.facebook:hover {
+      border-color: #4267B2;
+      color: #4267B2;
+      background: rgba(66, 103, 178, 0.06)
+    }
+
+    /* ===== REGISTER LINK ===== */
+    .register-link {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.92rem;
+    }
+
+    .register-link a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      transition: var(--transition);
+    }
+
+    .register-link a:hover {
+      text-shadow: 0 0 12px rgba(231, 180, 44, 0.3)
+    }
+
+    /* ===== TOAST ===== */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      z-index: 9999;
+      opacity: 0;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1
+    }
+
+    .toast.error {
+      background: rgba(239, 68, 68, 0.9);
+      color: #fff;
+      border: 1px solid rgba(239, 68, 68, 0.5)
+    }
+
+    .toast.error i {
+      color: #fecaca
+    }
+
+    .toast.success {
+      background: rgba(16, 185, 129, 0.9);
+      color: #fff;
+      border: 1px solid rgba(16, 185, 129, 0.5)
+    }
+
+    .toast.success i {
+      color: #a7f3d0
+    }
+
+    /* ===== LOADING SPINNER ===== */
+    .btn-loading .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2.5px solid rgba(15, 46, 47, 0.2);
+      border-top-color: var(--primary-dark);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    /* ===== INPUT GLOW ON FOCUS ===== */
+    .form-group {
+      transition: transform 0.2s ease
+    }
+
+    .form-group:focus-within {
+      transform: scale(1.01)
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:480px) {
+      .login-card {
+        padding: 2rem 1.5rem
+      }
+
+      .social-login {
+        flex-direction: column
+      }
+
+      .remember-forgot {
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .back-home {
+        top: 1rem;
+        left: 1rem
+      }
+
+      .back-home a {
+        padding: 0.5rem 1rem;
+        font-size: 0.82rem
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <!-- Back to Home -->
+  <div class="back-home">
+    <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  </div>
+
+  <!-- Login Section -->
+  <section class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo">
+          <img src="img/logo2.jpeg" alt="Narqa Academy Logo">
+          <span>NARQA</span>
+        </div>
+        <h1>Welcome Back</h1>
+        <p>Sign in to continue your Quran journey</p>
+      </div>
+
+      <form class="login-form" id="loginForm">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+          <i class="fas fa-envelope form-icon"></i>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+          <i class="fas fa-lock form-icon"></i>
+          <button type="button" class="password-toggle" id="togglePassword">
+            <i class="far fa-eye"></i>
+          </button>
+        </div>
+
+        <div class="remember-forgot">
+          <label class="remember-me">
+            <input type="checkbox" id="remember">
+            <span>Remember me</span>
+          </label>
+          <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary-gold login-btn" id="loginBtn">
+          <i class="fas fa-sign-in-alt"></i> Sign In
+        </button>
+
+        <div class="login-divider">
+          <span>or sign in with</span>
+        </div>
+
+        <div class="social-login">
+          <a href="#" class="social-btn google">
+            <i class="fab fa-google"></i>
+            <span>Google</span>
+          </a>
+          <a href="#" class="social-btn facebook">
+            <i class="fab fa-facebook-f"></i>
+            <span>Facebook</span>
+          </a>
+        </div>
+
+        <div class="register-link">
+          <span>Don't have an account? </span>
+          <a href="register.html">Create one now</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"><i></i><span id="toastMsg"></span></div>
+
+  <script>
+    (function () {
+      /* ===== PARTICLES ===== */
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      class Particle {
+        constructor() { this.reset() }
+        reset() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 2 + 0.5;
+          this.speedY = -Math.random() * 0.4 - 0.1;
+          this.speedX = (Math.random() - 0.5) * 0.25;
+          this.opacity = Math.random() * 0.35 + 0.08;
+        }
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX;
+          if (this.y < -10) { this.reset(); this.y = canvas.height + 10 }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(231,180,44,${this.opacity})`;
+          ctx.fill();
+        }
+      }
+      for (let i = 0; i < 70; i++)particles.push(new Particle());
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw() });
+        requestAnimationFrame(animateParticles);
+      }
+      animateParticles();
+
+      /* ===== TOAST ===== */
+      function showToast(msg, type) {
+        const t = document.getElementById('toast');
+        const icon = t.querySelector('i');
+        document.getElementById('toastMsg').textContent = msg;
+        t.className = 'toast ' + type;
+        icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+        requestAnimationFrame(() => t.classList.add('show'));
+        setTimeout(() => t.classList.remove('show'), 4000);
+      }
+
+      /* ===== TOGGLE PASSWORD ===== */
+      const toggleBtn = document.getElementById('togglePassword');
+      const passInput = document.getElementById('password');
+      toggleBtn.addEventListener('click', function () {
+        const isPass = passInput.type === 'password';
+        passInput.type = isPass ? 'text' : 'password';
+        this.innerHTML = isPass ? '<i class="far fa-eye-slash"></i>' : '<i class="far fa-eye"></i>';
+      });
+
+      /* ===== LOGIN ===== */
+      const loginForm = document.getElementById('loginForm');
+      const loginBtn = document.getElementById('loginBtn');
+
+      loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        if (!email || !password) {
+          showToast('Please fill in all fields', 'error');
+          return;
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showToast('Please enter a valid email address', 'error');
+          return;
+        }
+
+        /* Loading state */
+        const originalHTML = loginBtn.innerHTML;
+        loginBtn.innerHTML = '<div class="spinner"></div> Signing in...';
+        loginBtn.disabled = true;
+        loginBtn.style.opacity = '0.7';
+
+        setTimeout(() => {
+          if (email === 'demo@narqa.com' && password === '123456') {
+            showToast('Login successful! Redirecting...', 'success');
+            setTimeout(() => { window.location.href = 'profile.html' }, 1800);
+          } else {
+            showToast('Invalid email or password', 'error');
+            loginBtn.innerHTML = originalHTML;
+            loginBtn.disabled = false;
+            loginBtn.style.opacity = '1';
+          }
+        }, 1500);
+      });
+    })();
+  </script>
+</body>
+
+</html>

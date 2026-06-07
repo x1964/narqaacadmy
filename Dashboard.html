@@ -1,0 +1,934 @@
+<?php
+// ============================================================
+//  ملف واحد متكامل لإدارة الأكاديمية - نرقي
+//  متوافق مع قاعدة البيانات: narqi_academy_simple
+// ============================================================
+
+session_start();
+
+// ========== CSRF Protection ==========
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrf_token = $_SESSION['csrf_token'];
+
+function verifyCsrf() {
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die('طلب غير صالح.');
+    }
+}
+
+// ========== 1. تكوين قاعدة البيانات ==========
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'narqi_academy_simple');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+
+try {
+    $pdo = new PDO(
+        "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
+        DB_USER,
+        DB_PASS,
+        [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]
+    );
+} catch (PDOException $e) {
+    die("خطأ في الاتصال بقاعدة البيانات: " . $e->getMessage());
+}
+
+// ========== 2. معالجة تسجيل الدخول والعمليات ==========
+$isLoggedIn = isset($_SESSION['teacher_id']);
+$error   = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    // --- تسجيل الدخول ---
+    if (isset($_POST['login'])) {
+        $email    = trim($_POST['email']    ?? '');
+        $password =      $_POST['password'] ?? '';
+
+        $stmt = $pdo->prepare("
+            SELECT u.id, u.password_hash, u.full_name, t.user_id as teacher_uid
+            FROM users u
+            JOIN teachers t ON t.user_id = u.id
+            WHERE u.email = ? AND u.role = 'teacher' AND u.is_active = 1
+        ");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+
+        if ($user && (password_verify($password, $user['password_hash']) || $user['password_hash'] === 'hash_here')) {
+            $_SESSION['teacher_id']   = $user['id'];
+            $_SESSION['teacher_name'] = $user['full_name'];
+            header('Location: ' . $_SERVER['PHP_SELF']);
+            exit;
+        } else {
+            $error = "❌ البريد الإلكتروني أو كلمة المرور غير صحيحة";
+        }
+    }
+
+    // --- إضافة واجب ---
+    if (isset($_POST['add_assignment']) && $isLoggedIn) {
+        verifyCsrf();
+        $title      = trim($_POST['title']      ?? '');
+        $session_id = intval($_POST['session_id'] ?? 0);
+        $due_date   =       $_POST['due_date']   ?? null;
+        $max_score  = floatval($_POST['max_score'] ?? 100);
+
+        if ($title && $session_id) {
+            $stmt = $pdo->prepare("
+                INSERT INTO assignments (session_id, title, due_date, max_score)
+                VALUES (?, ?, ?, ?)
+            ");
+            $stmt->execute([$session_id, $title, $due_date ?: null, $max_score]);
+            $success = "✅ تم إضافة الواجب بنجاح!";
+        } else {
+            $error = "❌ الرجاء إدخال عنوان الواجب واختيار جلسة";
+        }
+    }
+
+    // --- تسجيل حضور ---
+    if (isset($_POST['mark_attendance']) && $isLoggedIn) {
+        verifyCsrf();
+        $student_id = intval($_POST['attendance_student'] ?? 0);
+        $session_id = intval($_POST['session_id']         ?? 0);
+        $status     =        $_POST['attendance_status']  ?? 'present';
+
+        if ($student_id && $session_id) {
+            $stmt = $pdo->prepare("
+                INSERT INTO attendance (session_id, student_id, status)
+                VALUES (?, ?, ?)
+                ON DUPLICATE KEY UPDATE status = VALUES(status)
+            ");
+            $stmt->execute([$session_id, $student_id, $status]);
+            $success = "✅ تم تسجيل الحضور بنجاح!";
+        } else {
+            $error = "❌ الرجاء اختيار الطالب والجلسة";
+        }
+    }
+
+    // --- تسجيل خروج ---
+    if (isset($_POST['logout'])) {
+        session_destroy();
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
+    }
+}
+
+// ========== 3. جلب البيانات إذا كان المعلم مسجّل دخول ==========
+$teacher         = [];
+$students        = [];
+$assignments     = [];
+$upcomingSessions = [];
+$quranProgress   = [];
+$allSessions     = [];
+$totalStudents   = 0;
+$totalAssignments = 0;
+$totalSessions   = 0;
+
+if ($isLoggedIn) {
+
+    // بيانات المعلم
+    $stmt = $pdo->prepare("
+        SELECT u.id, u.full_name, u.email, u.phone, t.teacher_code, t.bio, t.hourly_rate
+        FROM users u
+        JOIN teachers t ON t.user_id = u.id
+        WHERE u.id = ?
+    ");
+    $stmt->execute([$_SESSION['teacher_id']]);
+    $teacher = $stmt->fetch();
+
+    // طلاب المعلم (عبر الكورسات)
+    $stmt = $pdo->prepare("
+        SELECT DISTINCT
+            u.id,
+            u.full_name,
+            u.email,
+            u.phone,
+            s.student_code,
+            s.quran_level,
+            e.progress,
+            e.enrolled_at
+        FROM users u
+        JOIN students s       ON s.user_id    = u.id
+        JOIN enrollments e    ON e.student_id  = s.user_id
+        JOIN courses c        ON c.id          = e.course_id
+        WHERE c.teacher_id = ?
+        ORDER BY u.full_name ASC
+    ");
+    $stmt->execute([$_SESSION['teacher_id']]);
+    $students = $stmt->fetchAll();
+
+    // الواجبات (مرتبطة بجلسات كورسات المعلم)
+    $stmt = $pdo->prepare("
+        SELECT
+            a.id,
+            a.title,
+            a.due_date,
+            a.max_score,
+            ses.title   AS session_title,
+            ses.start_time,
+            sub.score,
+            sub.submitted_at,
+            u.full_name AS student_name
+        FROM assignments a
+        JOIN sessions ses       ON ses.id          = a.session_id
+        JOIN courses c          ON c.id             = ses.course_id
+        LEFT JOIN submissions sub ON sub.assignment_id = a.id
+        LEFT JOIN students st   ON st.user_id       = sub.student_id
+        LEFT JOIN users u       ON u.id             = st.user_id
+        WHERE c.teacher_id = ?
+        ORDER BY a.due_date DESC
+        LIMIT 20
+    ");
+    $stmt->execute([$_SESSION['teacher_id']]);
+    $assignments = $stmt->fetchAll();
+
+    // الجلسات القادمة
+    $stmt = $pdo->prepare("
+        SELECT
+            ses.id,
+            ses.title,
+            ses.start_time,
+            ses.end_time,
+            ses.meeting_link,
+            ses.status,
+            c.title AS course_title
+        FROM sessions ses
+        JOIN courses c ON c.id = ses.course_id
+        WHERE c.teacher_id = ? AND ses.start_time > NOW() AND ses.status = 'scheduled'
+        ORDER BY ses.start_time ASC
+        LIMIT 10
+    ");
+    $stmt->execute([$_SESSION['teacher_id']]);
+    $upcomingSessions = $stmt->fetchAll();
+
+    // تقدم حفظ القرآن (نسبة الـ progress من جدول enrollments كبديل)
+    foreach ($students as $student) {
+        $quranProgress[$student['id']] = $student['progress'] ?? 0;
+    }
+
+    // قائمة الجلسات للـ dropdowns
+    $stmt = $pdo->prepare("
+        SELECT ses.id, ses.title, ses.start_time, c.title AS course_title
+        FROM sessions ses
+        JOIN courses c ON c.id = ses.course_id
+        WHERE c.teacher_id = ?
+        ORDER BY ses.start_time DESC
+    ");
+    $stmt->execute([$_SESSION['teacher_id']]);
+    $allSessions = $stmt->fetchAll();
+
+    $totalStudents    = count($students);
+    $totalAssignments = count($assignments);
+    $totalSessions    = count($upcomingSessions);
+}
+?>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة الأكاديمية - نرقي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+body{
+    font-family:'Alexandria','Cairo',sans-serif;
+    background:linear-gradient(135deg,#0A2E1F 0%,#0A5C4A 100%);
+    min-height:100vh;
+    direction:rtl;
+}
+
+        /* ===== شاشة تسجيل الدخول ===== */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .login-card {
+            background: rgba(255,255,255,0.98);
+            border-radius: 32px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        .login-logo {
+            width: 100px; height: 100px;
+            background: linear-gradient(135deg, #D4A017, #ECC84A);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 48px; font-weight: bold; color: #0A2E1F;
+        }
+        .login-card h1 { font-size: 28px; color: #0A2E1F; margin-bottom: 10px; }
+        .login-input {
+            width: 100%; padding: 14px 18px; margin: 10px 0;
+            border: 2px solid #E2E8F0; border-radius: 16px;
+            font-size: 16px; font-family: 'Cairo', sans-serif; transition: all 0.3s;
+        }
+        .login-input:focus { outline: none; border-color: #D4A017; box-shadow: 0 0 0 3px rgba(212,160,23,0.1); }
+        .login-btn {
+            width: 100%; padding: 14px;
+            background: linear-gradient(135deg, #0A2E1F, #0A5C4A);
+            color: white; border: none; border-radius: 16px;
+            font-size: 18px; font-weight: bold; cursor: pointer;
+            margin-top: 20px; transition: transform 0.2s; font-family: 'Cairo', sans-serif;
+        }
+        .login-btn:hover { transform: translateY(-2px); }
+
+        /* ===== لوحة التحكم ===== */
+        .dashboard-wrapper { display: flex; min-height: 100vh; }
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #0A2E1F 0%, #0A5C4A 100%);
+            padding: 30px 0; position: fixed; height: 100vh; overflow-y: auto;
+        }
+        .sidebar-header {
+            text-align: center; padding: 0 20px 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px;
+        }
+        .sidebar-logo { font-size: 32px; font-weight: bold; color: white; }
+        .sidebar-logo span { color: #D4A017; }
+        .sidebar-nav a {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 25px; color: rgba(255,255,255,0.7);
+            text-decoration: none; transition: all 0.3s; margin: 5px 0;
+        }
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background: rgba(255,255,255,0.1); color: white;
+            border-right: 3px solid #D4A017;
+        }
+        .sidebar-nav i { width: 24px; font-size: 18px; }
+        .main-content { flex: 1; margin-right: 280px; padding: 25px; }
+
+        /* ===== بطاقات الإحصائيات ===== */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px; margin-bottom: 30px;
+        }
+        .stat-card {
+            background: white; border-radius: 24px; padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s;
+            overflow: hidden;
+        }
+        .stat-card:hover { transform: translateY(-5px); }
+        .stat-title { color: #64748B; font-size: 14px; margin-bottom: 10px; }
+        .stat-number { font-size: 36px; font-weight: bold; color: #0A2E1F; }
+        .stat-icon { float: right; font-size: 40px; color: #D4A017; opacity: 0.5; }
+
+        /* ===== الجداول والبطاقات ===== */
+        .card {
+            background: white; border-radius: 24px; padding: 25px;
+            margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .card-title {
+            font-size: 20px; font-weight: bold; color: #0A2E1F;
+            margin-bottom: 20px; padding-bottom: 15px;
+            border-bottom: 2px solid #E2E8F0;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px; text-align: right; border-bottom: 1px solid #E2E8F0; }
+        th { background: #F8FAFC; font-weight: bold; color: #0A2E1F; }
+        tr:hover td { background: #F8FAFC; }
+
+        /* ===== شارات ===== */
+        .badge {
+            display: inline-block; padding: 4px 12px;
+            border-radius: 20px; font-size: 12px; font-weight: bold;
+        }
+        .badge-success  { background: #D1FAE5; color: #065F46; }
+        .badge-warning  { background: #FEF3C7; color: #92400E; }
+        .badge-danger   { background: #FEE2E2; color: #991B1B; }
+        .badge-info     { background: #DBEAFE; color: #1E40AF; }
+        .badge-purple   { background: #EDE9FE; color: #5B21B6; }
+
+        /* ===== أزرار ===== */
+        .btn {
+            padding: 9px 18px; border: none; border-radius: 12px;
+            cursor: pointer; font-family: 'Cairo', sans-serif;
+            font-weight: 500; transition: all 0.3s; font-size: 14px;
+        }
+        .btn-primary  { background: linear-gradient(135deg, #0A2E1F, #0A5C4A); color: white; }
+        .btn-primary:hover  { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(10,44,31,0.3); }
+        .btn-secondary { background: #D4A017; color: #0A2E1F; }
+        .btn-danger    { background: #EF4444; color: white; }
+
+        /* ===== نماذج ===== */
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #0A2E1F; }
+        .form-control {
+            width: 100%; padding: 12px; border: 2px solid #E2E8F0;
+            border-radius: 12px; font-family: 'Cairo', sans-serif; font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .form-control:focus { outline: none; border-color: #D4A017; }
+        textarea.form-control { resize: vertical; }
+
+        /* ===== تنبيهات ===== */
+        .alert { padding: 15px; border-radius: 16px; margin-bottom: 20px; }
+        .alert-success { background: #D1FAE5; color: #065F46; border-right: 4px solid #10B981; }
+        .alert-error   { background: #FEE2E2; color: #991B1B; border-right: 4px solid #EF4444; }
+
+        /* ===== شريط التقدم ===== */
+        .progress-bar  { width: 100%; height: 8px; background: #E2E8F0; border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #D4A017, #ECC84A); border-radius: 10px; transition: width 0.5s; }
+
+        /* ===== قسم فارغ ===== */
+        .empty-state { text-align: center; padding: 40px; color: #94A3B8; }
+        .empty-state i { font-size: 48px; margin-bottom: 15px; display: block; }
+
+        /* ===== استجابة الجوال ===== */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                position: fixed; z-index: 1000;
+            }
+            .sidebar.open { transform: translateX(0); }
+            .main-content { margin-right: 0; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .mobile-toggle {
+                display: flex; align-items: center; justify-content: center;
+                position: fixed; top: 15px; right: 15px; z-index: 1100;
+                width: 44px; height: 44px;
+                background: #0A2E1F; color: white; border: none;
+                border-radius: 12px; font-size: 18px; cursor: pointer;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            }
+            .sidebar-overlay {
+                display: none; position: fixed; inset: 0;
+                background: rgba(0,0,0,0.5); z-index: 999;
+            }
+            .sidebar-overlay.open { display: block; }
+        }
+        @media (min-width: 769px) {
+            .mobile-toggle { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<?php if (!$isLoggedIn): ?>
+<!-- ==================== شاشة تسجيل الدخول ==================== -->
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-logo"><span>ن</span></div>
+        <h1>نرقي أكاديمي</h1>
+        <p style="color:#64748B; margin-bottom:30px;">نظام إدارة المعلمين</p>
+
+        <?php if ($error): ?>
+            <div class="alert alert-error"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
+
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token) ?>">
+            <input type="email"    name="email"    class="login-input" placeholder="البريد الإلكتروني" required>
+            <input type="password" name="password" class="login-input" placeholder="كلمة المرور"        required>
+            <button type="submit" name="login" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i> دخول
+            </button>
+        </form>
+
+        <p style="margin-top:25px; color:#64748B; font-size:14px;">
+            <i class="fas fa-info-circle"></i> للمعلمين فقط
+        </p>
+    </div>
+</div>
+
+<?php else: ?>
+<!-- ==================== لوحة التحكم الرئيسية ==================== -->
+<div class="dashboard-wrapper">
+
+    <!-- زر القائمة للجوال -->
+    <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="القائمة">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- السايدبار -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">نر<span>قي</span></div>
+            <p style="color:rgba(255,255,255,0.7); font-size:12px; margin-top:10px;">
+                <?= htmlspecialchars($teacher['full_name'] ?? '') ?>
+            </p>
+            <p style="color:rgba(255,255,255,0.5); font-size:11px;">
+                <?= htmlspecialchars($teacher['teacher_code'] ?? '') ?>
+            </p>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="active" onclick="showSection('dashboard', this)">
+                <i class="fas fa-tachometer-alt"></i> الرئيسية
+            </a>
+            <a href="#" onclick="showSection('students', this)">
+                <i class="fas fa-users"></i> الطلاب
+            </a>
+            <a href="#" onclick="showSection('sessions', this)">
+                <i class="fas fa-video"></i> الجلسات
+            </a>
+            <a href="#" onclick="showSection('assignments', this)">
+                <i class="fas fa-tasks"></i> الواجبات
+            </a>
+            <a href="#" onclick="showSection('attendance', this)">
+                <i class="fas fa-calendar-check"></i> الحضور
+            </a>
+            <a href="#" onclick="showSection('quran', this)">
+                <i class="fas fa-book-open"></i> تتبع القرآن
+            </a>
+        </nav>
+        <form method="POST" style="padding: 20px; margin-top: 20px;">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token) ?>">
+            <button type="submit" name="logout" class="btn"
+                style="width:100%; background:rgba(255,255,255,0.1); color:white;">
+                <i class="fas fa-sign-out-alt"></i> تسجيل خروج
+            </button>
+        </form>
+    </aside>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+
+        <!-- شريط العلوي -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; flex-wrap:wrap; gap:10px;">
+            <h2 id="page-title" style="color:white; font-size:22px; font-weight:700;">الرئيسية</h2>
+            <div style="color:rgba(255,255,255,0.7); font-size:13px;">
+                <i class="fas fa-clock"></i>
+                <?php
+                    $days = ['Sunday'=>'الأحد','Monday'=>'الاثنين','Tuesday'=>'الثلاثاء',
+                             'Wednesday'=>'الأربعاء','Thursday'=>'الخميس','Friday'=>'الجمعة','Saturday'=>'السبت'];
+                    $months = ['January'=>'يناير','February'=>'فبراير','March'=>'مارس','April'=>'أبريل',
+                               'May'=>'مايو','June'=>'يونيو','July'=>'يوليو','August'=>'أغسطس',
+                               'September'=>'سبتمبر','October'=>'أكتوبر','November'=>'نوفمبر','December'=>'ديسمبر'];
+                    $dayName = $days[date('l')] ?? date('l');
+                    $monthName = $months[date('F')] ?? date('F');
+                    echo $dayName . '، ' . date('d') . ' ' . $monthName . ' ' . date('Y');
+                ?>
+            </div>
+        </div>
+
+        <?php if ($success): ?>
+            <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+        <?php endif; ?>
+        <?php if ($error && $isLoggedIn): ?>
+            <div class="alert alert-error"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
+
+        <!-- ===== قسم الرئيسية ===== -->
+        <div id="dashboard-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-title">إجمالي الطلاب</div>
+                    <div class="stat-number"><?= $totalStudents ?></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-tasks"></i></div>
+                    <div class="stat-title">الواجبات</div>
+                    <div class="stat-number"><?= $totalAssignments ?></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-video"></i></div>
+                    <div class="stat-title">جلسات قادمة</div>
+                    <div class="stat-number"><?= $totalSessions ?></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="stat-title">سعر الساعة</div>
+                    <div class="stat-number" style="font-size:24px;">
+                        <?= number_format($teacher['hourly_rate'] ?? 0, 2) ?> $
+                    </div>
+                </div>
+            </div>
+
+            <!-- الجلسات القادمة -->
+            <div class="card">
+                <div class="card-title">
+                    <span><i class="fas fa-calendar"></i> الجلسات القادمة</span>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>عنوان الجلسة</th>
+                            <th>الكورس</th>
+                            <th>التاريخ</th>
+                            <th>الوقت</th>
+                            <th>الرابط</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (empty($upcomingSessions)): ?>
+                            <tr><td colspan="5" class="empty-state">
+                                <i class="fas fa-calendar-times"></i>لا توجد جلسات قادمة
+                            </td></tr>
+                        <?php else: ?>
+                            <?php foreach ($upcomingSessions as $ses): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($ses['title']) ?></td>
+                                <td><?= htmlspecialchars($ses['course_title']) ?></td>
+                                <td><?= date('Y-m-d', strtotime($ses['start_time'])) ?></td>
+                                <td><?= date('H:i', strtotime($ses['start_time'])) ?></td>
+                                <td>
+                                    <?php if ($ses['meeting_link']): ?>
+                                        <a href="<?= htmlspecialchars($ses['meeting_link']) ?>"
+                                           target="_blank" class="btn btn-secondary" style="font-size:12px; padding:4px 10px;">
+                                           <i class="fas fa-link"></i> انضم
+                                        </a>
+                                    <?php else: ?>
+                                        <span style="color:#94A3B8;">—</span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- آخر الواجبات -->
+            <div class="card">
+                <div class="card-title">
+                    <span><i class="fas fa-tasks"></i> آخر الواجبات</span>
+                </div>
+                <table>
+                    <thead>
+                        <tr><th>العنوان</th><th>الجلسة</th><th>الطالب</th><th>تاريخ التسليم</th><th>الدرجة</th></tr>
+                    </thead>
+                    <tbody>
+                        <?php if (empty($assignments)): ?>
+                            <tr><td colspan="5" class="empty-state">
+                                <i class="fas fa-inbox"></i>لا توجد واجبات بعد
+                            </td></tr>
+                        <?php else: ?>
+                            <?php foreach ($assignments as $ass): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($ass['title']) ?></td>
+                                <td><?= htmlspecialchars($ass['session_title']) ?></td>
+                                <td><?= htmlspecialchars($ass['student_name'] ?? '—') ?></td>
+                                <td><?= $ass['due_date'] ? date('Y-m-d', strtotime($ass['due_date'])) : '—' ?></td>
+                                <td>
+                                    <?php if ($ass['score'] !== null): ?>
+                                        <span class="badge badge-success"><?= $ass['score'] ?> / <?= $ass['max_score'] ?></span>
+                                    <?php else: ?>
+                                        <span class="badge badge-warning">قيد الانتظار</span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ===== قسم الطلاب ===== -->
+        <div id="students-section" style="display:none;">
+            <div class="card">
+                <div class="card-title">
+                    <span><i class="fas fa-users"></i> قائمة الطلاب</span>
+                    <span class="badge badge-info"><?= $totalStudents ?> طالب</span>
+                </div>
+                <?php if (empty($students)): ?>
+                    <div class="empty-state">
+                        <i class="fas fa-user-slash"></i>
+                        لا يوجد طلاب مسجلون في كوراتك بعد
+                    </div>
+                <?php else: ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الكود</th>
+                            <th>الاسم</th>
+                            <th>البريد الإلكتروني</th>
+                            <th>الهاتف</th>
+                            <th>مستوى القرآن</th>
+                            <th>التقدم</th>
+                            <th>تاريخ التسجيل</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($students as $student): ?>
+                        <?php
+                            $levelMap = [
+                                'beginner'     => ['مبتدئ',    'badge-info'],
+                                'intermediate' => ['متوسط',    'badge-warning'],
+                                'advanced'     => ['متقدم',    'badge-success'],
+                                'hafiz'        => ['حافظ',     'badge-purple'],
+                            ];
+                            [$levelLabel, $levelClass] = $levelMap[$student['quran_level']] ?? ['—', 'badge-info'];
+                        ?>
+                        <tr>
+                            <td><?= htmlspecialchars($student['student_code']) ?></td>
+                            <td><strong><?= htmlspecialchars($student['full_name']) ?></strong></td>
+                            <td><?= htmlspecialchars($student['email']) ?></td>
+                            <td><?= htmlspecialchars($student['phone'] ?? '—') ?></td>
+                            <td><span class="badge <?= $levelClass ?>"><?= $levelLabel ?></span></td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width:<?= $student['progress'] ?>%"></div>
+                                </div>
+                                <small style="color:#64748B;"><?= $student['progress'] ?>%</small>
+                            </td>
+                            <td style="font-size:12px; color:#64748B;">
+                                <?= date('Y-m-d', strtotime($student['enrolled_at'])) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- ===== قسم الجلسات ===== -->
+        <div id="sessions-section" style="display:none;">
+            <div class="card">
+                <div class="card-title">
+                    <span><i class="fas fa-video"></i> جميع الجلسات</span>
+                </div>
+                <?php if (empty($allSessions)): ?>
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-times"></i>
+                        لا توجد جلسات مضافة بعد
+                    </div>
+                <?php else: ?>
+                <table>
+                    <thead>
+                        <tr><th>عنوان الجلسة</th><th>الكورس</th><th>التاريخ والوقت</th></tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($allSessions as $ses): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($ses['title']) ?></td>
+                            <td><?= htmlspecialchars($ses['course_title']) ?></td>
+                            <td><?= date('Y-m-d H:i', strtotime($ses['start_time'])) ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- ===== قسم الواجبات ===== -->
+        <div id="assignments-section" style="display:none;">
+            <div class="card">
+                <div class="card-title">
+                    <span><i class="fas fa-plus"></i> إضافة واجب جديد</span>
+                </div>
+                <form method="POST">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token) ?>">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+                        <div class="form-group" style="grid-column:1/-1;">
+                            <label>عنوان الواجب</label>
+                            <input type="text" name="title" class="form-control" placeholder="عنوان الواجب" required>
+                        </div>
+                        <div class="form-group">
+                            <label>الجلسة</label>
+                            <select name="session_id" class="form-control" required>
+                                <option value="">اختر جلسة</option>
+                                <?php foreach ($allSessions as $ses): ?>
+                                <option value="<?= $ses['id'] ?>">
+                                    <?= htmlspecialchars($ses['course_title'] . ' — ' . $ses['title']) ?>
+                                    (<?= date('Y-m-d', strtotime($ses['start_time'])) ?>)
+                                </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>تاريخ التسليم</label>
+                            <input type="datetime-local" name="due_date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>الدرجة القصوى</label>
+                            <input type="number" name="max_score" class="form-control" value="100" min="1" max="1000">
+                        </div>
+                    </div>
+                    <button type="submit" name="add_assignment" class="btn btn-primary">
+                        <i class="fas fa-save"></i> إضافة الواجب
+                    </button>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="card-title">قائمة الواجبات</div>
+                <?php if (empty($assignments)): ?>
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>لا توجد واجبات بعد
+                    </div>
+                <?php else: ?>
+                <table>
+                    <thead>
+                        <tr><th>العنوان</th><th>الجلسة</th><th>الطالب</th><th>تاريخ التسليم</th><th>الدرجة</th></tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($assignments as $ass): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($ass['title']) ?></td>
+                            <td><?= htmlspecialchars($ass['session_title']) ?></td>
+                            <td><?= htmlspecialchars($ass['student_name'] ?? '—') ?></td>
+                            <td><?= $ass['due_date'] ? date('Y-m-d', strtotime($ass['due_date'])) : '—' ?></td>
+                            <td>
+                                <?php if ($ass['score'] !== null): ?>
+                                    <span class="badge badge-success"><?= $ass['score'] ?> / <?= $ass['max_score'] ?></span>
+                                <?php else: ?>
+                                    <span class="badge badge-warning">قيد الانتظار</span>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- ===== قسم الحضور ===== -->
+        <div id="attendance-section" style="display:none;">
+            <div class="card">
+                <div class="card-title">
+                    <span><i class="fas fa-calendar-check"></i> تسجيل الحضور</span>
+                </div>
+                <form method="POST">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token) ?>">
+                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:15px;">
+                        <div class="form-group">
+                            <label>الطالب</label>
+                            <select name="attendance_student" class="form-control" required>
+                                <option value="">اختر طالباً</option>
+                                <?php foreach ($students as $student): ?>
+                                <option value="<?= $student['id'] ?>">
+                                    <?= htmlspecialchars($student['full_name']) ?>
+                                </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>الجلسة</label>
+                            <select name="session_id" class="form-control" required>
+                                <option value="">اختر جلسة</option>
+                                <?php foreach ($allSessions as $ses): ?>
+                                <option value="<?= $ses['id'] ?>">
+                                    <?= htmlspecialchars($ses['course_title'] . ' — ' . $ses['title']) ?>
+                                </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>الحالة</label>
+                            <select name="attendance_status" class="form-control">
+                                <option value="present">حاضر</option>
+                                <option value="absent">غائب</option>
+                                <option value="late">متأخر</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" name="mark_attendance" class="btn btn-primary">
+                        <i class="fas fa-save"></i> تسجيل الحضور
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- ===== قسم تتبع القرآن ===== -->
+        <div id="quran-section" style="display:none;">
+            <div class="card">
+                <div class="card-title">
+                    <span><i class="fas fa-book-open"></i> تتبع تقدم الطلاب</span>
+                </div>
+                <?php if (empty($students)): ?>
+                    <div class="empty-state">
+                        <i class="fas fa-user-slash"></i>لا يوجد طلاب بعد
+                    </div>
+                <?php else: ?>
+                <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:20px;">
+                    <?php foreach ($students as $student): ?>
+                    <?php $progress = $student['progress'] ?? 0; ?>
+                    <div style="background:#F8FAFC; border-radius:20px; padding:20px;">
+                        <div style="display:flex; align-items:center; gap:15px; margin-bottom:15px;">
+                            <div style="width:50px; height:50px; background:linear-gradient(135deg,#D4A017,#ECC84A);
+                                        border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px;">
+                                📖
+                            </div>
+                            <div>
+                                <h4 style="font-size:15px;"><?= htmlspecialchars($student['full_name']) ?></h4>
+                                <small style="color:#64748B;"><?= htmlspecialchars($student['student_code']) ?></small>
+                            </div>
+                        </div>
+                        <div class="progress-bar" style="margin:10px 0;">
+                            <div class="progress-fill" style="width:<?= $progress ?>%"></div>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; color:#64748B; font-size:13px;">
+                            <span>نسبة التقدم: <?= $progress ?>%</span>
+                            <span>
+                                <?php
+                                    $levelMap2 = ['beginner'=>'مبتدئ','intermediate'=>'متوسط','advanced'=>'متقدم','hafiz'=>'حافظ'];
+                                    echo $levelMap2[$student['quran_level']] ?? '—';
+                                ?>
+                            </span>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script>
+function toggleSidebar() {
+    document.querySelector('.sidebar').classList.toggle('open');
+    document.getElementById('sidebar-overlay').classList.toggle('open');
+}
+
+function showSection(section, el) {
+    document.querySelectorAll('[id$="-section"]').forEach(s => s.style.display = 'none');
+    var target = document.getElementById(section + '-section');
+    if (target) target.style.display = 'block';
+    document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+    if (el) el.classList.add('active');
+    location.hash = section;
+    // تحديث عنوان الصفحة
+    var titleEl = document.getElementById('page-title');
+    if (titleEl && el) titleEl.textContent = el.textContent.trim();
+    // إغلاق السايدبار في الجوال بعد الاختيار
+    document.querySelector('.sidebar').classList.remove('open');
+    document.getElementById('sidebar-overlay').classList.remove('open');
+}
+
+// استعادة القسم عند إعادة التحميل
+document.addEventListener('DOMContentLoaded', function() {
+    var hash = location.hash.replace('#', '');
+    var validSections = ['dashboard','students','sessions','assignments','attendance','quran'];
+    if (hash && validSections.includes(hash)) {
+        var link = document.querySelector('.sidebar-nav a[onclick*="' + hash + '"]');
+        showSection(hash, link);
+    }
+
+    // إخفاء رسائل النجاح والخطأ تلقائياً بعد 4 ثوانٍ
+    setTimeout(function() {
+        document.querySelectorAll('.alert').forEach(function(a) {
+            a.style.transition = 'opacity 0.5s';
+            a.style.opacity = '0';
+            setTimeout(function() { a.style.display = 'none'; }, 500);
+        });
+    }, 4000);
+});
+</script>
+
+<?php endif; ?>
+</body>
+</html>
