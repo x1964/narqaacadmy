@@ -1,724 +1,2274 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" data-theme="light">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="img/logo2.jpeg" type="image/x-icon">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="google-site-verification" content="QFYJlWnnsbcIxq8PY9oZZbAjn10U_DNA0oYGO65Ev2s">
+<title>Narqa Academy | Learn Quran & Arabic Online</title>
+<link rel="shortcut icon" href="img/logo2.jpeg" type="image/x-icon">
 
-<title>Narqa Academy | Learn Quran Online with Certified Al-Azhar Teachers</title>
+<meta name="description" content="Narqa Academy offers online Quran and Arabic learning with expert teachers. Join interactive classes designed for all levels." />
+<meta name="keywords" content="Quran learning, Arabic online, Narqa Academy, learn Quran online, Arabic courses" />
+<meta name="author" content="Narqa Academy" />
+<meta name="theme-color" content="#0D5C46" />
+<meta name="robots" content="index, follow" />
 
-<meta name="description" content="Join Narqa Academy for online Quran memorization, Tajweed, Arabic language courses, and Ijaza programs with certified Al-Azhar teachers. Flexible schedules for kids and adults worldwide.">
+<!-- Open Graph (for sharing on Facebook / WhatsApp) -->
+<meta property="og:title" content="Narqa Academy | Learn Quran & Arabic Online" />
+<meta property="og:description" content="Join Narqa Academy and start learning Quran and Arabic online with expert tutors." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="/og-image.jpg" />
+<meta property="og:url" content="https://www.narqaacademy.com" />
 
-<meta name="keywords" content="Quran online, Quran memorization, Learn Quran online, Tajweed classes, Quran teacher, Al Azhar teachers, Online Islamic courses, Ijaza Quran, Arabic lessons, Quran academy">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Narqa Academy | Learn Quran & Arabic Online" />
+<meta name="twitter:description" content="Learn Quran and Arabic online with expert teachers at Narqa Academy." />
+<meta name="twitter:image" content="/og-image.jpg" />
 
-<meta name="author" content="Narqa Academy">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#0A1F20">
-<!-- Canonical -->
-<link rel="canonical" href="https://narqaacadmy.com/">
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Narqa Academy | Learn Quran Online">
-<meta property="og:description" content="Online Quran memorization, Tajweed, Arabic language, and Ijaza programs with certified Al-Azhar teachers.">
-<meta property="og:url" content="https://narqaacadmy.com/">
-<meta property="og:site_name" content="Narqa Academy">
-<meta property="og:image" content="https://narqaacadmy.com/img/logo2.jpeg">
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Narqa Academy | Learn Quran Online">
-<meta name="twitter:description" content="Learn Quran online with certified Al-Azhar teachers. One-on-one classes and flexible schedules.">
-<meta name="twitter:image" content="https://narqaacadmy.com/img/logo2.jpeg">
-<!-- Favicon -->
-<link rel="icon" type="image/jpeg" href="/img/logo2.jpeg">
-<link rel="apple-touch-icon" href="/img/logo2.jpeg">
 <!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<!-- Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --ink:#0A1F20;
-  --ink-2:#132E30;
-  --ink-3:#1E4547;
-  --gold:#D4A017;
-  --gold-lt:#ECC84A;
-  --gold-glow:rgba(212,160,23,0.18);
-  --cream:#F7F3EE;
-  --cream-2:#EDE8E0;
-  --stone:#C4BAA8;
-  --text:#2C3E2D;
-  --text-2:#5A6B5A;
-  --white:#FFFFFF;
-  --r-lg:2.5rem;
-  --r-md:1.5rem;
-  --r-sm:1rem;
-  --ease:cubic-bezier(0.22,1,0.36,1);
+/* ===== TOKENS ===== */
+:root {
+  --emerald: #0D5C46;
+  --emerald-light: #127a5e;
+  --emerald-dark: #093d2f;
+  --gold: #D4AF37;
+  --gold-light: #e8cb5e;
+  --gold-dark: #b8941e;
+  --bg: #ffffff;
+  --bg-2: #f8f7f4;
+  --bg-3: #f0ede6;
+  --surface: rgba(255,255,255,0.85);
+  --text: #0a0a0a;
+  --text-2: #3d3d3d;
+  --text-3: #777;
+  --border: rgba(13,92,70,0.12);
+  --border-2: rgba(13,92,70,0.22);
+  --shadow-sm: 0 2px 12px rgba(13,92,70,0.06);
+  --shadow-md: 0 8px 40px rgba(13,92,70,0.10);
+  --shadow-lg: 0 24px 80px rgba(13,92,70,0.14);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  --nav-h: 72px;
+  --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
 }
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
-.container{max-width:1300px;margin:0 auto;padding:0 2.5rem}
 
-/* CURSOR */
-.cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transition:transform 0.1s;mix-blend-mode:multiply}
-.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transition:transform 0.15s,opacity 0.15s}
-
-/* NAV */
-.navbar{position:fixed;top:0;width:100%;z-index:1000;padding:1.2rem 0;transition:all 0.5s var(--ease)}
-.navbar.scrolled{background:rgba(10,31,32,0.96);backdrop-filter:blur(20px);padding:0.7rem 0;border-bottom:1px solid rgba(212,160,23,0.1)}
-.navbar .container{display:flex;justify-content:space-between;align-items:center;gap:2rem}
-.logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none}
-.logo-img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);overflow:hidden;background:var(--ink)}
-.logo-img img{width:100%;height:100%;object-fit:cover}
-.logo-text{font-family:'Playfair Display',serif;font-weight:900;font-size:1.5rem;color:#fff;letter-spacing:0.08em}
-.logo-text span{color:var(--gold-lt)}
-.nav-links{display:flex;gap:2.2rem;list-style:none}
-.nav-links a{text-decoration:none;font-weight:500;color:rgba(255,255,255,0.65);transition:color 0.3s;font-size:0.9rem;letter-spacing:0.02em}
-.nav-links a:hover{color:var(--gold-lt)}
-.nav-cta{display:flex;gap:0.8rem;align-items:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.65rem 1.5rem;border-radius:3rem;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.9rem;border:none;cursor:pointer;text-decoration:none;transition:all 0.3s var(--ease)}
-.btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,0.25);color:#fff}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold-lt);transform:translateY(-2px)}
-.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-lt));color:var(--ink);box-shadow:0 4px 24px rgba(212,160,23,0.35)}
-.btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(212,160,23,0.5)}
-.btn-dark{background:var(--ink);color:white}
-.btn-dark:hover{background:var(--ink-3);transform:translateY(-2px)}
-.hamburger{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer}
-
-/* MOBILE MENU */
-.mobile-nav{position:fixed;inset:0;background:var(--ink);z-index:1100;transform:translateX(100%);transition:transform 0.45s var(--ease);display:flex;flex-direction:column;padding:3rem 2rem}
-.mobile-nav.open{transform:translateX(0)}
-.mobile-nav .close-nav{align-self:flex-end;background:none;border:none;color:var(--gold);font-size:2rem;cursor:pointer;margin-bottom:3rem}
-.mobile-nav a{text-decoration:none;color:rgba(255,255,255,0.8);font-size:1.4rem;font-weight:600;padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.06);transition:color 0.3s,padding 0.3s}
-.mobile-nav a:hover{color:var(--gold-lt);padding-left:0.5rem}
-
-/* HERO */
-.hero{min-height:100vh;background:var(--ink);position:relative;display:flex;align-items:center;overflow:hidden;padding-top:5rem}
-.hero-bg-grid{position:absolute;inset:0;background-image:
-  linear-gradient(rgba(212,160,23,0.04) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(212,160,23,0.04) 1px,transparent 1px);
-background-size:60px 60px;pointer-events:none}
-.hero-circle-1{position:absolute;top:-20%;right:-10%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(212,160,23,0.08) 0%,transparent 70%);pointer-events:none}
-.hero-circle-2{position:absolute;bottom:-30%;left:-15%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(30,69,71,0.6) 0%,transparent 70%);pointer-events:none}
-.hero-bottom-fade{position:absolute;bottom:0;left:0;width:100%;height:200px;background:linear-gradient(to top,var(--cream),transparent);z-index:2;pointer-events:none}
-.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:3;padding:3rem 0}
-.hero-left{}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:0.6rem;border:1px solid rgba(212,160,23,0.3);background:rgba(212,160,23,0.06);color:var(--gold-lt);padding:0.45rem 1.2rem;border-radius:3rem;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2rem;backdrop-filter:blur(8px)}
-.hero-eyebrow i{font-size:0.9rem}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:900;line-height:1.05;color:#fff;margin-bottom:1.8rem;letter-spacing:-0.01em}
-.hero h1 em{font-style:normal;color:var(--gold-lt)}
-.hero-desc{color:rgba(255,255,255,0.55);font-size:1.1rem;line-height:1.75;max-width:480px;margin-bottom:2.5rem;font-weight:400}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem}
-.hero-divider{width:100%;height:1px;background:rgba(255,255,255,0.07);margin-bottom:2.5rem}
-.hero-stats-row{display:flex;gap:3rem;flex-wrap:wrap}
-.hero-stat .num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--gold-lt);line-height:1}
-.hero-stat .lbl{font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:4px;letter-spacing:0.04em}
-
-/* HERO RIGHT */
-.hero-right{display:flex;justify-content:center;position:relative}
-.hero-main-img{width:100%;max-width:480px;aspect-ratio:4/5;border-radius:2.5rem;overflow:hidden;border:1px solid rgba(212,160,23,0.15);box-shadow:0 40px 80px rgba(0,0,0,0.5);position:relative}
-.hero-main-img img{width:100%;height:100%;object-fit:cover}
-.hero-glow-behind{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:140%;height:140%;background:radial-gradient(circle,rgba(212,160,23,0.07) 0%,transparent 65%);pointer-events:none;z-index:-1}
-.badge-float{position:absolute;background:rgba(10,31,32,0.88);backdrop-filter:blur(16px);border:1px solid rgba(212,160,23,0.2);border-radius:1.2rem;padding:0.8rem 1.2rem;color:#fff;font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:0.6rem;animation:levitate 4s ease-in-out infinite}
-.badge-float i{color:var(--gold);font-size:1rem}
-.badge-float.b1{top:12%;right:-30px;animation-delay:0s}
-.badge-float.b2{bottom:18%;left:-30px;animation-delay:1.8s}
-@keyframes levitate{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-
-/* MARQUEE STRIP */
-.marquee-wrap{background:var(--gold);padding:0.9rem 0;overflow:hidden;white-space:nowrap}
-.marquee-track{display:inline-flex;gap:2.5rem;animation:marquee 22s linear infinite}
-.marquee-item{display:inline-flex;align-items:center;gap:0.6rem;font-weight:700;font-size:0.85rem;color:var(--ink);text-transform:uppercase;letter-spacing:0.08em}
-.marquee-dot{width:6px;height:6px;background:var(--ink);border-radius:50%;opacity:0.4}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* SECTION COMMON */
-.section{padding:7rem 0}
-.section-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--gold);margin-bottom:1rem}
-.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--gold);border-radius:2px}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:900;color:var(--ink);line-height:1.15;letter-spacing:-0.01em}
-.section-desc{color:var(--text-2);font-size:1rem;line-height:1.7;max-width:540px}
-.section-head{margin-bottom:4rem}
-.section-head.center{text-align:center}
-.section-head.center .section-label{justify-content:center}
-.section-head.center .section-desc{margin:0 auto}
-
-/* FEATURES */
-.features-section{background:var(--cream)}
-.features-bento{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:1.2rem}
-.feat-card{background:var(--white);border-radius:var(--r-lg);padding:2.2rem;border:1px solid rgba(0,0,0,0.05);transition:all 0.4s var(--ease);position:relative;overflow:hidden}
-.feat-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-lt));transform:scaleX(0);transform-origin:left;transition:transform 0.4s var(--ease)}
-.feat-card:hover::after{transform:scaleX(1)}
-.feat-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px -12px rgba(0,0,0,0.1)}
-.feat-card.wide{grid-column:span 2}
-.feat-icon{width:58px;height:58px;background:linear-gradient(135deg,var(--ink),var(--ink-3));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--gold-lt);margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(10,31,32,0.2)}
-.feat-card h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:800;color:var(--ink);margin-bottom:0.6rem}
-.feat-card p{color:var(--text-2);font-size:0.92rem;line-height:1.65}
-.feat-card.featured{background:linear-gradient(135deg,var(--ink),var(--ink-3));color:white}
-.feat-card.featured h3{color:#fff}
-.feat-card.featured p{color:rgba(255,255,255,0.55)}
-.feat-card.featured .feat-icon{background:rgba(212,160,23,0.15);border:1px solid rgba(212,160,23,0.2)}
-
-/* TEACHERS */
-.teachers-section{background:var(--cream-2)}
-.teachers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem}
-.teacher-card{background:var(--white);border-radius:var(--r-lg);overflow:hidden;border:1px solid rgba(0,0,0,0.05);transition:all 0.4s var(--ease);display:flex;flex-direction:column}
-.teacher-card:hover{transform:translateY(-10px);box-shadow:0 32px 60px -18px rgba(0,0,0,0.15)}
-.teacher-img-wrap{height:280px;position:relative;overflow:hidden;background:var(--ink-3);display:flex;align-items:center;justify-content:center}
-.teacher-avatar{font-family:'Playfair Display',serif;font-size:7rem;color:rgba(212,160,23,0.6);line-height:1}
-.teacher-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,32,0.6) 0%,transparent 50%)}
-.verified-pill{position:absolute;top:1.2rem;right:1.2rem;background:rgba(10,31,32,0.85);backdrop-filter:blur(8px);color:#fff;padding:0.3rem 0.9rem;border-radius:3rem;font-size:0.73rem;font-weight:600;display:flex;align-items:center;gap:0.35rem;z-index:2;border:1px solid rgba(212,160,23,0.25)}
-.verified-pill i{color:var(--gold)}
-.teacher-body{padding:1.8rem;flex:1;display:flex;flex-direction:column;gap:1rem}
-.teacher-body h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800;color:var(--ink)}
-.teacher-body p{font-size:0.88rem;color:var(--text-2);line-height:1.5}
-.teacher-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
-.tag{background:var(--cream);border:1px solid var(--cream-2);padding:0.25rem 0.8rem;border-radius:3rem;font-size:0.75rem;font-weight:600;color:var(--text-2)}
-.teacher-body .btn{margin-top:auto}
-
-/* SCHEDULE */
-.schedule-section{background:var(--cream)}
-.sched-tabs{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem}
-.tab-btn{background:var(--white);border:1.5px solid var(--cream-2);padding:0.5rem 1.3rem;border-radius:3rem;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-2);cursor:pointer;transition:all 0.25s}
-.tab-btn:hover,.tab-btn.active{background:var(--ink);color:white;border-color:var(--ink)}
-.sched-wrapper{background:var(--white);border-radius:var(--r-lg);overflow:hidden;border:1px solid rgba(0,0,0,0.06);box-shadow:0 20px 50px -15px rgba(0,0,0,0.08)}
-.sched-header{background:var(--ink);display:grid;grid-template-columns:1.2fr 1.5fr 1fr 1fr 1fr;gap:0;padding:0}
-.sched-header span{padding:1.1rem 1.2rem;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.6);display:flex;align-items:center;gap:0.4rem}
-.sched-header span i{color:var(--gold);font-size:0.8rem}
-.sched-row{display:grid;grid-template-columns:1.2fr 1.5fr 1fr 1fr 1fr;border-bottom:1px solid var(--cream-2);transition:background 0.2s;align-items:center}
-.sched-row:last-child{border-bottom:none}
-.sched-row:hover{background:rgba(212,160,23,0.03)}
-.sched-row>*{padding:1rem 1.2rem;font-size:0.88rem}
-.sched-row .time{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
-.sched-row .teacher{color:var(--text-2);font-weight:500}
-.level-pill{display:inline-block;padding:0.2rem 0.75rem;border-radius:3rem;font-size:0.72rem;font-weight:700}
-.level-pill.beginner{background:rgba(16,185,129,0.1);color:#059669}
-.level-pill.intermediate{background:rgba(59,130,246,0.1);color:#2563EB}
-.level-pill.advanced{background:rgba(212,160,23,0.12);color:var(--gold)}
-.book-btn{background:var(--gold);color:var(--ink);border:none;padding:0.4rem 1.1rem;border-radius:3rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.78rem;transition:all 0.25s;display:inline-flex;align-items:center;gap:0.4rem}
-.book-btn:hover{background:var(--gold-lt);transform:scale(1.05)}
-.no-sess{text-align:center;padding:3rem;color:var(--stone);font-weight:500;font-style:italic}
-
-/* STATS BELT */
-.stats-belt{background:linear-gradient(135deg,var(--ink) 0%,var(--ink-2) 50%,var(--ink-3) 100%);padding:5rem 0;position:relative;overflow:hidden}
-.stats-belt::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(212,160,23,0.05) 1px,transparent 1px);background-size:30px 30px}
-.stats-belt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative;z-index:1}
-.stat-block{text-align:center;padding:2rem;border:1px solid rgba(255,255,255,0.05);border-radius:var(--r-md);transition:border-color 0.3s,background 0.3s}
-.stat-block:hover{border-color:rgba(212,160,23,0.25);background:rgba(212,160,23,0.03)}
-.stat-block i{font-size:2rem;color:var(--gold);margin-bottom:1rem;display:block;filter:drop-shadow(0 0 12px rgba(212,160,23,0.3))}
-.stat-block .big{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:#fff;line-height:1}
-.stat-block .small{font-size:0.82rem;color:rgba(255,255,255,0.45);margin-top:0.5rem;font-weight:500}
-
-/* CONTACT */
-.contact-section{background:var(--cream-2)}
-.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:3.5rem;align-items:start}
-.contact-left{}
-.contact-info-cards{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
-.info-card{background:var(--white);border-radius:var(--r-md);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1.2rem;border:1px solid rgba(0,0,0,0.05);transition:all 0.3s var(--ease)}
-.info-card:hover{border-color:var(--gold);transform:translateX(4px)}
-.info-card-icon{width:46px;height:46px;flex-shrink:0;background:linear-gradient(135deg,var(--ink),var(--ink-3));color:var(--gold-lt);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
-.info-card-text strong{display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--stone);font-weight:700;margin-bottom:2px}
-.info-card-text a,.info-card-text span{color:var(--ink);font-weight:600;font-size:0.92rem;text-decoration:none}
-.info-card-text a:hover{color:var(--gold)}
-.socials{display:flex;gap:0.8rem;margin-top:1.5rem}
-.socials a{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;transition:all 0.3s var(--ease);box-shadow:0 4px 16px rgba(0,0,0,0.15)}
-.socials a:hover{transform:translateY(-4px) scale(1.1);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
-.contact-form{background:var(--white);border-radius:var(--r-lg);padding:2.5rem;border:1px solid rgba(0,0,0,0.05);box-shadow:0 20px 50px -15px rgba(0,0,0,0.08)}
-.form-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;color:var(--ink);margin-bottom:1.5rem}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.fg{margin-bottom:1rem}
-.fg label{display:block;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-2);margin-bottom:0.4rem}
-.fg input,.fg textarea{width:100%;padding:0.85rem 1.1rem;border:1.5px solid var(--cream-2);border-radius:var(--r-sm);font-family:'DM Sans',sans-serif;font-size:0.92rem;color:var(--ink);background:var(--cream);transition:all 0.3s;outline:none}
-.fg input:focus,.fg textarea:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px var(--gold-glow)}
-.fg textarea{resize:vertical;min-height:110px}
-
-/* FOOTER */
-.footer{background:var(--ink);color:white;padding:3rem 0 2rem}
-.footer-inner{display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center}
-.footer-logo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#fff}
-.footer-logo span{color:var(--gold-lt)}
-.footer-links{display:flex;gap:1.5rem}
-.footer-links a{color:rgba(255,255,255,0.4);font-size:0.82rem;text-decoration:none;transition:color 0.3s}
-.footer-links a:hover{color:var(--gold-lt)}
-.footer-copy{color:rgba(255,255,255,0.3);font-size:0.82rem;border-top:1px solid rgba(255,255,255,0.07);width:100%;padding-top:1.5rem;margin-top:0.5rem}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}
-.reveal.visible{opacity:1;transform:none}
-
-/* SCROLL TOP */
-.scroll-top{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;background:var(--gold);color:var(--ink);border:none;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all 0.35s var(--ease);z-index:500;box-shadow:0 6px 20px rgba(212,160,23,0.4)}
-.scroll-top.visible{opacity:1;visibility:visible}
-.scroll-top:hover{transform:translateY(-4px) scale(1.1)}
-
-/* TOAST */
-.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(120px);background:var(--ink);color:white;padding:1rem 2rem;border-radius:var(--r-md);font-weight:600;font-size:0.9rem;z-index:9999;opacity:0;transition:all 0.4s var(--ease);box-shadow:0 12px 40px rgba(0,0,0,0.25);display:flex;align-items:center;gap:0.7rem;border:1px solid rgba(212,160,23,0.2)}
-.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-.toast i{color:var(--gold)}
-
-/* RESPONSIVE */
-@media(max-width:1024px){
-  .features-bento{grid-template-columns:1fr 1fr}
-  .feat-card.wide{grid-column:span 1}
-  .stats-belt-grid{grid-template-columns:1fr 1fr}
+[data-theme="dark"] {
+  --bg: #060f0c;
+  --bg-2: #0c1a15;
+  --bg-3: #111f19;
+  --surface: rgba(12,26,21,0.90);
+  --text: #f0ede6;
+  --text-2: #b8c4be;
+  --text-3: #6b8077;
+  --border: rgba(212,175,55,0.12);
+  --border-2: rgba(212,175,55,0.22);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 40px rgba(0,0,0,0.4);
+  --shadow-lg: 0 24px 80px rgba(0,0,0,0.5);
 }
-@media(max-width:900px){
-  .hero-inner{grid-template-columns:1fr;text-align:center}
-  .hero h1{font-size:clamp(2.4rem,7vw,3.5rem)}
-  .hero-desc{margin:0 auto 2.5rem}
-  .hero-actions{justify-content:center}
-  .hero-stats-row{justify-content:center}
-  .hero-right{order:-1}
-  .hero-main-img{max-width:340px}
-  .badge-float{display:none}
-  .contact-grid{grid-template-columns:1fr}
-  .sched-header,.sched-row{grid-template-columns:1fr 1.2fr 0.8fr 0.8fr 0.8fr;font-size:0.8rem}
+
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background var(--transition), color var(--transition);
+  overflow-x: hidden;
 }
-@media(max-width:768px){
-  .nav-links,.nav-cta{display:none}
-  .hamburger{display:block}
-  .container{padding:0 1.5rem}
-  .section{padding:5rem 0}
-  .features-bento{grid-template-columns:1fr}
-  .teachers-grid{grid-template-columns:1fr}
-  .stats-belt-grid{grid-template-columns:1fr 1fr}
-  .form-row{grid-template-columns:1fr}
-  .sched-header,.sched-row{grid-template-columns:1fr 1.2fr 1fr 0fr 0.8fr}
-  .sched-header span:nth-child(4),.sched-row>*:nth-child(4){display:none}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; }
+ul { list-style: none; }
+
+/* ===== UTILITY ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.container-wide { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--emerald); background: rgba(13,92,70,0.08);
+  padding: 5px 12px; border-radius: 100px;
+  border: 1px solid rgba(13,92,70,0.15);
+}
+[data-theme="dark"] .tag { color: var(--gold); background: rgba(212,175,55,0.1); border-color: rgba(212,175,55,0.2); }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600; letter-spacing: 0.01em;
+  padding: 13px 28px; border-radius: 100px;
+  transition: all var(--transition); border: none; outline: none;
+}
+.btn-primary {
+  background: var(--emerald); color: #fff;
+  box-shadow: 0 4px 20px rgba(13,92,70,0.3);
+}
+.btn-primary:hover { background: var(--emerald-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(13,92,70,0.4); }
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(212,175,55,0.35);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(212,175,55,0.5); }
+.btn-outline {
+  background: transparent; color: var(--text);
+  border: 1.5px solid var(--border-2);
+}
+.btn-outline:hover { background: var(--bg-2); border-color: var(--emerald); color: var(--emerald); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--text-2); padding: 10px 16px; }
+.btn-ghost:hover { color: var(--emerald); }
+
+.section-label { margin-bottom: 16px; }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700; line-height: 1.15;
+  color: var(--text); margin-bottom: 18px;
+}
+.section-subtitle { font-size: 17px; color: var(--text-2); line-height: 1.7; max-width: 560px; }
+.section-header { margin-bottom: 64px; }
+.section-header.center { text-align: center; }
+.section-header.center .section-subtitle { margin: 0 auto; }
+
+.glass {
+  background: var(--surface);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+}
+
+.footer-social-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: white;
+  background: rgba(255,255,255,0.1);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.footer-social-btn:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== NAV ===== */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  transition: all var(--transition);
+}
+#nav.scrolled {
+  background: var(--surface);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.nav-inner {
+  height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 32px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700;
+  color: var(--emerald); flex-shrink: 0;
+}
+[data-theme="dark"] .nav-logo { color: var(--gold); }
+.nav-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-link {
+  font-size: 14px; font-weight: 500; color: var(--text-2);
+  padding: 8px 14px; border-radius: var(--radius-sm);
+  transition: all var(--transition); background: none; border: none;
+}
+.nav-link:hover, .nav-link.active { color: var(--emerald); background: rgba(13,92,70,0.07); }
+[data-theme="dark"] .nav-link:hover, [data-theme="dark"] .nav-link.active { color: var(--gold); background: rgba(212,175,55,0.08); }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.theme-toggle {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--bg-2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; transition: all var(--transition); flex-shrink: 0;
+}
+.theme-toggle:hover { border-color: var(--gold); transform: rotate(20deg); }
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  width: 42px; height: 42px; border-radius: var(--radius-sm);
+  background: var(--bg-2); border: 1px solid var(--border);
+  align-items: center; justify-content: center; padding: 10px;
+}
+.hamburger span { width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: all var(--transition); }
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 99;
+  background: var(--bg); padding: calc(var(--nav-h) + 24px) 24px 24px;
+  flex-direction: column; gap: 8px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-link {
+  font-size: 18px; font-weight: 500; color: var(--text-2);
+  padding: 14px 18px; border-radius: var(--radius-md);
+  transition: all var(--transition); background: none; border: none; text-align: left; width: 100%;
+  display: flex; align-items: center; gap: 10px;
+}
+.mobile-link:hover { color: var(--emerald); background: var(--bg-2); }
+html[dir="rtl"] .mobile-link { text-align: right; }
+
+/* ===== PAGE VISIBILITY ===== */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh; padding-top: var(--nav-h);
+  display: flex; align-items: center; position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: radial-gradient(ellipse 80% 70% at 60% 40%, rgba(13,92,70,0.06) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 50% at 20% 80%, rgba(212,175,55,0.06) 0%, transparent 60%);
+}
+[data-theme="dark"] .hero-bg {
+  background: radial-gradient(ellipse 80% 70% at 60% 40%, rgba(13,92,70,0.18) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 50% at 20% 80%, rgba(212,175,55,0.08) 0%, transparent 60%);
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 0%, transparent 80%);
+}
+
+.teacher-avatar{
+    width:120px;
+    height:120px;
+    margin:0 auto 15px;
+    border-radius:50%;
+    overflow:hidden;
+    border:4px solid #0D5C46;
+}
+
+.teacher-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.hero-content { position: relative; z-index: 1; padding: 80px 0; width: 100%; }
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.hero-eyebrow { margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.hero-line { width: 32px; height: 2px; background: var(--gold); border-radius: 2px; }
+.hero-eyebrow-text { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); }
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 5.5vw, 70px);
+  font-weight: 700; line-height: 1.08;
+  color: var(--text); margin-bottom: 28px;
+}
+.hero-title em { font-style: italic; color: var(--emerald); }
+[data-theme="dark"] .hero-title em { color: var(--gold); }
+.hero-sub { font-size: 18px; color: var(--text-2); line-height: 1.75; margin-bottom: 40px; max-width: 480px; }
+.hero-cta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.hero-stats { display: flex; align-items: center; gap: 32px; margin-top: 52px; padding-top: 40px; border-top: 1px solid var(--border); }
+.hero-stat-num { font-size: 28px; font-weight: 700; color: var(--emerald); font-family: 'Playfair Display', serif; }
+[data-theme="dark"] .hero-stat-num { color: var(--gold); }
+.hero-stat-label { font-size: 13px; color: var(--text-3); }
+
+/* Hero Visual */
+.hero-visual { position: relative; }
+.hero-card-main {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(20px);
+}
+.hero-quran-text {
+  font-family: 'Amiri', serif;
+  font-size: 28px; text-align: center; line-height: 2;
+  color: var(--emerald); margin-bottom: 20px;
+  padding: 20px; background: var(--bg-2); border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+[data-theme="dark"] .hero-quran-text { color: var(--gold); }
+.hero-card-footer { display: flex; align-items: center; justify-content: space-between; }
+.hero-badge { display: flex; align-items: center; gap: 8px; }
+.hero-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+.hero-badge-text { font-size: 13px; color: var(--text-2); font-weight: 500; }
+.hero-teacher { display: flex; align-items: center; gap: 10px; }
+.hero-teacher-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: #fff; font-weight: 600;
+}
+.hero-teacher-info { font-size: 12px; color: var(--text-3); }
+.hero-teacher-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.hero-float-card {
+  position: absolute; padding: 14px 18px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-md); box-shadow: var(--shadow-md);
+  backdrop-filter: blur(16px);
+  animation: float 4s ease-in-out infinite;
+}
+.hero-float-1 { top: -24px; right: -20px; }
+.hero-float-2 { bottom: -20px; left: -20px; animation-delay: 2s; }
+.float-icon { font-size: 22px; margin-bottom: 4px; }
+.float-label { font-size: 11px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; }
+.float-value { font-size: 16px; font-weight: 700; color: var(--emerald); }
+[data-theme="dark"] .float-value { color: var(--gold); }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* ===== MARQUEE STRIP ===== */
+.strip {
+  background: var(--emerald); color: rgba(255,255,255,0.8);
+  padding: 14px 0; overflow: hidden; white-space: nowrap;
+}
+[data-theme="dark"] .strip { background: var(--gold-dark); }
+.strip-inner { display: inline-flex; animation: marquee 28s linear infinite; }
+.strip-inner span { padding: 0 28px; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; }
+.strip-dot { color: var(--gold-light); }
+[data-theme="dark"] .strip-dot { color: #fff; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ===== FEATURES ===== */
+.features-section { padding: 120px 0; background: var(--bg); }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card {
+  padding: 36px 32px; border-radius: var(--radius-lg);
+  border: 1px solid var(--border); background: var(--bg-2);
+  transition: all var(--transition); position: relative; overflow: hidden;
+}
+.feature-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(13,92,70,0.04) 0%, transparent 50%);
+  opacity: 0; transition: opacity var(--transition);
+}
+.feature-card:hover { border-color: var(--emerald); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.feature-card:hover::before { opacity: 1; }
+.feature-icon {
+  width: 52px; height: 52px; border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 22px; color: #fff;
+}
+.feature-title { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+.feature-desc { font-size: 14px; color: var(--text-2); line-height: 1.7; }
+.feature-arrow { margin-top: 20px; font-size: 13px; font-weight: 600; color: var(--emerald); display: flex; align-items: center; gap: 6px; }
+[data-theme="dark"] .feature-arrow { color: var(--gold); }
+
+/* ===== COURSES ===== */
+.courses-section { padding: 120px 0; background: var(--bg-2); }
+.courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.course-card {
+  border-radius: var(--radius-lg); overflow: hidden;
+  background: var(--bg); border: 1px solid var(--border);
+  transition: all var(--transition); display: flex; flex-direction: column;
+}
+.course-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--emerald); }
+.course-thumb {
+  height: 180px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.course-thumb-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--emerald-dark), var(--emerald));
+}
+.course-thumb-pattern {
+  position: absolute; inset: 0; opacity: 0.08;
+  background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%);
+  background-size: 12px 12px;
+}
+.course-thumb-arabic {
+  position: relative; font-family: 'Amiri', serif; font-size: 52px;
+  color: rgba(255,255,255,0.35); font-weight: 700;
+}
+.course-level {
+  position: absolute; top: 14px; right: 14px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+  padding: 4px 10px; border-radius: 100px;
+  background: rgba(212,175,55,0.9); color: #1a1000;
+}
+.course-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.course-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.course-desc { font-size: 14px; color: var(--text-2); line-height: 1.65; flex: 1; margin-bottom: 20px; }
+.course-meta { display: flex; align-items: center; gap: 16px; font-size: 12px; color: var(--text-3); margin-bottom: 18px; }
+.course-meta-item { display: flex; align-items: center; gap: 5px; }
+.course-footer { display: flex; align-items: center; justify-content: space-between; }
+.course-price { font-size: 22px; font-weight: 700; color: var(--emerald); }
+[data-theme="dark"] .course-price { color: var(--gold); }
+.course-price-label { font-size: 12px; color: var(--text-3); }
+
+/* ===== TEACHERS ===== */
+.teachers-section { padding: 120px 0; background: var(--bg); }
+.teachers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.teacher-card {
+  border-radius: var(--radius-lg); overflow: hidden;
+  background: var(--bg-2); border: 1px solid var(--border);
+  padding: 28px 24px; text-align: center;
+  transition: all var(--transition);
+}
+.teacher-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--gold); }
+.teacher-avatar {
+  width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 700; color: #fff;
+  position: relative;
+}
+.teacher-avatar::after {
+  content: ''; position: absolute; inset: -3px;
+  border-radius: 50%; border: 2px solid var(--gold);
+  opacity: 0.5;
+}
+.teacher-name { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.teacher-role { font-size: 13px; color: var(--text-3); margin-bottom: 14px; }
+.teacher-cert { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--emerald); margin-bottom: 16px; }
+[data-theme="dark"] .teacher-cert { color: var(--gold); }
+.teacher-stars { display: flex; justify-content: center; gap: 3px; margin-bottom: 16px; }
+.star { color: var(--gold); font-size: 14px; }
+.teacher-tag-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.teacher-tag { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 100px; background: rgba(13,92,70,0.07); color: var(--emerald); }
+[data-theme="dark"] .teacher-tag { background: rgba(212,175,55,0.1); color: var(--gold); }
+
+/* ===== PRICING ===== */
+.pricing-section { padding: 120px 0; background: var(--bg-2); }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.pricing-card {
+  border-radius: var(--radius-lg); background: var(--bg);
+  border: 1px solid var(--border); padding: 40px 36px;
+  transition: all var(--transition); position: relative;
+}
+.pricing-card.featured {
+  background: var(--emerald); color: #fff;
+  border-color: var(--emerald); transform: scale(1.04);
+  box-shadow: var(--shadow-lg);
+}
+[data-theme="dark"] .pricing-card.featured { background: linear-gradient(135deg, var(--emerald-dark), var(--emerald)); }
+.pricing-card:not(.featured):hover { border-color: var(--emerald); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.pricing-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--gold); color: #1a1000;
+  font-size: 11px; font-weight: 700; padding: 5px 16px; border-radius: 100px;
+  letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
+}
+.pricing-plan { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+.pricing-card.featured .pricing-plan { color: rgba(255,255,255,0.7); }
+.pricing-card:not(.featured) .pricing-plan { color: var(--text-3); }
+.pricing-price { font-size: 48px; font-weight: 700; line-height: 1; font-family: 'Playfair Display', serif; margin-bottom: 6px; }
+.pricing-card:not(.featured) .pricing-price { color: var(--text); }
+.pricing-period { font-size: 14px; margin-bottom: 8px; }
+.pricing-card.featured .pricing-period { color: rgba(255,255,255,0.65); }
+.pricing-card:not(.featured) .pricing-period { color: var(--text-3); }
+.pricing-desc { font-size: 14px; margin-bottom: 28px; line-height: 1.6; }
+.pricing-card.featured .pricing-desc { color: rgba(255,255,255,0.75); }
+.pricing-card:not(.featured) .pricing-desc { color: var(--text-2); }
+.pricing-divider { height: 1px; margin-bottom: 24px; }
+.pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.2); }
+.pricing-card:not(.featured) .pricing-divider { background: var(--border); }
+.pricing-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.pricing-feature { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.pricing-card.featured .pricing-feature { color: rgba(255,255,255,0.9); }
+.pricing-card:not(.featured) .pricing-feature { color: var(--text-2); }
+.pricing-check { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+.pricing-card.featured .pricing-check { background: rgba(255,255,255,0.2); color: #fff; }
+.pricing-card:not(.featured) .pricing-check { background: rgba(13,92,70,0.1); color: var(--emerald); }
+.pricing-btn-featured { background: var(--gold); color: #1a1000; font-weight: 700; }
+.pricing-btn-featured:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,175,55,0.4); }
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section { padding: 120px 0; background: var(--bg); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testimonial-card {
+  padding: 32px 28px; border-radius: var(--radius-lg);
+  background: var(--bg-2); border: 1px solid var(--border);
+  transition: all var(--transition);
+}
+.testimonial-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.testimonial-quote { font-size: 36px; line-height: 1; color: var(--gold); margin-bottom: 14px; font-family: Georgia, serif; }
+.testimonial-text { font-size: 15px; color: var(--text-2); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+.testimonial-stars { display: flex; gap: 3px; margin-bottom: 18px; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0;
+}
+.testimonial-name { font-size: 15px; font-weight: 600; color: var(--text); }
+.testimonial-origin { font-size: 12px; color: var(--text-3); }
+
+/* ===== ABOUT ===== */
+.about-hero { padding: 160px 0 100px; background: var(--bg); }
+.about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-visual {
+  border-radius: var(--radius-xl); overflow: hidden;
+  background: linear-gradient(135deg, var(--emerald-dark), var(--emerald));
+  aspect-ratio: 4/5; position: relative; display: flex; align-items: center; justify-content: center;
+}
+.about-visual-text { font-family: 'Amiri', serif; font-size: 60px; color: rgba(255,255,255,0.15); text-align: center; line-height: 1.8; position: absolute; }
+.about-visual-badge {
+  position: relative; background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-lg); padding: 28px 32px; text-align: center;
+}
+.about-visual-badge-num { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; color: #fff; }
+.about-visual-badge-label { font-size: 14px; color: rgba(255,255,255,0.7); }
+.about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+.about-value {
+  padding: 20px; border-radius: var(--radius-md);
+  background: var(--bg-2); border: 1px solid var(--border);
+}
+.about-value-icon { font-size: 24px; margin-bottom: 10px; }
+.about-value-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.about-value-text { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+/* ===== BOOKING ===== */
+.booking-section { padding: 120px 0; background: var(--bg-2); }
+.booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.booking-form-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 48px;
+  box-shadow: var(--shadow-md);
+}
+.form-group { margin-bottom: 24px; }
+.form-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-2); margin-bottom: 8px; letter-spacing: 0.02em; text-transform: uppercase; }
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 14px 18px; border-radius: var(--radius-md);
+  border: 1.5px solid var(--border); background: var(--bg-2);
+  color: var(--text); font-size: 15px; font-family: inherit;
+  transition: all var(--transition); outline: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--emerald); background: var(--bg);
+  box-shadow: 0 0 0 4px rgba(13,92,70,0.08);
+}
+.form-textarea { resize: vertical; min-height: 120px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.booking-info { padding-top: 20px; }
+.booking-info-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+.booking-info-sub { font-size: 16px; color: var(--text-2); line-height: 1.7; margin-bottom: 40px; }
+.booking-steps { display: flex; flex-direction: column; gap: 20px; }
+.booking-step { display: flex; gap: 16px; align-items: flex-start; }
+.booking-step-num {
+  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+  background: var(--emerald); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+}
+.booking-step-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.booking-step-text { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+/* ===== DASHBOARD ===== */
+.dashboard-section { padding: 120px 0 80px; background: var(--bg); }
+.dashboard-header-bar {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 28px 36px;
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px;
+}
+.dashboard-greeting { font-size: 24px; font-weight: 700; color: var(--text); }
+.dashboard-greeting span { color: var(--emerald); }
+[data-theme="dark"] .dashboard-greeting span { color: var(--gold); }
+.dashboard-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 32px; }
+.dash-stat {
+  padding: 24px 22px; border-radius: var(--radius-lg);
+  background: var(--bg-2); border: 1px solid var(--border);
+  transition: all var(--transition);
+}
+.dash-stat:hover { border-color: var(--emerald); transform: translateY(-2px); }
+.dash-stat-icon { font-size: 28px; margin-bottom: 12px; }
+.dash-stat-num { font-size: 28px; font-weight: 700; color: var(--text); font-family: 'Playfair Display', serif; margin-bottom: 4px; }
+.dash-stat-label { font-size: 13px; color: var(--text-3); }
+.dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+.dash-card {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 28px;
+}
+.dash-card-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 20px; }
+.dash-lesson {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.dash-lesson:last-child { border-bottom: none; }
+.dash-lesson-icon {
+  width: 42px; height: 42px; border-radius: var(--radius-md); flex-shrink: 0;
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+  display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px;
+}
+.dash-lesson-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.dash-lesson-meta { font-size: 12px; color: var(--text-3); }
+.dash-lesson-progress { margin-left: auto; font-size: 13px; font-weight: 600; color: var(--emerald); }
+[data-theme="dark"] .dash-lesson-progress { color: var(--gold); }
+.progress-bar { background: var(--border); border-radius: 100px; height: 6px; overflow: hidden; margin-top: 8px; }
+.progress-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--emerald), var(--gold)); }
+.schedule-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+.schedule-item:last-child { border-bottom: none; }
+.schedule-time { font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 4px; }
+.schedule-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.schedule-teacher { font-size: 12px; color: var(--text-3); }
+
+/* ===== BLOG ===== */
+.blog-section { padding: 120px 0; background: var(--bg); }
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.blog-card {
+  border-radius: var(--radius-lg); overflow: hidden;
+  background: var(--bg-2); border: 1px solid var(--border);
+  transition: all var(--transition);
+}
+.blog-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--gold); }
+.blog-thumb {
+  height: 200px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.blog-body { padding: 24px; }
+.blog-cat { font-size: 11px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+.blog-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.4; }
+.blog-excerpt { font-size: 14px; color: var(--text-2); line-height: 1.65; margin-bottom: 20px; }
+.blog-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-3); }
+
+/* ===== CONTACT ===== */
+.contact-section { padding: 120px 0; background: var(--bg-2); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+.contact-info-card {
+  background: linear-gradient(135deg, var(--emerald-dark), var(--emerald));
+  border-radius: var(--radius-xl); padding: 48px 40px; color: #fff; position: relative; overflow: hidden;
+}
+.contact-info-card::before {
+  content: ''; position: absolute;
+  top: -40px; right: -40px; width: 200px; height: 200px;
+  border-radius: 50%; background: rgba(212,175,55,0.1);
+}
+.contact-info-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; margin-bottom: 14px; }
+.contact-info-sub { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 40px; }
+.contact-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 24px; }
+.contact-item-icon {
+  width: 42px; height: 42px; border-radius: var(--radius-md); flex-shrink: 0;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center; font-size: 18px;
+}
+.contact-item-label { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+.contact-item-value { font-size: 15px; color: rgba(255,255,255,0.9); }
+.contact-form-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 48px;
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== HERO DECORATIVE ARABIC ===== */
+.section-arabic {
+  font-family: 'Amiri', serif; font-size: 80px;
+  color: rgba(13,92,70,0.04); font-weight: 700;
+  position: absolute; pointer-events: none; user-select: none;
+  line-height: 1;
+}
+[data-theme="dark"] .section-arabic { color: rgba(212,175,55,0.04); }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--emerald-dark); color: rgba(255,255,255,0.7);
+  padding: 80px 0 40px;
+}
+[data-theme="dark"] footer { background: #030a07; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; }
+.footer-brand-logo { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.footer-brand-desc { font-size: 14px; line-height: 1.75; margin-bottom: 24px; }
+.footer-social { display: flex; gap: 10px; }
+.footer-social-btn {
+  width: 38px; height: 38px; border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center; font-size: 16px;
+  color: rgba(255,255,255,0.7); transition: all var(--transition);
+}
+.footer-social-btn:hover { background: var(--gold); color: #1a1000; border-color: var(--gold); }
+.footer-col-title { font-size: 13px; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+.footer-link { display: block; font-size: 14px; padding: 5px 0; transition: color var(--transition); }
+.footer-link:hover { color: var(--gold-light); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; }
+.footer-bottom-right { display: flex; gap: 24px; }
+
+/* ===== CTA BANNER ===== */
+.cta-section {
+  padding: 100px 0; background: var(--bg);
+}
+.cta-card {
+  background: linear-gradient(135deg, var(--emerald-dark), var(--emerald));
+  border-radius: var(--radius-xl); padding: 80px 72px;
+  display: flex; align-items: center; justify-content: space-between; gap: 48px;
+  position: relative; overflow: hidden;
+}
+.cta-card::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: rgba(212,175,55,0.08);
+}
+.cta-card::after {
+  content: ''; position: absolute; bottom: -40px; left: 200px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.cta-text { position: relative; }
+.cta-title { font-family: 'Playfair Display', serif; font-size: clamp(26px, 3.5vw, 40px); font-weight: 700; color: #fff; margin-bottom: 14px; line-height: 1.2; }
+.cta-sub { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.65; }
+.cta-actions { display: flex; gap: 14px; flex-shrink: 0; flex-wrap: wrap; position: relative; }
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  padding: 140px 0 80px;
+  background: var(--bg); position: relative; overflow: hidden;
+  text-align: center;
+}
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(13,92,70,0.05) 0%, transparent 70%);
+}
+[data-theme="dark"] .page-hero-bg { background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(13,92,70,0.15) 0%, transparent 70%); }
+.page-hero-content { position: relative; }
+.page-hero-title { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 60px); font-weight: 700; color: var(--text); margin-bottom: 18px; }
+.page-hero-sub { font-size: 18px; color: var(--text-2); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+/* ===== PAGE TRANSITIONS ===== */
+.page { animation: pageFadeIn 0.4s ease; }
+@keyframes pageFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* ===== ANIMATIONS ===== */
+.animate-on-scroll { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.animate-on-scroll.visible { opacity: 1; transform: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 60px; }
+  .hero-visual { display: none; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .courses-grid { grid-template-columns: repeat(2, 1fr); }
+  .teachers-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-card.featured { transform: none; }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-content { grid-template-columns: 1fr; }
+  .about-visual { display: none; }
+  .booking-grid { grid-template-columns: 1fr; }
+  .dashboard-stats { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .cta-card { flex-direction: column; padding: 48px 40px; }
+  .blog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .features-grid { grid-template-columns: 1fr; }
+  .courses-grid { grid-template-columns: 1fr; }
+  .teachers-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .dashboard-stats { grid-template-columns: repeat(2, 1fr); }
+  .hero-stats { flex-wrap: wrap; gap: 20px; }
+  .booking-form-card { padding: 28px 24px; }
+  .contact-form-card { padding: 28px 24px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* ===== RTL / LANGUAGE SWITCH ===== */
+html[dir="rtl"] body { font-family: 'Tahoma', 'Amiri', 'Segoe UI', sans-serif; }
+html[dir="rtl"] .hero-title,
+html[dir="rtl"] .page-hero-title,
+html[dir="rtl"] .section-title,
+html[dir="rtl"] .cta-title,
+html[dir="rtl"] .footer-brand-logo { font-family: 'Amiri', 'Playfair Display', serif; }
+html[dir="rtl"] .nav-logo { flex-direction: row-reverse; }
+html[dir="rtl"] .hero-eyebrow { flex-direction: row-reverse; }
+.lang-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 42px; height: 38px; padding: 0 10px; border-radius: 999px;
+  border: 1px solid var(--border); background: transparent; color: var(--text);
+  font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+  transition: var(--transition); font-family: 'Inter', sans-serif;
+}
+.lang-toggle:hover { border-color: var(--emerald); color: var(--emerald); }
+[data-theme="dark"] .lang-toggle:hover { color: var(--gold); border-color: var(--gold); }
+.mobile-lang-toggle {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 10px; padding: 13px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border-2); background: transparent; color: var(--text);
+  font-size: 14px; font-weight: 600; width: 100%;
 }
 </style>
 </head>
 <body>
 
-<!-- CURSOR (desktop only) -->
-<div class="cursor" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-  <div class="container">
-    <a href="#home" class="logo">
-      <div class="logo-img"><img src="img/logo2.jpeg" alt="Narqa Logo"></div>
-      <span class="logo-text">NAR<span>QA</span></span>
+<!-- NAV -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a class="nav-logo" onclick="showPage('home'); return false;" href="#">
+      <div class="nav-logo-dot"></div>
+      Narqa Academy
     </a>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#teachers">Teachers</a></li>
-      <li><a href="#schedule">Schedule</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="register.php">Register</a></li>
-    </ul>
-    <div class="nav-cta">
-      <a href="login.html" class="btn btn-ghost">Login</a>
-      <a href="register.html" class="btn btn-gold">Sign Up</a>
+    <div class="nav-links">
+      <button class="nav-link" onclick="showPage('home')" data-i18n="nav.home">Home</button>
+      <button class="nav-link" onclick="showPage('about')" data-i18n="nav.about">About</button>
+      <button class="nav-link" onclick="showPage('courses')" data-i18n="nav.courses">Courses</button>
+      <button class="nav-link" onclick="showPage('teachers')" data-i18n="nav.teachers">Teachers</button>
+      <button class="nav-link" onclick="showPage('pricing')" data-i18n="nav.pricing">Pricing</button>
+      <button class="nav-link" onclick="showPage('blog')" data-i18n="nav.blog">Blog</button>
+      <button class="nav-link" onclick="showPage('contact')" data-i18n="nav.contact">Contact</button>
     </div>
-    <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    <div class="nav-actions">
+      <button class="btn btn-outline btn-sm" onclick="showPage('dashboard')" style="padding:9px 18px;font-size:13px;" data-i18n="nav.dashboard">Dashboard</button>
+      <button class="btn btn-primary" onclick="showPage('booking')" style="padding:9px 20px;font-size:13px;" data-i18n="nav.book">Book a Session</button>
+      <button class="lang-toggle" onclick="toggleLang()" title="Switch language / تبديل اللغة" id="langBtn">العربية</button>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode" id="themeBtn">🌙</button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav">
-  <button class="close-nav" id="closeNav"><i class="fas fa-times"></i></button>
-  <a href="#home">Home</a>
-  <a href="#features">Features</a>
-  <a href="#teachers">Teachers</a>
-  <a href="#schedule">Schedule</a>
-  <a href="#contact">Contact</a>
-  <a href="register.html">Register</a>
-  <a href="login.html">Login</a>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-link" onclick="showPage('home')"><span>🏠</span> <span data-i18n="nav.home">Home</span></button>
+  <button class="mobile-link" onclick="showPage('about')"><span>✨</span> <span data-i18n="mobile.about">About Us</span></button>
+  <button class="mobile-link" onclick="showPage('courses')"><span>📖</span> <span data-i18n="nav.courses">Courses</span></button>
+  <button class="mobile-link" onclick="showPage('teachers')"><span>👨‍🏫</span> <span data-i18n="nav.teachers">Teachers</span></button>
+  <button class="mobile-link" onclick="showPage('pricing')"><span>💎</span> <span data-i18n="nav.pricing">Pricing</span></button>
+  <button class="mobile-link" onclick="showPage('testimonials')"><span>⭐</span> <span data-i18n="mobile.testimonials">Testimonials</span></button>
+  <button class="mobile-link" onclick="showPage('blog')"><span>📰</span> <span data-i18n="nav.blog">Blog</span></button>
+  <button class="mobile-link" onclick="showPage('contact')"><span>📬</span> <span data-i18n="nav.contact">Contact</span></button>
+  <button class="mobile-link" onclick="showPage('dashboard')"><span>📊</span> <span data-i18n="nav.dashboard">Dashboard</span></button>
+  <button class="mobile-link" onclick="showPage('booking')"><span>📅</span> <span data-i18n="mobile.book">Book Session</span></button>
+  <button class="mobile-lang-toggle" onclick="toggleLang()">🌐 <span id="mobileLangLabel">العربية</span></button>
 </div>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-circle-1"></div>
-  <div class="hero-circle-2"></div>
-  <div class="container">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <span class="hero-eyebrow"><i class="fas fa-quran"></i> Premium Online Academy</span>
-        <h1>Learn Quran with<br><em>Elite Certified</em><br>Teachers</h1>
-        <p class="hero-desc">Personalized one-on-one sessions, real-time progress tracking, and flexible scheduling — all in one powerful platform.</p>
-        <div class="hero-actions">
-          <a href="register.html" class="btn btn-gold"><i class="fas fa-rocket"></i> Start Free Trial</a>
-          <a href="about-me.html" class="btn btn-ghost"><i class="fas fa-play-circle"></i> Explore Features</a>
+<!-- ==================== HOME PAGE ==================== -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-left">
+            <div class="hero-eyebrow">
+              <div class="hero-line"></div>
+              <span class="hero-eyebrow-text" data-i18n="hero.eyebrow">Certified Online Islamic Education</span>
+            </div>
+            <h1 class="hero-title" data-i18n="hero.title">
+              Learn the Quran<br/><em>The Right Way,</em><br/>From Anywhere.
+            </h1>
+            <p class="hero-sub" data-i18n="hero.sub">
+              Join 12,000+ students worldwide learning Quran, Tajweed, and Arabic with certified scholars — live, one-on-one, at your pace.
+            </p>
+            <div class="hero-cta">
+              <button class="btn btn-primary" onclick="showPage('booking')" style="padding:15px 32px;font-size:15px;" data-i18n="hero.cta1">
+                Start Free Trial →
+              </button>
+              <button class="btn btn-outline" onclick="showPage('courses')" style="padding:15px 28px;font-size:15px;" data-i18n="hero.cta2">
+                Explore Courses
+              </button>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <div class="hero-stat-num">12K+</div>
+                <div class="hero-stat-label" data-i18n="hero.stat1">Active Students</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-num">98%</div>
+                <div class="hero-stat-label" data-i18n="hero.stat2">Satisfaction Rate</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-num">150+</div>
+                <div class="hero-stat-label" data-i18n="hero.stat3">Certified Teachers</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-num">40+</div>
+                <div class="hero-stat-label" data-i18n="hero.stat4">Countries Served</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-float-card hero-float-1 glass">
+              <div class="float-icon">🎓</div>
+              <div class="float-label" data-i18n="hero.float1label">Ijazah Certified</div>
+              <div class="float-value" data-i18n="hero.float1value">ISO Accredited</div>
+            </div>
+            <div class="hero-card-main glass">
+              <div class="hero-quran-text">
+                بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<br/>
+                ﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾
+              </div>
+              <div class="hero-card-footer">
+                <div class="hero-badge">
+                  <div class="hero-badge-dot"></div>
+                  <span class="hero-badge-text" data-i18n="hero.online">3 teachers online now</span>
+                </div>
+                <div class="hero-teacher">
+                  <div class="hero-teacher-avatar">SH</div>
+                  <div>
+                    <div class="hero-teacher-name" data-i18n="hero.teacherName">Sheikh Hassan</div>
+                    <div class="hero-teacher-info" data-i18n="hero.teacherRole">Tajweed Specialist</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-float-card hero-float-2 glass">
+              <div class="float-icon">⭐</div>
+              <div class="float-label" data-i18n="hero.float2label">Student Rating</div>
+              <div class="float-value">4.97 / 5.0</div>
+            </div>
+          </div>
         </div>
-        <div class="hero-divider"></div>
-        <div class="hero-stats-row">
-          <div class="hero-stat"><div class="num" data-count="500">0</div><div class="lbl">Students</div></div>
-          <div class="hero-stat"><div class="num" data-count="15">0</div><div class="lbl">Teachers</div></div>
-          <div class="hero-stat"><div class="num" data-count="500">0</div><div class="lbl">Live Sessions</div></div>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-glow-behind"></div>
-        <div class="hero-main-img">
-          <img src="img/logo.jpeg" alt="Narqa Academy">
-        </div>
-        <div class="badge-float b1"><i class="fas fa-star"></i> 4.9 Rating</div>
-        <div class="badge-float b2"><i class="fas fa-certificate"></i> Ijaza Certified</div>
       </div>
     </div>
-  </div>
-  <div class="hero-bottom-fade"></div>
-</section>
+  </section>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="marquee-item"><i class="fas fa-book-quran"></i> Quran Memorization</span>
-    <span class="marquee-dot"></span>
-    <span class="marquee-item"><i class="fas fa-award"></i> Ijaza Certificates</span>
-    <span class="marquee-dot"></span>
-    <span class="marquee-item"><i class="fas fa-user-graduate"></i> Al-Azhar Graduates</span>
-    <span class="marquee-dot"></span>
-    <span class="marquee-item"><i class="fas fa-video"></i> Live 1-on-1 Sessions</span>
-    <span class="marquee-dot"></span>
-    <span class="marquee-item"><i class="fas fa-globe"></i> Online Worldwide</span>
-    <span class="marquee-dot"></span>
-    <span class="marquee-item"><i class="fas fa-calendar-alt"></i> Flexible Scheduling</span>
-    <span class="marquee-dot"></span>
-    <span class="marquee-item"><i class="fas fa-book-quran"></i> Quran Memorization</span>
-    <span class="marquee-dot"></span>
-    <span class="marquee-item"><i class="fas fa-award"></i> Ijaza Certificates</span>
-    <span class="marquee-dot"></span>
-    <span class="marquee-item"><i class="fas fa-user-graduate"></i> Al-Azhar Graduates</span>
-    <span class="marquee-dot"></span>
-    <span class="marquee-item"><i class="fas fa-video"></i> Live 1-on-1 Sessions</span>
-    <span class="marquee-dot"></span>
-    <span class="marquee-item"><i class="fas fa-globe"></i> Online Worldwide</span>
-    <span class="marquee-dot"></span>
-    <span class="marquee-item"><i class="fas fa-calendar-alt"></i> Flexible Scheduling</span>
-    <span class="marquee-dot"></span>
+  <!-- MARQUEE STRIP -->
+  <div class="strip">
+    <div class="strip-inner">
+      <span data-i18n="course1.title">Quran Memorization (Hifz)</span><span class="strip-dot">✦</span>
+      <span data-i18n="course2.title">Tajweed Rules</span><span class="strip-dot">✦</span>
+      <span data-i18n="course3.title">Arabic for Non-Arabic Speakers</span><span class="strip-dot">✦</span>
+      <span data-i18n="course4.title">Islamic Studies</span><span class="strip-dot">✦</span>
+      <span data-i18n="course5.title">Ijazah Certification</span><span class="strip-dot">✦</span>
+      <span data-i18n="strip.live">Live One-on-One Sessions</span><span class="strip-dot">✦</span>
+      <span data-i18n="course1.title">Quran Memorization (Hifz)</span><span class="strip-dot">✦</span>
+      <span data-i18n="course2.title">Tajweed Rules</span><span class="strip-dot">✦</span>
+      <span data-i18n="course3.title">Arabic for Non-Arabic Speakers</span><span class="strip-dot">✦</span>
+      <span data-i18n="course4.title">Islamic Studies</span><span class="strip-dot">✦</span>
+      <span data-i18n="course5.title">Ijazah Certification</span><span class="strip-dot">✦</span>
+      <span data-i18n="strip.live">Live One-on-One Sessions</span><span class="strip-dot">✦</span>
+    </div>
   </div>
+
+  <!-- WHY NARQI -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label"><span class="tag">Why Narqa Academy</span></div>
+        <h2 class="section-title">Everything you need to<br/>master Islamic knowledge</h2>
+        <p class="section-subtitle">We combine traditional scholarship with modern technology to give you the most effective learning experience possible.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">📜</div>
+          <div class="feature-title">Ijazah-Certified Teachers</div>
+          <div class="feature-desc">All our instructors hold authentic Ijazah chains traced directly back to the Prophet ﷺ. Your learning is grounded in unbroken tradition.</div>
+          <div class="feature-arrow">Learn about our teachers →</div>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-title">Personalised Curriculum</div>
+          <div class="feature-desc">Every student gets a custom learning plan. Whether you're a complete beginner or seeking advanced Hifz, we adapt to your level and goals.</div>
+          <div class="feature-arrow">See course paths →</div>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">🌐</div>
+          <div class="feature-title">Flexible Scheduling</div>
+          <div class="feature-desc">Book sessions around your life. Morning, evening, or weekends — our teachers span 6 time zones to accommodate you.</div>
+          <div class="feature-arrow">Book a session →</div>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">🏆</div>
+          <div class="feature-title">Proven Results</div>
+          <div class="feature-desc">Over 1,400 students have completed their Hifz with us. Our methodology has been refined over 10 years of teaching.</div>
+          <div class="feature-arrow">Read testimonials →</div>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">👥</div>
+          <div class="feature-title">Live One-on-One Sessions</div>
+          <div class="feature-desc">No group classes where you get lost. Every session is dedicated entirely to you, ensuring rapid progress and immediate correction.</div>
+          <div class="feature-arrow">Book your first class →</div>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-title">Progress Tracking Dashboard</div>
+          <div class="feature-desc">Monitor your Hifz progress, review teacher notes, and track milestones — all in one beautifully designed student portal.</div>
+          <div class="feature-arrow">View dashboard →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES PREVIEW -->
+  <section class="courses-section">
+    <div class="container">
+      <div class="section-header center">
+        <div class="section-label" style="display:flex;justify-content:center"><span class="tag" data-i18n="courses.label">Our Programmes</span></div>
+        <h2 class="section-title" data-i18n="courses.title">Courses tailored to every level</h2>
+        <p class="section-subtitle" data-i18n="courses.subtitle">From your first Arabic letter to completing your Hifz — we guide every step of the journey.</p>
+      </div>
+      <div class="courses-grid">
+        <div class="course-card animate-on-scroll">
+          <div class="course-thumb">
+            <div class="course-thumb-bg"></div>
+            <div class="course-thumb-pattern"></div>
+            <div class="course-thumb-arabic">حفظ</div>
+            <span class="course-level" data-i18n="course1.level">All Levels</span>
+          </div>
+          <div class="course-body">
+            <div class="course-title" data-i18n="course1.title">Quran Memorization (Hifz)</div>
+            <div class="course-desc" data-i18n="course1.desc">A comprehensive Hifz programme for students of all ages, with structured revision cycles, personalised pacing, and certified teacher guidance.</div>
+            <div class="course-meta">
+              <div class="course-meta-item" data-i18n="course1.meta1">📅 Flexible</div>
+              <div class="course-meta-item" data-i18n="course1.meta2">🎓 Certificate</div>
+              <div class="course-meta-item" data-i18n="course1.meta3">👤 1-on-1</div>
+            </div>
+            <div class="course-footer">
+              <div>
+                <div class="course-price" data-i18n="course1.price">$49<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span></div>
+                <div class="course-price-label" data-i18n="courses.from">from</div>
+              </div>
+              <button class="btn btn-primary" onclick="showPage('booking')" data-i18n="courses.enroll">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="course-card animate-on-scroll">
+          <div class="course-thumb">
+            <div class="course-thumb-bg" style="background:linear-gradient(135deg,#1a3a4a,#2a6080)"></div>
+            <div class="course-thumb-pattern"></div>
+            <div class="course-thumb-arabic">تجويد</div>
+            <span class="course-level" data-i18n="course2.level">Beginner – Advanced</span>
+          </div>
+          <div class="course-body">
+            <div class="course-title" data-i18n="course2.title">Tajweed Rules</div>
+            <div class="course-desc" data-i18n="course2.desc">Master makhaarij, sifaat, ghunnah, and the rules of noon and meem. Recite the Quran beautifully, correctly, and with confidence.</div>
+            <div class="course-meta">
+              <div class="course-meta-item" data-i18n="course2.meta1">📅 12 Weeks</div>
+              <div class="course-meta-item" data-i18n="course2.meta2">🎓 Certificate</div>
+              <div class="course-meta-item" data-i18n="course2.meta3">👤 1-on-1</div>
+            </div>
+            <div class="course-footer">
+              <div>
+                <div class="course-price" data-i18n="course2.price">$39<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span></div>
+                <div class="course-price-label" data-i18n="courses.from">from</div>
+              </div>
+              <button class="btn btn-primary" onclick="showPage('booking')" data-i18n="courses.enroll">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="course-card animate-on-scroll">
+          <div class="course-thumb">
+            <div class="course-thumb-bg" style="background:linear-gradient(135deg,#3a2a1a,#7a4a10)"></div>
+            <div class="course-thumb-pattern"></div>
+            <div class="course-thumb-arabic">عربي</div>
+            <span class="course-level" data-i18n="course3.level">Beginner</span>
+          </div>
+          <div class="course-body">
+            <div class="course-title" data-i18n="course3.title">Arabic for Non-Arabic Speakers</div>
+            <div class="course-desc" data-i18n="course3.desc">Start from the Arabic alphabet and build real conversational skills — understand the Quran directly and communicate confidently in Modern Standard Arabic.</div>
+            <div class="course-meta">
+              <div class="course-meta-item" data-i18n="course3.meta1">📅 6 Months</div>
+              <div class="course-meta-item" data-i18n="course3.meta2">🎓 Certificate</div>
+              <div class="course-meta-item" data-i18n="course3.meta3">👤 1-on-1</div>
+            </div>
+            <div class="course-footer">
+              <div>
+                <div class="course-price" data-i18n="course3.price">$45<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span></div>
+                <div class="course-price-label" data-i18n="courses.from">from</div>
+              </div>
+              <button class="btn btn-primary" onclick="showPage('booking')" data-i18n="courses.enroll">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:48px">
+        <button class="btn btn-outline" onclick="showPage('courses')" style="padding:14px 36px;font-size:15px;" data-i18n="courses.viewAll">View All 6 Courses →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHERS PREVIEW -->
+  <section class="teachers-section">
+    <div class="container">
+      <div class="section-header center">
+        <div class="section-label" style="display:flex;justify-content:center"><span class="tag">Our Scholars</span></div>
+        <h2 class="section-title">Learn from certified scholars</h2>
+        <p class="section-subtitle">Every teacher at Narqa Academy holds an authentic Ijazah and has years of experience teaching internationally.</p>
+      </div>
+      <div class="teachers-grid">
+        <div class="teacher-card animate-on-scroll">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#0D5C46,#127a5e)">SH</div>
+          <div class="teacher-name">Sheikh AbdulRahman Mohamed Rady</div>
+          <div class="teacher-role">Quran & Tajweed Specialist</div>
+          <div class="teacher-cert">📜 Ijazah in 10 Qira'at</div>
+          <div class="teacher-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="teacher-tag-list">
+            <span class="teacher-tag">Hifz</span>
+            <span class="teacher-tag">Tajweed</span>
+            <span class="teacher-tag">Qira'at</span>
+          </div>
+        </div>
+        <div class="teacher-card animate-on-scroll">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#1a3a6a,#2a5090)">UA</div>
+          <div class="teacher-name">Ustadha Fatima Al-Zuhairi</div>
+          <div class="teacher-role">Arabic Language Expert</div>
+          <div class="teacher-cert">📜 MA Arabic Linguistics</div>
+          <div class="teacher-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="teacher-tag-list">
+            <span class="teacher-tag">Arabic</span>
+            <span class="teacher-tag">Grammar</span>
+            <span class="teacher-tag">Conversation</span>
+          </div>
+        </div>
+        <div class="teacher-card animate-on-scroll">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#4a2a1a,#7a4020)">SM</div>
+          <div class="teacher-name">Sheikh Anas Hisham Abdulbari</div>
+          <div class="teacher-role">Islamic Studies Scholar</div>
+          <div class="teacher-cert">📜 PhD Islamic Sciences</div>
+          <div class="teacher-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="teacher-tag-list">
+            <span class="teacher-tag">Fiqh</span>
+            <span class="teacher-tag">Aqeedah</span>
+            <span class="teacher-tag">Seerah</span>
+          </div>
+        </div>
+        <div class="teacher-card animate-on-scroll">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#2a4a1a,#3a6a25)">FR</div>
+          <div class="teacher-name">Sheikh Mohammed Abdulbari Rajih</div>
+          <div class="teacher-role">Hifz Programme Director</div>
+          <div class="teacher-cert">📜 Huffadh Certification</div>
+          <div class="teacher-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="teacher-tag-list">
+            <span class="teacher-tag">Hifz</span>
+            <span class="teacher-tag">Children</span>
+            <span class="teacher-tag">Women</span>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:48px">
+        <button class="btn btn-outline" onclick="showPage('teachers')" style="padding:14px 36px;font-size:15px;">Meet All Teachers →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS PREVIEW -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header center">
+        <div class="section-label" style="display:flex;justify-content:center"><span class="tag">Student Stories</span></div>
+        <h2 class="section-title">What our students say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate-on-scroll">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-text">I completed my Hifz after 3 years with Narqa Academy. Sheikh Hassan's patience and methodology made what seemed impossible, achievable. My family couldn't believe it.</div>
+          <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#0D5C46,#127a5e)">AK</div>
+            <div>
+              <div class="testimonial-name">Ahmed Khalid</div>
+              <div class="testimonial-origin">London, United Kingdom</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card animate-on-scroll">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-text">As a revert with no Arabic background, I was nervous to start. Within 6 months I could read Quran independently. Ustadha Amina is extraordinary.</div>
+          <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#1a3a6a,#2a5090)">SR</div>
+            <div>
+              <div class="testimonial-name">Sarah Reynolds</div>
+              <div class="testimonial-origin">Toronto, Canada</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card animate-on-scroll">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-text">The flexibility is unmatched. I study between work shifts and still make consistent progress. The dashboard keeps me accountable. 10/10 recommend.</div>
+          <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#4a2a1a,#7a4020)">YM</div>
+            <div>
+              <div class="testimonial-name">Yusuf Mohammed</div>
+              <div class="testimonial-origin">Dubai, UAE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-text">
+          <h2 class="cta-title">Begin your journey with<br/>Narqa Academy today</h2>
+          <p class="cta-sub">Your first trial lesson is completely free. No commitment, no pressure — just pure learning.</p>
+        </div>
+        <div class="cta-actions">
+          <button class="btn btn-gold" onclick="showPage('booking')" style="padding:16px 36px;font-size:15px;">Book Free Trial →</button>
+          <button class="btn" onclick="showPage('pricing')" style="padding:16px 28px;font-size:15px;background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.25);">View Pricing</button>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
-<!-- FEATURES -->
-<section id="features" class="section features-section">
-  <div class="container">
-    <div class="section-head center reveal">
-      <div class="section-label">Why Choose Us</div>
-      <h2 class="section-title">Premium Features</h2>
-      <p class="section-desc" style="margin-top:0.8rem">Everything you need for an exceptional Quran learning journey</p>
+<!-- ==================== ABOUT PAGE ==================== -->
+<div class="page" id="page-about">
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <div class="section-label" style="display:flex;justify-content:center;margin-bottom:16px"><span class="tag">Our Story</span></div>
+      <h1 class="page-hero-title">Connecting hearts to the Quran,<br/>one student at a time</h1>
+      <p class="page-hero-sub">Founded in 2014, Narqa Academy was born from a simple mission: to make authentic Islamic education accessible to every Muslim, wherever they are in the world.</p>
     </div>
-    <div class="features-bento">
-      <div class="feat-card featured reveal">
-        <div class="feat-icon"><i class="fas fa-video"></i></div>
-        <h3>Live 1-on-1 Sessions</h3>
-        <p>Direct, real-time interaction with your teacher via Zoom or Skype for focused personal learning.</p>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon"><i class="fas fa-chart-line"></i></div>
-        <h3>Progress Tracking</h3>
-        <p>Monitor memorization and revision with intelligent analytics dashboards.</p>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon"><i class="fas fa-calendar-alt"></i></div>
-        <h3>Flexible Scheduling</h3>
-        <p>Book slots that fit seamlessly into your daily routine, any time zone.</p>
-      </div>
-      <div class="feat-card wide reveal">
-        <div class="feat-icon"><i class="fas fa-award"></i></div>
-        <h3>Ijaza Certification</h3>
-        <p>Earn internationally recognized Ijaza certificates upon completion of your Quran program, awarded by qualified Al-Azhar certified teachers.</p>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon"><i class="fas fa-book-quran"></i></div>
-        <h3>Multiple Qira'at</h3>
-        <p>Learn all 10 Qira'at with specialized, certified instructors.</p>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon"><i class="fas fa-user-graduate"></i></div>
-        <h3>Al-Azhar Graduates</h3>
-        <p>All teachers hold official certifications and bring deep scholarly knowledge.</p>
+  </section>
+  <section style="padding:80px 0 120px;background:var(--bg)">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <div class="section-label" style="margin-bottom:20px"><span class="tag">Our Mission</span></div>
+          <h2 class="section-title">Education rooted in<br/>authentic tradition</h2>
+          <p style="font-size:17px;color:var(--text-2);line-height:1.8;margin-bottom:24px">
+            At Narqa Academy, we believe that access to authentic Islamic knowledge should never be limited by geography, time zones, or language barriers. Our founders — all scholars with Ijazah — built this platform to preserve the sacred chain of knowledge while embracing modern technology.
+          </p>
+          <p style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:36px">
+            Today we serve over 12,000 students across 40 countries. From children memorising their first juz to adults seeking Ijazah certification, Narqa Academy has guided them all with care, structure, and sincerity.
+          </p>
+          <div class="about-values">
+            <div class="about-value">
+              <div class="about-value-icon">🕋</div>
+              <div class="about-value-title">Authentic Isnad</div>
+              <div class="about-value-text">Every teacher's chain of narration is verified and documented.</div>
+            </div>
+            <div class="about-value">
+              <div class="about-value-icon">🌍</div>
+              <div class="about-value-title">Global Reach</div>
+              <div class="about-value-text">Students in 40+ countries learn across 6 different time zones.</div>
+            </div>
+            <div class="about-value">
+              <div class="about-value-icon">💡</div>
+              <div class="about-value-title">Modern Methods</div>
+              <div class="about-value-text">Cognitive science-backed techniques for faster, lasting retention.</div>
+            </div>
+            <div class="about-value">
+              <div class="about-value-icon">🤲</div>
+              <div class="about-value-title">Sincerity First</div>
+              <div class="about-value-text">We teach for the sake of Allah, not just credentials.</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-visual-text">
+            اقْرَأْ<br/>بِسْمِ<br/>رَبِّكَ<br/>عَلَّمَ
+          </div>
+          <div class="about-visual-badge">
+            <div class="about-visual-badge-num">10</div>
+            <div class="about-visual-badge-label">Years of Excellence</div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+  <section class="cta-section" style="padding:0 0 100px">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-text">
+          <h2 class="cta-title">Ready to be part of the Narqa family?</h2>
+          <p class="cta-sub">Join thousands of students who've transformed their relationship with the Quran.</p>
+        </div>
+        <div class="cta-actions">
+          <button class="btn btn-gold" onclick="showPage('booking')" style="padding:16px 36px;font-size:15px;">Start Your Journey →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
-<!-- TEACHERS -->
-<section id="teachers" class="section teachers-section">
-  <div class="container">
-    <div class="section-head center reveal">
-      <div class="section-label">Expert Instructors</div>
-      <h2 class="section-title">Our Trusted Teachers</h2>
-      <p class="section-desc" style="margin-top:0.8rem">Learn from the finest Ijaza holders and Al-Azhar scholars</p>
+<!-- ==================== COURSES PAGE ==================== -->
+<div class="page" id="page-courses">
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <div class="section-label" style="display:flex;justify-content:center;margin-bottom:16px"><span class="tag" data-i18n="courses.label">Our Programmes</span></div>
+      <h1 class="page-hero-title" data-i18n="courses.pageTitle">Every path to Islamic knowledge,<br/>in one academy</h1>
+      <p class="page-hero-sub" data-i18n="courses.pageSub">Six comprehensive programmes designed to take you from beginner to certified — all taught live, one-on-one.</p>
     </div>
+  </section>
+  <section class="courses-section" style="background:var(--bg)">
+    <div class="container">
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-thumb"><div class="course-thumb-bg"></div><div class="course-thumb-pattern"></div><div class="course-thumb-arabic">حفظ</div><span class="course-level" data-i18n="course1.level">All Levels</span></div>
+          <div class="course-body">
+            <div class="course-title" data-i18n="course1.title">Quran Memorization (Hifz)</div>
+            <div class="course-desc" data-i18n="course1.desc">A comprehensive Hifz programme for students of all ages, with structured revision cycles, personalised pacing, and certified teacher guidance.</div>
+            <div class="course-meta"><div class="course-meta-item" data-i18n="course1.meta1">📅 Flexible</div><div class="course-meta-item" data-i18n="course1.meta2">🎓 Certificate</div><div class="course-meta-item" data-i18n="course1.meta3">👤 1-on-1</div></div>
+            <div class="course-footer"><div><div class="course-price" data-i18n="course1.price">$49<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span></div><div class="course-price-label" data-i18n="courses.from">from</div></div><button class="btn btn-primary" onclick="showPage('booking')" data-i18n="courses.enrollShort">Enroll</button></div>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-thumb"><div class="course-thumb-bg" style="background:linear-gradient(135deg,#1a3a4a,#2a6080)"></div><div class="course-thumb-pattern"></div><div class="course-thumb-arabic">تجويد</div><span class="course-level" data-i18n="course2.level">Beginner – Advanced</span></div>
+          <div class="course-body">
+            <div class="course-title" data-i18n="course2.title">Tajweed Rules</div>
+            <div class="course-desc" data-i18n="course2.descFull">Master makhaarij, sifaat, ghunnah, mad rules, and all tajweed principles. Recite with the precision and beauty of the Al-Azhar reciters.</div>
+            <div class="course-meta"><div class="course-meta-item" data-i18n="course2.meta1">📅 12 Weeks</div><div class="course-meta-item" data-i18n="course2.meta2">🎓 Certificate</div><div class="course-meta-item" data-i18n="course2.meta3">👤 1-on-1</div></div>
+            <div class="course-footer"><div><div class="course-price" data-i18n="course2.price">$39<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span></div><div class="course-price-label" data-i18n="courses.from">from</div></div><button class="btn btn-primary" onclick="showPage('booking')" data-i18n="courses.enrollShort">Enroll</button></div>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-thumb"><div class="course-thumb-bg" style="background:linear-gradient(135deg,#3a2a1a,#7a4a10)"></div><div class="course-thumb-pattern"></div><div class="course-thumb-arabic">عربي</div><span class="course-level" data-i18n="course3.level">Beginner</span></div>
+          <div class="course-body">
+            <div class="course-title" data-i18n="course3.title">Arabic for Non-Arabic Speakers</div>
+            <div class="course-desc" data-i18n="course3.descFull">From the alphabet to fluent conversation — designed for absolute beginners, with a strong focus on understanding the Quran directly.</div>
+            <div class="course-meta"><div class="course-meta-item" data-i18n="course3.meta1">📅 6 Months</div><div class="course-meta-item" data-i18n="course3.meta2">🎓 Certificate</div><div class="course-meta-item" data-i18n="course3.meta3">👤 1-on-1</div></div>
+            <div class="course-footer"><div><div class="course-price" data-i18n="course3.price">$45<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span></div><div class="course-price-label" data-i18n="courses.from">from</div></div><button class="btn btn-primary" onclick="showPage('booking')" data-i18n="courses.enrollShort">Enroll</button></div>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-thumb"><div class="course-thumb-bg" style="background:linear-gradient(135deg,#1a2a3a,#1a4a60)"></div><div class="course-thumb-pattern"></div><div class="course-thumb-arabic">إسلام</div><span class="course-level" data-i18n="course4.level">All Levels</span></div>
+          <div class="course-body">
+            <div class="course-title" data-i18n="course4.title">Islamic Studies</div>
+            <div class="course-desc" data-i18n="course4.desc">Structured lessons in Aqeedah, Fiqh, Seerah, Hadith, and Islamic history — build a solid foundation of knowledge grounded in classical scholarship.</div>
+            <div class="course-meta"><div class="course-meta-item" data-i18n="course4.meta1">📅 1 Year</div><div class="course-meta-item" data-i18n="course4.meta2">🎓 Diploma</div><div class="course-meta-item" data-i18n="course4.meta3">👤 1-on-1</div></div>
+            <div class="course-footer"><div><div class="course-price" data-i18n="course4.price">$55<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span></div><div class="course-price-label" data-i18n="courses.from">from</div></div><button class="btn btn-primary" onclick="showPage('booking')" data-i18n="courses.enrollShort">Enroll</button></div>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-thumb"><div class="course-thumb-bg" style="background:linear-gradient(135deg,#2a1a3a,#5a2a7a)"></div><div class="course-thumb-pattern"></div><div class="course-thumb-arabic">إجازة</div><span class="course-level" data-i18n="course5.level">Advanced</span></div>
+          <div class="course-body">
+            <div class="course-title" data-i18n="course5.title">Ijazah Certification Programme</div>
+            <div class="course-desc" data-i18n="course5.desc">Earn your Ijazah with a verified Sanad. Our scholars will prepare you for the full recitation exam and connect you to an authentic, unbroken chain of transmission.</div>
+            <div class="course-meta"><div class="course-meta-item" data-i18n="course5.meta1">📅 2+ Years</div><div class="course-meta-item" data-i18n="course5.meta2">🎓 Ijazah</div><div class="course-meta-item" data-i18n="course5.meta3">👤 1-on-1</div></div>
+            <div class="course-footer"><div><div class="course-price" data-i18n="course5.price">$89<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span></div><div class="course-price-label" data-i18n="courses.from">from</div></div><button class="btn btn-primary" onclick="showPage('booking')" data-i18n="courses.enrollShort">Enroll</button></div>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-thumb"><div class="course-thumb-bg" style="background:linear-gradient(135deg,#1a3a2a,#2a6a4a)"></div><div class="course-thumb-pattern"></div><div class="course-thumb-arabic">لغة</div><span class="course-level" data-i18n="course6.level">Intermediate</span></div>
+          <div class="course-body">
+            <div class="course-title" data-i18n="course6.title">Quranic Arabic Deep Dive</div>
+            <div class="course-desc" data-i18n="course6.desc">Go beyond basic Arabic — analyse Quranic grammar (I'rab), explore tafsir sources, and gain the tools to study classical texts independently.</div>
+            <div class="course-meta"><div class="course-meta-item" data-i18n="course6.meta1">📅 8 Months</div><div class="course-meta-item" data-i18n="course6.meta2">🎓 Certificate</div><div class="course-meta-item" data-i18n="course6.meta3">👤 1-on-1</div></div>
+            <div class="course-footer"><div><div class="course-price" data-i18n="course6.price">$59<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span></div><div class="course-price-label" data-i18n="courses.from">from</div></div><button class="btn btn-primary" onclick="showPage('booking')" data-i18n="courses.enrollShort">Enroll</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== TEACHERS PAGE ==================== -->
+<div class="page" id="page-teachers">
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <div class="section-label" style="display:flex;justify-content:center;margin-bottom:16px"><span class="tag">Our Scholars</span></div>
+      <h1 class="page-hero-title">Meet the teachers behind<br/>every transformation</h1>
+      <p class="page-hero-sub">150+ verified, Ijazah-certified scholars from Egypt, Saudi Arabia, Morocco, and beyond.</p>
+    </div>
+  </section>
+<section class="teachers-section" style="padding-top:60px">
+  <div class="container">
     <div class="teachers-grid">
-      <div class="teacher-card reveal">
-        <div class="teacher-img-wrap">
-          <div class="teacher-avatar">ش</div>
-          <div class="verified-pill"><i class="fas fa-check-circle"></i> Verified</div>
+
+      <!-- Teacher 1 -->
+      <div class="teacher-card">
+        <div class="teacher-avatar">
+          <img src="img/shikh 1.jpeg" alt="Sheikh Abdul Rahman Radi">
         </div>
-        <div class="teacher-body">
-          <h3>Sheikh Abdurrahman Rady</h3>
-          <p>Ijaza in Hafs 'an Asim with a chain of narration to the Prophet ﷺ. Over 15 years of teaching experience online and in-person.</p>
-          <div class="teacher-tags">
-            <span class="tag">Hafs 'an Asim</span>
-            <span class="tag">15+ Years</span>
-            <span class="tag">Tajweed</span>
-          </div>
-          <button class="btn btn-dark" onclick="bookTeacher()" style="width:100%;margin-top:1rem"><i class="fab fa-whatsapp"></i> Book Session</button>
-        </div>
-      </div>
-      <div class="teacher-card reveal">
-        <div class="teacher-img-wrap" style="background:var(--ink-3)">
-          <div class="teacher-avatar">أ</div>
-          <div class="verified-pill"><i class="fas fa-check-circle"></i> Verified</div>
-        </div>
-        <div class="teacher-body">
-          <h3>Sheikh Ahmed El-Naggar</h3>
-          <p>Ijaza holder in all 10 Qira'at. A dedicated scholar with over 12 years helping students around the world achieve memorization goals.</p>
-          <div class="teacher-tags">
-            <span class="tag">10 Qira'at</span>
-            <span class="tag">12+ Years</span>
-            <span class="tag">Memorization</span>
-          </div>
-          <button class="btn btn-dark" onclick="bookTeacher()" style="width:100%;margin-top:1rem"><i class="fab fa-whatsapp"></i> Book Session</button>
+        <div class="teacher-name">Sheikh AbdulRahman Rady</div>
+        <div class="teacher-role">Quran & Tajweed Instructor</div>
+        <div class="teacher-cert">📜 Ijazah in Hafs 'an Asim</div>
+        <div class="teacher-stars">★★★★★</div>
+        <div class="teacher-tag-list">
+          <span class="teacher-tag">Tajweed</span>
+          <span class="teacher-tag">Hifz</span>
         </div>
       </div>
+
+      <!-- Teacher 2 -->
+      <div class="teacher-card">
+        <div class="teacher-avatar">
+          <img src="img/shikh 3.jpeg" alt="Ustadha Aisha Hassan">
+        </div>
+        <div class="teacher-name">Sheikh Anas Hisham Abdulbari</div>
+        <div class="teacher-role">Arabic Language Teacher</div>
+        <div class="teacher-cert">📜 MA Arabic Linguistics</div>
+        <div class="teacher-stars">★★★★★</div>
+        <div class="teacher-tag-list">
+          <span class="teacher-tag">Arabic</span>
+          <span class="teacher-tag">Grammar</span>
+        </div>
+      </div>
+
+      <!-- Teacher 3 -->
+      <div class="teacher-card">
+        <div class="teacher-avatar">
+          <img src="img/shikh ahmed rady.jpeg" alt="Sheikh Ahmed Rady">
+        </div>
+        <div class="teacher-name">Sheikh Ahmed Rady</div>
+        <div class="teacher-role">Islamic Studies</div>
+        <div class="teacher-cert">📜 PhD Islamic Sciences</div>
+        <div class="teacher-stars">★★★★★</div>
+        <div class="teacher-tag-list">
+          <span class="teacher-tag">Fiqh</span>
+          <span class="teacher-tag">Aqeedah</span>
+        </div>
+      </div>
+
+      <!-- Teacher 4 -->
+      <div class="teacher-card">
+        <div class="teacher-avatar">
+          <img src="img/shikh 4.jpeg" alt="Ustadha Fatima Omar">
+        </div>
+        <div class="teacher-name">Ustadha Fatima al-Zahra</div>
+        <div class="teacher-role">Hifz Programme Director</div>
+        <div class="teacher-cert">📜 Certified Hafizah</div>
+        <div class="teacher-stars">★★★★★</div>
+        <div class="teacher-tag-list">
+          <span class="teacher-tag">Children</span>
+          <span class="teacher-tag">Hifz</span>
+        </div>
+      </div>
+
+      <!-- Teacher 5 -->
+      <div class="teacher-card">
+        <div class="teacher-avatar">
+          <img src="img/avatar women.jpeg" alt="Sheikh Omar Mohamed">
+        </div>
+        <div class="teacher-name">Sheikh Omar Mohamed</div>
+        <div class="teacher-role">Qira'at Specialist</div>
+        <div class="teacher-cert">📜 Ijazah in 10 Qira'at</div>
+        <div class="teacher-stars">★★★★★</div>
+        <div class="teacher-tag-list">
+          <span class="teacher-tag">Qira'at</span>
+          <span class="teacher-tag">Advanced</span>
+        </div>
+      </div>
+
+            <!-- Teacher 5
+      <div class="teacher-card">
+        <div class="teacher-avatar">
+          <img src="img/teacher5.jpg" alt="Sheikh Ibrahim Hassan">
+        </div>
+        <div class="teacher-name">Sheikh Ibrahim Hassan</div>
+        <div class="teacher-role">Qira'at Specialist</div>
+        <div class="teacher-cert">📜 Ijazah in 10 Qira'at</div>
+        <div class="teacher-stars">★★★★★</div>
+        <div class="teacher-tag-list">
+          <span class="teacher-tag">Qira'at</span>
+          <span class="teacher-tag">Advanced</span>
+        </div>
+      </div>-->
+
+            <!-- Teacher 5
+      <div class="teacher-card">
+        <div class="teacher-avatar">
+          <img src="img/teacher5.jpg" alt="Sheikh Ibrahim Hassan">
+        </div>
+        <div class="teacher-name">Sheikh Ibrahim Hassan</div>
+        <div class="teacher-role">Qira'at Specialist</div>
+        <div class="teacher-cert">📜 Ijazah in 10 Qira'at</div>
+        <div class="teacher-stars">★★★★★</div>
+        <div class="teacher-tag-list">
+          <span class="teacher-tag">Qira'at</span>
+          <span class="teacher-tag">Advanced</span>
+        </div>
+      </div>-->
+
+      <!-- Teacher 6
+      <div class="teacher-card">
+        <div class="teacher-avatar">
+          <img src="img/teacher6.jpg" alt="Ustadha Zainab Ahmed">
+        </div>
+        <div class="teacher-name">Ustadha Zainab Ahmed</div>
+        <div class="teacher-role">Children's Specialist</div>
+        <div class="teacher-cert">📜 Child Education Certificate</div>
+        <div class="teacher-stars">★★★★★</div>
+        <div class="teacher-tag-list">
+          <span class="teacher-tag">Kids</span>
+          <span class="teacher-tag">Noorani Qaida</span>
+        </div>
+      </div>-->
+
     </div>
   </div>
 </section>
-
-<!-- SCHEDULE -->
-<section id="schedule" class="section schedule-section">
-  <div class="container">
-    <div class="section-head center reveal">
-      <div class="section-label">Plan Your Week</div>
-      <h2 class="section-title">Weekly Class Schedule</h2>
-      <p class="section-desc" style="margin-top:0.8rem">Pick your preferred day and time — we make it work for you</p>
-    </div>
-    <div class="sched-tabs reveal">
-      <button class="tab-btn active" data-day="saturday">Saturday</button>
-      <button class="tab-btn" data-day="sunday">Sunday</button>
-      <button class="tab-btn" data-day="monday">Monday</button>
-      <button class="tab-btn" data-day="tuesday">Tuesday</button>
-      <button class="tab-btn" data-day="wednesday">Wednesday</button>
-      <button class="tab-btn" data-day="thursday">Thursday</button>
-      <button class="tab-btn" data-day="friday">Friday</button>
-    </div>
-    <div class="sched-wrapper reveal" style="overflow-x:auto">
-      <div class="sched-header">
-        <span><i class="fas fa-clock"></i> Time</span>
-        <span><i class="fas fa-chalkboard-user"></i> Teacher</span>
-        <span><i class="fas fa-signal"></i> Level</span>
-        <span><i class="fas fa-book-open"></i> Type</span>
-        <span><i class="fas fa-calendar-check"></i> Action</span>
-      </div>
-      <div id="scheduleBody"></div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS BELT -->
-<div class="stats-belt">
-  <div class="container">
-    <div class="stats-belt-grid">
-      <div class="stat-block reveal">
-        <i class="fas fa-users"></i>
-        <div class="big" id="statStudents">0</div>
-        <div class="small">Active Students</div>
-      </div>
-      <div class="stat-block reveal">
-        <i class="fas fa-chalkboard-user"></i>
-        <div class="big" id="statTeachers">0</div>
-        <div class="small">Certified Teachers</div>
-      </div>
-      <div class="stat-block reveal">
-        <i class="fas fa-clock"></i>
-        <div class="big" id="statHours">0</div>
-        <div class="small">Teaching Hours</div>
-      </div>
-      <div class="stat-block reveal">
-        <i class="fas fa-certificate"></i>
-        <div class="big" id="statCert">0</div>
-        <div class="small">Certificates Awarded</div>
-      </div>
-    </div>
-  </div>
 </div>
 
-<!-- CONTACT -->
-<section id="contact" class="section contact-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-label">Reach Out</div>
-      <h2 class="section-title">Get In Touch</h2>
-      <p class="section-desc" style="margin-top:0.8rem">We're here to answer every question and help you begin your journey.</p>
+<!-- ==================== PRICING PAGE ==================== -->
+<div class="page" id="page-pricing">
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <div class="section-label" style="display:flex;justify-content:center;margin-bottom:16px"><span class="tag">Transparent Pricing</span></div>
+      <h1 class="page-hero-title">Invest in your Akhira</h1>
+      <p class="page-hero-sub">All plans include a free trial lesson. No hidden fees, no contracts — cancel anytime.</p>
     </div>
-    <div class="contact-grid">
-      <div class="contact-left reveal">
-        <div class="contact-info-cards">
-          <div class="info-card">
-            <div class="info-card-icon"><i class="fas fa-envelope"></i></div>
-            <div class="info-card-text">
-              <strong>Email</strong>
-              <a href="mailto:Narqaacademy@gmail.com">Narqaacademy@gmail.com</a>
-            </div>
+  </section>
+  <section class="pricing-section">
+    <div class="container">
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-plan">Starter</div>
+          <div class="pricing-price">$39</div>
+          <div class="pricing-period">per month</div>
+          <div class="pricing-desc">Perfect for beginners taking their first steps into Quranic learning.</div>
+          <div class="pricing-divider"></div>
+          <div class="pricing-features">
+            <div class="pricing-feature"><div class="pricing-check">✓</div>4 live sessions/month (30 min)</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>1 course access</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>Progress tracking dashboard</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>Session recordings</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>Email support</div>
           </div>
-          <div class="info-card">
-            <div class="info-card-icon"><i class="fas fa-phone-alt"></i></div>
-            <div class="info-card-text">
-              <strong>Phone</strong>
-              <a href="tel:+201551178287">+20 1551178287</a>
-            </div>
-          </div>
-          <div class="info-card">
-            <div class="info-card-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="info-card-text">
-              <strong>Location</strong>
-              <span>Alexandria, Egypt</span>
-            </div>
-          </div>
+          <button class="btn btn-outline" onclick="showPage('booking')" style="width:100%;justify-content:center;padding:14px">Start Free Trial</button>
         </div>
-        <div class="socials">
-          <a href="https://www.facebook.com/share/16egxWPfUa/" style="background:var(--ink-3)" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://wa.me/01202988181" style="background:#25D366" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://www.instagram.com/narqaacademy" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)" title="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/abdelrahman-mohammed-rady-a9bb22222/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BLsGTx8nmT1OFnJaePdjnBg%3D%3D" style="background:#0077B5" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://youtube.com/@narqaacademy?si=wC1MKTSm7LglR9OL" style="background:#FF0000" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="pricing-plan">Scholar</div>
+          <div class="pricing-price">$79</div>
+          <div class="pricing-period">per month</div>
+          <div class="pricing-desc">The complete experience for dedicated learners seeking real transformation.</div>
+          <div class="pricing-divider"></div>
+          <div class="pricing-features">
+            <div class="pricing-feature"><div class="pricing-check">✓</div>8 live sessions/month (45 min)</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>All 6 courses access</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>Priority teacher matching</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>Progress tracking + analytics</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>Session recordings archive</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>WhatsApp support</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>Monthly progress report</div>
+          </div>
+          <button class="btn pricing-btn-featured" onclick="showPage('booking')" style="width:100%;justify-content:center;padding:14px;border-radius:100px;font-size:15px;font-weight:700">Start Free Trial →</button>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-plan">Ijazah Elite</div>
+          <div class="pricing-price">$149</div>
+          <div class="pricing-period">per month</div>
+          <div class="pricing-desc">Dedicated Ijazah pathway with a personal scholar assigned to your chain.</div>
+          <div class="pricing-divider"></div>
+          <div class="pricing-features">
+            <div class="pricing-feature"><div class="pricing-check">✓</div>16 live sessions/month (60 min)</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>Dedicated Ijazah scholar</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>Verified Sanad documentation</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>All courses + bonus materials</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>24/7 priority support</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>Final Ijazah examination prep</div>
+            <div class="pricing-feature"><div class="pricing-check">✓</div>Printed Ijazah certificate</div>
+          </div>
+          <button class="btn btn-outline" onclick="showPage('booking')" style="width:100%;justify-content:center;padding:14px">Start Free Trial</button>
         </div>
       </div>
-      <form class="contact-form reveal" id="contactForm">
-        <div class="form-title">Send Us a Message</div>
-        <div class="form-row">
-          <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name" required></div>
-          <div class="fg"><label>Email</label><input type="email" placeholder="you@example.com" required></div>
-        </div>
-        <div class="fg"><label>Subject</label><input type="text" placeholder="What's this about?"></div>
-        <div class="fg"><label>Message</label><textarea placeholder="Write your message here..."></textarea></div>
-        <button type="submit" class="btn btn-gold" style="width:100%;padding:0.9rem"><i class="fas fa-paper-plane"></i> Send Message</button>
-      </form>
+      <p style="text-align:center;margin-top:48px;font-size:14px;color:var(--text-3)">
+        🔒 Secure payments via Stripe · Cancel anytime · Free trial, no card required
+      </p>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-logo">NAR<span>QA</span> Academy</div>
-      <div class="footer-links">
-        <a href="terms.html">Terms & Conditions</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="#contact">Contact</a>
+<!-- ==================== TESTIMONIALS PAGE ==================== -->
+<div class="page" id="page-testimonials">
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <div class="section-label" style="display:flex;justify-content:center;margin-bottom:16px"><span class="tag">Student Stories</span></div>
+      <h1 class="page-hero-title">Real students, real transformations</h1>
+      <p class="page-hero-sub">Over 12,000 students trust Narqa Academy. Here are just a few of their stories.</p>
+    </div>
+  </section>
+  <section class="testimonials-section" style="padding-top:60px">
+    <div class="container">
+      <div class="testimonials-grid">
+        <div class="testimonial-card"><div class="testimonial-quote">"</div><div class="testimonial-text">I completed my Hifz after 3 years with Narqa Academy. Sheikh Hassan's patience and methodology made what seemed impossible, achievable.</div><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#0D5C46,#127a5e)">AK</div><div><div class="testimonial-name">Ahmed Khalid</div><div class="testimonial-origin">London, UK</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-quote">"</div><div class="testimonial-text">As a revert with no Arabic background, I was nervous to start. Within 6 months I could read Quran independently. Ustadha Amina is extraordinary.</div><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#1a3a6a,#2a5090)">SR</div><div><div class="testimonial-name">Sarah Reynolds</div><div class="testimonial-origin">Toronto, Canada</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-quote">"</div><div class="testimonial-text">The flexibility is unmatched. I study between work shifts and still make consistent progress. The dashboard keeps me accountable.</div><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#4a2a1a,#7a4020)">YM</div><div><div class="testimonial-name">Yusuf Mohammed</div><div class="testimonial-origin">Dubai, UAE</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-quote">"</div><div class="testimonial-text">My daughter was 8 when she started. Now at 11 she has memorised 15 juz. The children's programme is truly world-class.</div><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#2a4a1a,#3a6a25)">NR</div><div><div class="testimonial-name">Nadia Rahman</div><div class="testimonial-origin">Melbourne, Australia</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-quote">"</div><div class="testimonial-text">I received my Ijazah through Narqa Academy's elite programme. Having a verified sanad is something I never thought I'd achieve. SubhanAllah.</div><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#2a1a4a,#4a2a8a)">OB</div><div><div class="testimonial-name">Omar Bakr</div><div class="testimonial-origin">Chicago, USA</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-quote">"</div><div class="testimonial-text">My Arabic went from zero to being able to follow khutbahs and read simple texts in just 8 months. Narqa's methodology actually works.</div><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#3a1a3a,#6a2a6a)">LT</div><div><div class="testimonial-name">Lisa Thompson</div><div class="testimonial-origin">Berlin, Germany</div></div></div></div>
       </div>
-      <p class="footer-copy">&copy; 2026 Narqa Academy · All rights reserved · Designed & Developed by <a href="https://wa.me/+201207771639" target="_blank" style="text-decoration: none;"><strong style="color:rgba(255,255,255,0.6)">Eng. Kareem Ibrahem</strong></a></p>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== DASHBOARD PAGE ==================== -->
+<div class="page" id="page-dashboard">
+  <section class="dashboard-section">
+    <div class="container">
+      <div class="dashboard-header-bar">
+        <div>
+          <div class="dashboard-greeting">Welcome back, <span>Ahmed</span> 👋</div>
+          <div style="font-size:14px;color:var(--text-3);margin-top:4px">Saturday, 14 June 2025 · Keep going — you're on a 12-day streak!</div>
+        </div>
+        <button class="btn btn-primary" onclick="showPage('booking')">+ Book a Session</button>
+      </div>
+      <div class="dashboard-stats">
+        <div class="dash-stat">
+          <div class="dash-stat-icon">📖</div>
+          <div class="dash-stat-num">18</div>
+          <div class="dash-stat-label">Juz Memorised</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-icon">🎯</div>
+          <div class="dash-stat-num">94%</div>
+          <div class="dash-stat-label">Accuracy Score</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-icon">⏱️</div>
+          <div class="dash-stat-num">148</div>
+          <div class="dash-stat-label">Total Hours</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-icon">🔥</div>
+          <div class="dash-stat-num">12</div>
+          <div class="dash-stat-label">Day Streak</div>
+        </div>
+      </div>
+      <div class="dashboard-grid">
+        <div class="dash-card">
+          <div class="dash-card-title">Your Active Courses</div>
+          <div class="dash-lesson">
+            <div class="dash-lesson-icon">📗</div>
+            <div>
+              <div class="dash-lesson-title">Quran Hifz — Juz 19</div>
+              <div class="dash-lesson-meta">With Sheikh Hassan · Next: Mon 6:00 PM</div>
+              <div class="progress-bar" style="width:200px"><div class="progress-fill" style="width:60%"></div></div>
+            </div>
+            <div class="dash-lesson-progress">60%</div>
+          </div>
+          <div class="dash-lesson">
+            <div class="dash-lesson-icon">📘</div>
+            <div>
+              <div class="dash-lesson-title">Tajweed — Qalqalah Rules</div>
+              <div class="dash-lesson-meta">With Sheikh Hassan · Next: Wed 7:00 PM</div>
+              <div class="progress-bar" style="width:200px"><div class="progress-fill" style="width:45%"></div></div>
+            </div>
+            <div class="dash-lesson-progress">45%</div>
+          </div>
+          <div class="dash-lesson">
+            <div class="dash-lesson-icon">📕</div>
+            <div>
+              <div class="dash-lesson-title">Quranic Arabic — Unit 5</div>
+              <div class="dash-lesson-meta">With Ustadha Amina · Next: Fri 5:00 PM</div>
+              <div class="progress-bar" style="width:200px"><div class="progress-fill" style="width:35%"></div></div>
+            </div>
+            <div class="dash-lesson-progress">35%</div>
+          </div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-title">Upcoming Sessions</div>
+          <div class="schedule-item">
+            <div class="schedule-time">Monday · 6:00 PM</div>
+            <div class="schedule-title">Hifz Review — Juz 19</div>
+            <div class="schedule-teacher">Sheikh Hassan Al-Azhari</div>
+          </div>
+          <div class="schedule-item">
+            <div class="schedule-time">Wednesday · 7:00 PM</div>
+            <div class="schedule-title">Tajweed — Ghunnah Rules</div>
+            <div class="schedule-teacher">Sheikh Hassan Al-Azhari</div>
+          </div>
+          <div class="schedule-item">
+            <div class="schedule-time">Friday · 5:00 PM</div>
+            <div class="schedule-title">Arabic Conversation Practice</div>
+            <div class="schedule-teacher">Ustadha Amina Khalil</div>
+          </div>
+          <div style="margin-top:20px">
+            <button class="btn btn-primary" onclick="showPage('booking')" style="width:100%;justify-content:center">Book New Session →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== BOOKING PAGE ==================== -->
+<div class="page" id="page-booking">
+  <section class="booking-section" style="padding-top:140px">
+    <div class="container">
+      <div class="booking-grid">
+        <div class="booking-info">
+          <div class="section-label" style="margin-bottom:20px"><span class="tag">Book a Session</span></div>
+          <div class="booking-info-title">Start with a<br/>free trial lesson</div>
+          <div class="booking-info-sub">Your first session is completely free. Meet your teacher, discuss your goals, and experience our teaching method firsthand.</div>
+          <div class="booking-steps">
+            <div class="booking-step">
+              <div class="booking-step-num">1</div>
+              <div>
+                <div class="booking-step-title">Fill in the form</div>
+                <div class="booking-step-text">Tell us about your level, goals, and preferred schedule.</div>
+              </div>
+            </div>
+            <div class="booking-step">
+              <div class="booking-step-num">2</div>
+              <div>
+                <div class="booking-step-title">We match your teacher</div>
+                <div class="booking-step-text">Within 24 hours, we'll match you with the perfect certified scholar.</div>
+              </div>
+            </div>
+            <div class="booking-step">
+              <div class="booking-step-num">3</div>
+              <div>
+                <div class="booking-step-title">Attend your free lesson</div>
+                <div class="booking-step-text">Join via Zoom or our platform. No commitment needed to continue.</div>
+              </div>
+            </div>
+            <div class="booking-step">
+              <div class="booking-step-num">4</div>
+              <div>
+                <div class="booking-step-title">Begin your journey</div>
+                <div class="booking-step-text">If you love it, enroll in the plan that suits you best.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="booking-form-card">
+          <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--text);margin-bottom:32px">Book Your Free Trial</h3>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" placeholder="Ahmed" /></div>
+            <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input" placeholder="Khalid" /></div>
+          </div>
+          <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="ahmed@email.com" /></div>
+          <div class="form-group"><label class="form-label">Phone / WhatsApp</label><input type="tel" class="form-input" placeholder="+1 234 567 8900" /></div>
+          <div class="form-group"><label class="form-label">Course of Interest</label>
+            <select class="form-select">
+              <option>Quran Memorization (Hifz)</option>
+              <option>Tajweed Rules</option>
+              <option>Arabic for Non-Arabic Speakers</option>
+              <option>Islamic Studies</option>
+              <option>Ijazah Certification</option>
+              <option>Quranic Arabic Deep Dive</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Current Level</label>
+              <select class="form-select">
+                <option>Complete Beginner</option>
+                <option>Can Read Quran</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Preferred Time</label>
+              <select class="form-select">
+                <option>Morning (6–12 AM)</option>
+                <option>Afternoon (12–5 PM)</option>
+                <option>Evening (5–10 PM)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><label class="form-label">Tell us your goal (optional)</label><textarea class="form-textarea" placeholder="e.g. I want to complete Hifz within 3 years..."></textarea></div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:16px;margin-top:8px" onclick="alert('Thank you! We will contact you within 24 hours to confirm your free trial session. JazakAllah Khayran! 🌟')">Book My Free Trial Session →</button>
+          <p style="text-align:center;font-size:12px;color:var(--text-3);margin-top:14px">🔒 Your information is secure. We never share your data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== BLOG PAGE ==================== -->
+<div class="page" id="page-blog">
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <div class="section-label" style="display:flex;justify-content:center;margin-bottom:16px"><span class="tag">Narqa Blog</span></div>
+      <h1 class="page-hero-title">Insights on Islamic learning<br/>and Quranic education</h1>
+      <p class="page-hero-sub">Articles by our scholars, teachers, and education specialists to support your journey.</p>
+    </div>
+  </section>
+  <section class="blog-section" style="padding-top:60px">
+    <div class="container">
+      <div class="blog-grid">
+        <div class="blog-card">
+          <div class="blog-thumb"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#0D5C46,#1a8060)"></div><div style="position:relative;font-family:'Amiri',serif;font-size:40px;color:rgba(255,255,255,0.3)">تجويد</div></div>
+          <div class="blog-body">
+            <div class="blog-cat">Tajweed</div>
+            <div class="blog-title">The 5 Most Common Tajweed Mistakes Non-Arab Learners Make</div>
+            <div class="blog-excerpt">Most students make the same handful of errors when they first begin reciting. Sheikh Hassan explains each one and exactly how to fix it.</div>
+            <div class="blog-meta"><span>Sheikh Hassan</span><span>·</span><span>7 min read</span><span>·</span><span>12 May 2025</span></div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-thumb"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a2a5a,#2a4a90)"></div><div style="position:relative;font-family:'Amiri',serif;font-size:40px;color:rgba(255,255,255,0.3)">حفظ</div></div>
+          <div class="blog-body">
+            <div class="blog-cat">Hifz Tips</div>
+            <div class="blog-title">How to Memorise a New Page of Quran Every Day Without Forgetting</div>
+            <div class="blog-excerpt">The science-backed revision technique used by our most successful Huffadh students — and how you can implement it from tomorrow.</div>
+            <div class="blog-meta"><span>Ustadha Fatima</span><span>·</span><span>9 min read</span><span>·</span><span>3 May 2025</span></div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-thumb"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#3a2a1a,#7a5020)"></div><div style="position:relative;font-family:'Amiri',serif;font-size:40px;color:rgba(255,255,255,0.3)">عربي</div></div>
+          <div class="blog-body">
+            <div class="blog-cat">Arabic Learning</div>
+            <div class="blog-title">Should You Learn MSA or Quranic Arabic First? An Honest Guide</div>
+            <div class="blog-excerpt">There's a debate in every Arabic learner's mind. Ustadha Amina settles it with practical advice based on your actual goals.</div>
+            <div class="blog-meta"><span>Ustadha Amina</span><span>·</span><span>6 min read</span><span>·</span><span>28 Apr 2025</span></div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-thumb"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#2a1a4a,#5a2a8a)"></div><div style="position:relative;font-family:'Amiri',serif;font-size:40px;color:rgba(255,255,255,0.3)">إجازة</div></div>
+          <div class="blog-body">
+            <div class="blog-cat">Ijazah</div>
+            <div class="blog-title">What is an Ijazah and Why Does It Matter in the Modern World?</div>
+            <div class="blog-excerpt">The Ijazah is one of Islam's oldest and most beautiful institutions. Sheikh Mahmoud explains its meaning, history, and ongoing importance.</div>
+            <div class="blog-meta"><span>Sheikh Mahmoud</span><span>·</span><span>8 min read</span><span>·</span><span>20 Apr 2025</span></div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-thumb"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a3a2a,#2a6a4a)"></div><div style="position:relative;font-family:'Amiri',serif;font-size:40px;color:rgba(255,255,255,0.3)">أطفال</div></div>
+          <div class="blog-body">
+            <div class="blog-cat">Children</div>
+            <div class="blog-title">The Best Age to Start Quran Memorization — What Research Says</div>
+            <div class="blog-excerpt">Parents often wonder when to start. Ustadha Zainab breaks down the cognitive research and shares practical guidance for families.</div>
+            <div class="blog-meta"><span>Ustadha Zainab</span><span>·</span><span>5 min read</span><span>·</span><span>15 Apr 2025</span></div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-thumb"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#3a3a1a,#6a6020)"></div><div style="position:relative;font-family:'Amiri',serif;font-size:40px;color:rgba(255,255,255,0.3)">نية</div></div>
+          <div class="blog-body">
+            <div class="blog-cat">Spirituality</div>
+            <div class="blog-title">Keeping Your Niyyah Pure While Memorising the Quran</div>
+            <div class="blog-excerpt">The greatest danger for a student of Quran is not difficulty — it's a corrupted intention. Sheikh Ahmad reflects on protecting sincerity.</div>
+            <div class="blog-meta"><span>Sheikh Ahmad</span><span>·</span><span>10 min read</span><span>·</span><span>8 Apr 2025</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== CONTACT PAGE ==================== -->
+<div class="page" id="page-contact">
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <div class="section-label" style="display:flex;justify-content:center;margin-bottom:16px"><span class="tag">Get in Touch</span></div>
+      <h1 class="page-hero-title">We'd love to hear from you</h1>
+      <p class="page-hero-sub">Whether you have a question about our courses, pricing, or just want to say hello — we're here.</p>
+    </div>
+  </section>
+  <section class="contact-section" style="padding-top:60px">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info-card">
+          <div class="contact-info-title">Contact Narqa Academy</div>
+          <div class="contact-info-sub">Our team responds to all inquiries within 24 hours, in sha Allah.</div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value">hello@narqiacademy.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div>
+              <div class="contact-item-label">WhatsApp</div>
+              <div class="contact-item-value">+44 7911 123456</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div>
+              <div class="contact-item-label">Support Hours</div>
+              <div class="contact-item-value">Sat–Thu · 8:00 AM – 10:00 PM GST</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🌍</div>
+            <div>
+              <div class="contact-item-label">Serving Students In</div>
+              <div class="contact-item-value">40+ countries worldwide</div>
+            </div>
+          </div>
+          <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.15)">
+            <div style="font-size:12px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-bottom:14px">Follow Us</div>
+            <div style="display:flex;gap:10px">
+              <div class="footer-social-btn">𝕏</div>
+              <div class="footer-social-btn">in</div>
+              <div class="footer-social-btn">📷</div>
+              <div class="footer-social-btn">▶</div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-card">
+          <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--text);margin-bottom:28px">Send us a message</h3>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="Your full name" /></div>
+            <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com" /></div>
+          </div>
+          <div class="form-group"><label class="form-label">Subject</label>
+            <select class="form-select">
+              <option>General Enquiry</option>
+              <option>Course Information</option>
+              <option>Pricing & Billing</option>
+              <option>Teacher Matching</option>
+              <option>Technical Support</option>
+              <option>Partnership Opportunity</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" style="min-height:160px" placeholder="How can we help you?"></textarea></div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:15px" onclick="alert('Message sent! We will respond within 24 hours. JazakAllah Khayran 🌟')">Send Message →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER (shown on all pages) -->
+<footer id="siteFooter">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo"><div style="width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0"></div>Narqa Academy</div>
+        <div class="footer-brand-desc" data-i18n="footer.desc">Authentic Islamic education for every Muslim, everywhere. Join 12,000+ students learning Quran, Arabic, and Islamic Sciences with certified scholars.</div>
+<div class="footer-social">
+  <a href="#" class="footer-social-btn">
+    <i class="fa-brands fa-x-twitter"></i>
+  </a>
+  <a href="#" class="footer-social-btn">
+    <i class="fa-brands fa-linkedin-in"></i>
+  </a>
+  <a href="#" class="footer-social-btn">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+  <a href="#" class="footer-social-btn">
+    <i class="fa-brands fa-youtube"></i>
+  </a>
+  <a href="#" class="footer-social-btn">
+    <i class="fa-brands fa-discord"></i>
+  </a>
+</div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer.courses">Courses</div>
+        <a class="footer-link" onclick="showPage('courses')" data-i18n="course1.title">Quran Hifz</a>
+        <a class="footer-link" onclick="showPage('courses')" data-i18n="course2.title">Tajweed Rules</a>
+        <a class="footer-link" onclick="showPage('courses')" data-i18n="footer.arabicLang">Arabic Language</a>
+        <a class="footer-link" onclick="showPage('courses')" data-i18n="course4.title">Islamic Studies</a>
+        <a class="footer-link" onclick="showPage('courses')" data-i18n="footer.ijazahProgramme">Ijazah Programme</a>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer.academy">Academy</div>
+        <a class="footer-link" onclick="showPage('about')" data-i18n="footer.aboutUs">About Us</a>
+        <a class="footer-link" onclick="showPage('teachers')" data-i18n="footer.ourTeachers">Our Teachers</a>
+        <a class="footer-link" onclick="showPage('testimonials')" data-i18n="mobile.testimonials">Testimonials</a>
+        <a class="footer-link" onclick="showPage('blog')" data-i18n="nav.blog">Blog</a>
+        <a class="footer-link" onclick="showPage('pricing')" data-i18n="nav.pricing">Pricing</a>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer.support">Support</div>
+        <a class="footer-link" onclick="showPage('contact')" data-i18n="footer.contactUs">Contact Us</a>
+        <a class="footer-link" onclick="showPage('booking')" data-i18n="footer.bookTrial">Book a Trial</a>
+        <a class="footer-link" onclick="showPage('dashboard')" data-i18n="footer.studentPortal">Student Portal</a>
+        <a class="footer-link" href="#" data-i18n="footer.privacy">Privacy Policy</a>
+        <a class="footer-link" href="#" data-i18n="footer.terms">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div data-i18n="footer.rights">© 2025 Narqa Academy. All rights reserved.</div>
+      <div class="footer-bottom-right">
+        <span data-i18n="footer.est">🌙 Est. 2014</span>
+        <span data-i18n="footer.countries">🕋 Serving 40+ Countries</span>
+        <span data-i18n="footer.ijazahCert">📜 Ijazah Certified</span>
+      </div>
     </div>
   </div>
 </footer>
 
-<!-- SCROLL TOP -->
-<button class="scroll-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
-
-<!-- TOAST -->
-<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
-
 <script>
-(function(){
-  // CURSOR
-  const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
-  if(window.matchMedia('(pointer:fine)').matches){
-    document.addEventListener('mousemove',e=>{
-      dot.style.left=e.clientX-5+'px';dot.style.top=e.clientY-5+'px';
-      ring.style.left=e.clientX-18+'px';ring.style.top=e.clientY-18+'px';
-    });
-    document.querySelectorAll('a,button').forEach(el=>{
-      el.addEventListener('mouseenter',()=>{dot.style.transform='scale(2)';ring.style.transform='scale(1.4)';ring.style.opacity='0.5'});
-      el.addEventListener('mouseleave',()=>{dot.style.transform='scale(1)';ring.style.transform='scale(1)';ring.style.opacity='1'});
-    });
-  }else{dot.style.display='none';ring.style.display='none'}
+// ===== I18N (English / Arabic) =====
+const I18N = {
+  'nav.home': { en: 'Home', ar: 'الرئيسية' },
+  'nav.about': { en: 'About', ar: 'من نحن' },
+  'nav.courses': { en: 'Courses', ar: 'الكورسات' },
+  'nav.teachers': { en: 'Teachers', ar: 'المعلمون' },
+  'nav.pricing': { en: 'Pricing', ar: 'الأسعار' },
+  'nav.blog': { en: 'Blog', ar: 'المقالات' },
+  'nav.contact': { en: 'Contact', ar: 'تواصل معنا' },
+  'nav.dashboard': { en: 'Dashboard', ar: 'لوحة التحكم' },
+  'nav.book': { en: 'Book a Session', ar: 'احجز جلسة' },
+  'mobile.about': { en: 'About Us', ar: 'من نحن' },
+  'mobile.testimonials': { en: 'Testimonials', ar: 'آراء الطلاب' },
+  'mobile.book': { en: 'Book Session', ar: 'احجز جلسة' },
 
-  // TOAST
-  function showToast(msg){
-    const t=document.getElementById('toast');
-    document.getElementById('toastMsg').textContent=msg;
-    t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'),3500);
+  'hero.eyebrow': { en: 'Certified Online Islamic Education', ar: 'تعليم إسلامي معتمد عبر الإنترنت' },
+  'hero.title': {
+    en: 'Learn the Quran<br/><em>The Right Way,</em><br/>From Anywhere.',
+    ar: 'تعلّم القرآن الكريم<br/><em>بالطريقة الصحيحة،</em><br/>من أي مكان.'
+  },
+  'hero.sub': {
+    en: 'Join 12,000+ students worldwide learning Quran, Tajweed, and Arabic with certified scholars — live, one-on-one, at your pace.',
+    ar: 'انضم إلى أكثر من 12,000 طالب حول العالم يتعلمون القرآن والتجويد والعربية مع علماء معتمدين، في حصص مباشرة وفردية وبالسرعة التي تناسبك.'
+  },
+  'hero.cta1': { en: 'Start Free Trial →', ar: 'ابدأ حصة تجريبية مجانية ←' },
+  'hero.cta2': { en: 'Explore Courses', ar: 'تصفح الكورسات' },
+  'hero.stat1': { en: 'Active Students', ar: 'طالب نشط' },
+  'hero.stat2': { en: 'Satisfaction Rate', ar: 'نسبة الرضا' },
+  'hero.stat3': { en: 'Certified Teachers', ar: 'معلم معتمد' },
+  'hero.stat4': { en: 'Countries Served', ar: 'دولة حول العالم' },
+  'hero.float1label': { en: 'Ijazah Certified', ar: 'إجازة معتمدة' },
+  'hero.float1value': { en: 'ISO Accredited', ar: 'معتمدة عالميًا' },
+  'hero.online': { en: '3 teachers online now', ar: '3 معلمين متصلين الآن' },
+  'hero.teacherName': { en: 'Sheikh Hassan', ar: 'الشيخ حسن' },
+  'hero.teacherRole': { en: 'Tajweed Specialist', ar: 'متخصص في التجويد' },
+  'hero.float2label': { en: 'Student Rating', ar: 'تقييم الطلاب' },
+
+  'strip.live': { en: 'Live One-on-One Sessions', ar: 'حصص مباشرة فردية' },
+
+  'courses.label': { en: 'Our Programmes', ar: 'برامجنا' },
+  'courses.title': { en: 'Courses tailored to every level', ar: 'كورسات تناسب كل المستويات' },
+  'courses.subtitle': {
+    en: 'From your first Arabic letter to completing your Hifz — we guide every step of the journey.',
+    ar: 'من أول حرف عربي تتعلمه وحتى إتمام حفظك للقرآن الكريم — نحن معك في كل خطوة من رحلتك.'
+  },
+  'courses.from': { en: 'from', ar: 'يبدأ من' },
+  'courses.enroll': { en: 'Enroll Now', ar: 'اشترك الآن' },
+  'courses.enrollShort': { en: 'Enroll', ar: 'اشترك' },
+  'courses.viewAll': { en: 'View All 6 Courses →', ar: 'عرض كل الكورسات (6) ←' },
+  'courses.pageTitle': {
+    en: 'Every path to Islamic knowledge,<br/>in one academy',
+    ar: 'كل طريق للعلم الشرعي،<br/>في أكاديمية واحدة'
+  },
+  'courses.pageSub': {
+    en: 'Six comprehensive programmes designed to take you from beginner to certified — all taught live, one-on-one.',
+    ar: 'ستة برامج متكاملة تأخذك من المبتدئ إلى الحاصل على شهادة معتمدة — جميعها بتدريس مباشر وفردي.'
+  },
+
+  'course1.title': { en: 'Quran Memorization (Hifz)', ar: 'حفظ القرآن الكريم' },
+  'course1.level': { en: 'All Levels', ar: 'لكل المستويات' },
+  'course1.desc': {
+    en: 'A comprehensive Hifz programme for students of all ages, with structured revision cycles, personalised pacing, and certified teacher guidance.',
+    ar: 'برنامج متكامل لحفظ القرآن الكريم لجميع الأعمار، بخطط مراجعة منظمة وسرعة تناسب كل طالب، تحت إشراف معلمين معتمدين.'
+  },
+  'course1.meta1': { en: '📅 Flexible', ar: '📅 مواعيد مرنة' },
+  'course1.meta2': { en: '🎓 Certificate', ar: '🎓 شهادة معتمدة' },
+  'course1.meta3': { en: '👤 1-on-1', ar: '👤 فردي' },
+  'course1.price': {
+    en: '$49<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span>',
+    ar: '<span dir="ltr">750</span> ج.م<span style="font-size:14px;font-weight:400;color:var(--text-3)">/شهر</span>'
+  },
+
+  'course2.title': { en: 'Tajweed Rules', ar: 'أحكام التجويد' },
+  'course2.level': { en: 'Beginner – Advanced', ar: 'من المبتدئ إلى المتقدم' },
+  'course2.desc': {
+    en: 'Master makhaarij, sifaat, ghunnah, and the rules of noon and meem. Recite the Quran beautifully, correctly, and with confidence.',
+    ar: 'تعلّم مخارج الحروف وصفاتها وأحكام النون والميم والغُنّة، لتتلو القرآن الكريم بتلاوة صحيحة وجميلة وبثقة.'
+  },
+  'course2.descFull': {
+    en: 'Master makhaarij, sifaat, ghunnah, mad rules, and all tajweed principles. Recite with the precision and beauty of the Al-Azhar reciters.',
+    ar: 'احترف مخارج الحروف وصفاتها وأحكام الغُنّة والمدود وكل قواعد التجويد، وتلاوة بدقة وجمال أساتذة الأزهر الشريف.'
+  },
+  'course2.meta1': { en: '📅 12 Weeks', ar: '📅 12 أسبوعًا' },
+  'course2.meta2': { en: '🎓 Certificate', ar: '🎓 شهادة معتمدة' },
+  'course2.meta3': { en: '👤 1-on-1', ar: '👤 فردي' },
+  'course2.price': {
+    en: '$39<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span>',
+    ar: '<span dir="ltr">600</span> ج.م<span style="font-size:14px;font-weight:400;color:var(--text-3)">/شهر</span>'
+  },
+
+  'course3.title': { en: 'Arabic for Non-Arabic Speakers', ar: 'العربية لغير الناطقين بها' },
+  'course3.level': { en: 'Beginner', ar: 'مبتدئ' },
+  'course3.desc': {
+    en: 'Start from the Arabic alphabet and build real conversational skills — understand the Quran directly and communicate confidently in Modern Standard Arabic.',
+    ar: 'ابدأ من الحروف الأساسية وحتى التحدث بثقة، لتفهم القرآن الكريم مباشرة وتتواصل باللغة العربية الفصحى بسهولة.'
+  },
+  'course3.descFull': {
+    en: 'From the alphabet to fluent conversation — designed for absolute beginners, with a strong focus on understanding the Quran directly.',
+    ar: 'من الحروف إلى المحادثة بطلاقة — برنامج مصمم للمبتدئين تمامًا، مع تركيز خاص على فهم القرآن الكريم مباشرة.'
+  },
+  'course3.meta1': { en: '📅 6 Months', ar: '📅 6 أشهر' },
+  'course3.meta2': { en: '🎓 Certificate', ar: '🎓 شهادة معتمدة' },
+  'course3.meta3': { en: '👤 1-on-1', ar: '👤 فردي' },
+  'course3.price': {
+    en: '$45<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span>',
+    ar: '<span dir="ltr">700</span> ج.م<span style="font-size:14px;font-weight:400;color:var(--text-3)">/شهر</span>'
+  },
+
+  'course4.title': { en: 'Islamic Studies', ar: 'الدراسات الإسلامية' },
+  'course4.level': { en: 'All Levels', ar: 'لكل المستويات' },
+  'course4.desc': {
+    en: 'Structured lessons in Aqeedah, Fiqh, Seerah, Hadith, and Islamic history — build a solid foundation of knowledge grounded in classical scholarship.',
+    ar: 'دروس منظمة في العقيدة والفقه والسيرة والحديث والتاريخ الإسلامي، لبناء أساس علمي متين قائم على المنهج العلمي الأصيل.'
+  },
+  'course4.meta1': { en: '📅 1 Year', ar: '📅 سنة كاملة' },
+  'course4.meta2': { en: '🎓 Diploma', ar: '🎓 دبلومة' },
+  'course4.meta3': { en: '👤 1-on-1', ar: '👤 فردي' },
+  'course4.price': {
+    en: '$55<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span>',
+    ar: '<span dir="ltr">850</span> ج.م<span style="font-size:14px;font-weight:400;color:var(--text-3)">/شهر</span>'
+  },
+
+  'course5.title': { en: 'Ijazah Certification Programme', ar: 'برنامج الإجازة' },
+  'course5.level': { en: 'Advanced', ar: 'متقدم' },
+  'course5.desc': {
+    en: 'Earn your Ijazah with a verified Sanad. Our scholars will prepare you for the full recitation exam and connect you to an authentic, unbroken chain of transmission.',
+    ar: 'احصل على إجازتك بسند متصل وموثّق، حيث يهيئك علماؤنا لاختبار التلاوة الكامل ويربطونك بسلسلة سند معتمدة وغير منقطعة.'
+  },
+  'course5.meta1': { en: '📅 2+ Years', ar: '📅 سنتان فأكثر' },
+  'course5.meta2': { en: '🎓 Ijazah', ar: '🎓 إجازة' },
+  'course5.meta3': { en: '👤 1-on-1', ar: '👤 فردي' },
+  'course5.price': {
+    en: '$89<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span>',
+    ar: '<span dir="ltr">1400</span> ج.م<span style="font-size:14px;font-weight:400;color:var(--text-3)">/شهر</span>'
+  },
+
+  'course6.title': { en: 'Quranic Arabic Deep Dive', ar: 'التعمق في اللغة العربية القرآنية' },
+  'course6.level': { en: 'Intermediate', ar: 'متوسط' },
+  'course6.desc': {
+    en: "Go beyond basic Arabic — analyse Quranic grammar (I'rab), explore tafsir sources, and gain the tools to study classical texts independently.",
+    ar: 'تجاوز أساسيات اللغة وانطلق إلى تحليل الإعراب القرآني واستكشاف مصادر التفسير، لتمتلك أدوات دراسة النصوص الكلاسيكية بنفسك.'
+  },
+  'course6.meta1': { en: '📅 8 Months', ar: '📅 8 أشهر' },
+  'course6.meta2': { en: '🎓 Certificate', ar: '🎓 شهادة معتمدة' },
+  'course6.meta3': { en: '👤 1-on-1', ar: '👤 فردي' },
+  'course6.price': {
+    en: '$59<span style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span>',
+    ar: '<span dir="ltr">900</span> ج.م<span style="font-size:14px;font-weight:400;color:var(--text-3)">/شهر</span>'
+  },
+
+  'footer.desc': {
+    en: 'Authentic Islamic education for every Muslim, everywhere. Join 12,000+ students learning Quran, Arabic, and Islamic Sciences with certified scholars.',
+    ar: 'تعليم إسلامي أصيل لكل مسلم في أي مكان. انضم إلى أكثر من 12,000 طالب يتعلمون القرآن والعربية والعلوم الإسلامية مع علماء معتمدين.'
+  },
+  'footer.courses': { en: 'Courses', ar: 'الكورسات' },
+  'footer.arabicLang': { en: 'Arabic Language', ar: 'اللغة العربية' },
+  'footer.ijazahProgramme': { en: 'Ijazah Programme', ar: 'برنامج الإجازة' },
+  'footer.academy': { en: 'Academy', ar: 'الأكاديمية' },
+  'footer.aboutUs': { en: 'About Us', ar: 'من نحن' },
+  'footer.ourTeachers': { en: 'Our Teachers', ar: 'معلمونا' },
+  'footer.support': { en: 'Support', ar: 'الدعم' },
+  'footer.contactUs': { en: 'Contact Us', ar: 'تواصل معنا' },
+  'footer.bookTrial': { en: 'Book a Trial', ar: 'احجز حصة تجريبية' },
+  'footer.studentPortal': { en: 'Student Portal', ar: 'بوابة الطالب' },
+  'footer.privacy': { en: 'Privacy Policy', ar: 'سياسة الخصوصية' },
+  'footer.terms': { en: 'Terms of Service', ar: 'الشروط والأحكام' },
+  'footer.rights': { en: '© 2025 Narqa Academy. All rights reserved.', ar: '© 2025 أكاديمية نرقا. جميع الحقوق محفوظة.' },
+  'footer.est': { en: '🌙 Est. 2014', ar: '🌙 تأسست 2014' },
+  'footer.countries': { en: '🕋 Serving 40+ Countries', ar: '🕋 خدمة أكثر من 40 دولة' },
+  'footer.ijazahCert': { en: '📜 Ijazah Certified', ar: '📜 إجازة معتمدة' }
+};
+
+// ===== LANGUAGE SWITCH =====
+function setLang(lang) {
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const entry = I18N[el.getAttribute('data-i18n')];
+    if (entry && entry[lang] !== undefined) {
+      el.innerHTML = entry[lang];
+    }
+  });
+
+  const langBtn = document.getElementById('langBtn');
+  const mobileLangLabel = document.getElementById('mobileLangLabel');
+  const switchLabel = lang === 'ar' ? 'English' : 'العربية';
+  if (langBtn) langBtn.textContent = switchLabel;
+  if (mobileLangLabel) mobileLangLabel.textContent = switchLabel;
+
+  try { localStorage.setItem('site-lang', lang); } catch (e) {}
+}
+
+function toggleLang() {
+  const current = document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'en';
+  setLang(current === 'ar' ? 'en' : 'ar');
+}
+
+// ===== THEME =====
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.getElementById('themeBtn');
+  if (html.getAttribute('data-theme') === 'light') {
+    html.setAttribute('data-theme', 'dark');
+    btn.textContent = '☀️';
+  } else {
+    html.setAttribute('data-theme', 'light');
+    btn.textContent = '🌙';
   }
-  window.showToast=showToast;
-  window.bookTeacher=()=>{showToast('Redirecting to WhatsApp...');setTimeout(()=>window.open('https://wa.me/01202988181?text=Hello%20Narqa%20I%20want%20to%20book%20a%20session','_blank'),800)};
+}
 
-  // HERO COUNTER
-  document.querySelectorAll('.hero-stat .num').forEach(el=>{
-    const target=parseInt(el.dataset.count);let c=0;
-    const step=Math.ceil(target/50),iv=setInterval(()=>{c+=step;if(c>=target){el.textContent=target+'+';clearInterval(iv)}else el.textContent=c+'+';},30);
-  });
-
-  // SCHEDULE
-  const DB={
-    saturday:[{time:'09:00–10:00',teacher:'Sh. Abdurrahman',level:'Beginner',type:'Memorization'},{time:'14:00–15:00',teacher:'Sh. Abdurrahman',level:'Intermediate',type:'Revision'},{time:'18:00–19:00',teacher:'Sh. Abdurrahman',level:'Advanced',type:'Tajweed'}],
-    sunday:[{time:'10:00–11:00',teacher:'Sh. Abdurrahman',level:'Beginner',type:'Memorization'},{time:'16:00–17:00',teacher:'Sh. Abdurrahman',level:'Intermediate',type:'Revision'}],
-    monday:[{time:'11:00–12:00',teacher:'Sh. Abdurrahman',level:'Beginner',type:'Memorization'}],
-    tuesday:[],
-    wednesday:[{time:'13:00–14:00',teacher:'Sh. Abdurrahman',level:'Intermediate',type:'Revision'}],
-    thursday:[{time:'15:00–16:00',teacher:'Sh. Abdurrahman',level:'Advanced',type:'Tajweed'}],
-    friday:[]
-  };
-  function lvl(l){return l==='Beginner'?'beginner':l==='Intermediate'?'intermediate':'advanced'}
-  function renderSched(day){
-    const body=document.getElementById('scheduleBody'),sessions=DB[day]||[];
-    if(!sessions.length){body.innerHTML=`<div class="no-sess">No sessions available for this day.</div>`;return}
-    body.innerHTML=sessions.map(s=>`
-      <div class="sched-row">
-        <div class="time">${s.time}</div>
-        <div class="teacher">${s.teacher}</div>
-        <div><span class="level-pill ${lvl(s.level)}">${s.level}</span></div>
-        <div style="color:var(--text-2);font-weight:500">${s.type}</div>
-        <div><button class="book-btn" onclick="bookTeacher()"><i class="fas fa-calendar-plus"></i> Book</button></div>
-      </div>
-    `).join('');
+// ===== NAVIGATION =====
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + name);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  document.querySelectorAll('.tab-btn').forEach(b=>{
-    b.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderSched(b.dataset.day)});
+  // Update nav active state
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => {
+    if (l.getAttribute('onclick') && l.getAttribute('onclick').includes("'" + name + "'")) {
+      l.classList.add('active');
+    }
   });
-  renderSched('saturday');
+  // Close mobile menu
+  document.getElementById('mobileMenu').classList.remove('open');
+  // Trigger animations
+  setTimeout(triggerAnimations, 100);
+}
 
-  // STATS COUNTER
-  const counters=[{id:'statStudents',target:580},{id:'statTeachers',target:22},{id:'statHours',target:1240},{id:'statCert',target:210}];
-  let done=false;
-  const obs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&!done){done=true;counters.forEach(c=>{const el=document.getElementById(c.id);if(!el)return;let s=0;const step=Math.ceil(c.target/60),iv=setInterval(()=>{s+=step;if(s>=c.target){el.innerText=c.target+'+';clearInterval(iv)}else el.innerText=s+'+';},25);})}},{threshold:0.3});
-  const belt=document.querySelector('.stats-belt');if(belt)obs.observe(belt);
+// ===== MOBILE MENU =====
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
 
-  // REVEAL
-  const revObs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);revObs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+// ===== SCROLL NAV =====
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 20) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
 
-  // MOBILE NAV
-  const hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('mobileNav'),closeNav=document.getElementById('closeNav');
-  hamburger?.addEventListener('click',()=>mobileNav.classList.add('open'));
-  closeNav?.addEventListener('click',()=>mobileNav.classList.remove('open'));
-  document.querySelectorAll('.mobile-nav a').forEach(a=>a.addEventListener('click',()=>mobileNav.classList.remove('open')));
-
-  // SCROLL
-  const scrollBtn=document.getElementById('scrollTopBtn'),navbar=document.getElementById('navbar');
-  window.addEventListener('scroll',()=>{
-    scrollBtn?.classList.toggle('visible',window.scrollY>400);
-    navbar?.classList.toggle('scrolled',window.scrollY>60);
-  });
-  scrollBtn?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-  // FORM
-  document.getElementById('contactForm')?.addEventListener('submit',e=>{e.preventDefault();showToast('Message sent! We\'ll get back to you soon.');e.target.reset()});
-
-  // SMOOTH SCROLL
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',function(e){
-      const h=this.getAttribute('href');
-      if(h==='#'||h==='#home'){window.scrollTo({top:0,behavior:'smooth'});return}
-      const el=document.querySelector(h);
-      if(el){e.preventDefault();const top=el.getBoundingClientRect().top+window.scrollY-80;window.scrollTo({top,behavior:'smooth'})}
+// ===== SCROLL ANIMATIONS =====
+function triggerAnimations() {
+  const els = document.querySelectorAll('.page.active .animate-on-scroll');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+      }
     });
+  }, { threshold: 0.1 });
+  els.forEach(el => {
+    el.classList.remove('visible');
+    observer.observe(el);
   });
+}
+
+// Init
+triggerAnimations();
+
+// Init language from saved preference (default English)
+(function initLang() {
+  let saved = 'en';
+  try { saved = localStorage.getItem('site-lang') || 'en'; } catch (e) {}
+  setLang(saved);
 })();
+
+// Duplicate strip for seamless marquee
+const strip = document.querySelector('.strip-inner');
+if (strip) {
+  const clone = strip.cloneNode(true);
+  strip.parentNode.appendChild(clone);
+}
 </script>
 </body>
 </html>
